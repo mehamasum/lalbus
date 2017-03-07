@@ -1,0 +1,15 @@
+- Sign up/log in
+- Authentication
+- Bus Table ( Bus Number, Time, (Starts from, a), Destination, Contact Number of Drivers)
+- Bus auto Location
+- Update location with phone for reputation points
+- Committee Requests for Update
+- RSS for update
+
+UAC : 
+- Root User (admin) : changes committe members
+- Common Users ( Guest)
+- Committee Members : Bus committee members for making updates
+- Registered Members( Subscriber/ Updater) -
+
+
