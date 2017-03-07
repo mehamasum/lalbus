@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>New Account | Lalbus</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="./img/favicon.png">
+	<link rel="canonical" href="">
+	<link rel="stylesheet" href="./css/screen.css">
+
+	<style type="text/css">
+		html {
+			height: 100%;
+		}
+		
+		.page-inner {
+			display: table;
+			width: 100%;
+			font-family: 'Maven Pro';
+		}
+	</style>
+</head>
+
+<body class="login">
+
+	<div class="logo">
+		<a href=""><img style="width: 20%;" src="./img/logo-w.png" alt="OverDrive"></a>
+	</div>
+
+	<div class="content">
+
+		<form class="login-form" action="setAccount" method="POST" novalidate="">
+			<h3 class="form-title font-dark">New Account</h3>
+			<br>
+			<div class="form-group">
+				<input type="text" name="name" class="form-control form-control-solid placeholder-no-fix" id="inpName" placeholder="Name"
+					value="" minlength="2" maxlength="64" required="">
+			</div>
+			<div class="form-group">
+				<input type="text" name="batch" class="form-control form-control-solid placeholder-no-fix" id="inpBatch" placeholder="DU Registration Number"
+					value="" required="">
+			</div>
+
+			<div class="form-group">
+				<input type="text" name="roll" class="form-control form-control-solid placeholder-no-fix" id="inpRoll" placeholder="Department"
+					   value="" required="">
+			</div>
+
+			<div class="form-group">
+				<input type="text" name="roll" class="form-control form-control-solid placeholder-no-fix" id="inpRoll" placeholder="Username"
+					   value="" required="">
+			</div>
+
+			<div class="form-group">
+				<input type="password" name="password" class="form-control form-control-solid placeholder-no-fix" id="inpPassword" placeholder="Password"
+					minlength="8" required="">
+			</div>
+			
+
+			<div class="form-actions">
+				<button type="submit" class="btn red btn-block" data-loading-text="Registering..">Register</button>
+			</div>
+			<div class="create-account">
+				<p>
+					<a href="/">Login with an existing account</a>
+				</p>
+			</div>
+		</form>
+
+	</div>
+
+	<div class="copyright">© 2016 Batfia</div>
+
+    </body>
+
+</html>
