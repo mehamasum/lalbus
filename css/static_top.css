@@ -1,54 +1,54 @@
-.navbar-robopi {
+.navbar-lalbus {
     background-color: #E13834;
     border-color: #A60D14;
 }
-.navbar-robopi .navbar-brand {
+.navbar-lalbus .navbar-brand {
     color: #ffffff;
 }
-.navbar-robopi .navbar-brand:hover,
-.navbar-robopi .navbar-brand:focus {
+.navbar-lalbus .navbar-brand:hover,
+.navbar-lalbus .navbar-brand:focus {
     color: #ffffff;
 }
-.navbar-robopi .navbar-text {
+.navbar-lalbus .navbar-text {
     color: #ffffff;
 }
-.navbar-robopi .navbar-nav > li > a {
+.navbar-lalbus .navbar-nav > li > a {
     color: #ffffff;
 }
-.navbar-robopi .navbar-nav > li > a:hover,
-.navbar-robopi .navbar-nav > li > a:focus {
+.navbar-lalbus .navbar-nav > li > a:hover,
+.navbar-lalbus .navbar-nav > li > a:focus {
     color: #ffffff;
     background-color: #C10F17;
 }
-.navbar-robopi .navbar-nav > .active > a,
-.navbar-robopi .navbar-nav > .active > a:hover,
-.navbar-robopi .navbar-nav > .active > a:focus {
+.navbar-lalbus .navbar-nav > .active > a,
+.navbar-lalbus .navbar-nav > .active > a:hover,
+.navbar-lalbus .navbar-nav > .active > a:focus {
     color: #ffffff;
     background-color: #A60D14;
 }
-.navbar-robopi .navbar-nav > .open > a,
-.navbar-robopi .navbar-nav > .open > a:hover,
-.navbar-robopi .navbar-nav > .open > a:focus {
+.navbar-lalbus .navbar-nav > .open > a,
+.navbar-lalbus .navbar-nav > .open > a:hover,
+.navbar-lalbus .navbar-nav > .open > a:focus {
     color: #ffffff;
     background-color: #A60D14;
 }
-.navbar-robopi .navbar-toggle {
+.navbar-lalbus .navbar-toggle {
     border-color: #A60D14;
 }
-.navbar-robopi .navbar-toggle:hover,
-.navbar-robopi .navbar-toggle:focus {
+.navbar-lalbus .navbar-toggle:hover,
+.navbar-lalbus .navbar-toggle:focus {
     background-color: #A60D14;
 }
-.navbar-robopi .navbar-toggle .icon-bar {
+.navbar-lalbus .navbar-toggle .icon-bar {
     background-color: #ffffff;
 }
-.navbar-robopi .navbar-collapse,
-.navbar-robopi .navbar-form {
+.navbar-lalbus .navbar-collapse,
+.navbar-lalbus .navbar-form {
     border-color: #ffffff;
 }
-.navbar-robopi .navbar-link {
+.navbar-lalbus .navbar-link {
     color: #ffffff;
 }
-.navbar-robopi .navbar-link:hover {
+.navbar-lalbus .navbar-link:hover {
     color: #ffffff;
 }
