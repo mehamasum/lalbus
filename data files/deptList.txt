@@ -1,0 +1,187 @@
+92
+Department of Bengali
+BNG
+Department of English
+ENG
+Department of Arabic
+ARB
+Department of Persian Language and Literature
+PERS
+Department of Urdu
+UPS
+Department of Sanskrit
+SPL
+Department of Pali and Buddhist Studies
+PBS
+Department of History
+HIS
+Department of Philosophy
+PHI
+Department of Islamic Studies
+IST
+Department of Islamic History & Culture
+IHC
+Department of Information Science and Library Management
+LIS
+Department of Theatre and Performance Studies
+TMU
+Department of Linguistics
+LIN
+Department of Music
+DMUSIC
+Department of World Religions and Culture
+WRC
+Department of Dance
+DDANCE
+Department of Physics
+PHY
+Department of Mathematics
+MAT
+Department of Chemistry
+CHM
+Department of Statistics
+STA
+Department of Theoretical Physics
+TPHY
+Department of Biomedical Physics & Technology
+BIOPHY
+Department of Applied Mathematics
+APMAT
+Department of Law
+LAW
+Department of Management
+MAN
+Department of Accounting & Information Systems
+AIS
+Department of Marketing
+MRK
+Department of Finance
+FIN
+Department of Banking and Insurance
+BAN
+Department of Management Information Systems (MIS)
+MIS
+Department of International Business
+INTBS
+Department of Tourism and Hospitality Management
+BSTHM
+Department of Organization Strategy and Leadership
+OSL
+Department of Soil, Water & Environment
+SWE
+Department of Botany
+BOT
+Department of Zoology
+ZOO
+Department of Biochemistry and Molecular Biology
+BMB
+Department of Psychology
+PSY
+Department of Microbiology
+MBI
+Department of Fisheries
+AQF
+Department of Clinical Psychology
+CPS
+Department of Genetic Engineering and Bio-Technology
+GEB
+Department of Educational and Counselling Psychology
+ECP
+Department of Economics
+ECO
+Department of Political Science
+PSC
+Department of International Relations
+IRL
+Department of Sociology
+SOC
+Department of Mass Communication & Journalism
+MCJ
+Department of Public Administration
+PUB
+Department of Anthropology
+ANT
+Department of Population Sciences
+POPS
+Department of Peace and Conflict Studies
+PCE
+Department of Women and Gender Studies
+WGS
+Department of Development Studies
+DVS
+Department of Television, Film and Photography
+TFP
+Department of Criminology
+CLG
+Department of Communication Disorders
+COMD
+Department of Printing and Publication Studies
+DPUB
+Department of Pharmaceutical Chemistry
+PHCM
+Department of Clinical Pharmacy and Pharmacology
+CPP
+Department of Pharmaceutical Technology
+PTCH
+Department of Pharmacy
+PHAR
+Department of Geography & Environment
+GEN
+Department of Geology
+GLG
+Department of Oceanography
+OCG
+Department of Disaster Science and Management
+DSM
+Department of Meteorology
+DEMET
+Department of Electrical and Electronic Engineering
+EEE
+Department of Applied Chemistry & Chemical Engineering
+ACCE
+Department of Computer Science and Engineering
+CSE
+Department of Nuclear Engineering
+NE
+Department of Robotics and Mechatronics Engineering
+RME
+Department of Drawing and Painting
+DDP
+department of graphic design
+GDESIGN
+Department of Printmaking
+DPMK
+Department of Oriental Art
+OARTS
+Department of Ceramics
+DCER
+Department of Sculpture
+DSCULP
+Department of Craft
+DCRAFT
+Department of History of Arts
+HIARTS
+Institute of Statistical Research and Training
+ISRT
+Institute of Education and Research
+IER
+Institute of Business Administration
+IBA
+Institute of Nutrition and Food Science
+INFS
+Institute of Social Welfare and Research
+ISWR
+Institute of Modern Languages
+IML
+Institute of Information Technology
+IIT
+Institute of Renewable Energy
+IRE
+Institute of Disaster Management and Vulnerability Studies
+IDMV
+Institute of Leather Engineering & Technology
+ILET
+Institute of Health Economics
+IHE
+Confucius Institute
+CIST

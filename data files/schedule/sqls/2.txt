@@ -1,0 +1,12 @@
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `start_point`, `driver`, `bus_number`, `comment`) VALUES (NULL, '2', '0', '6.35am', 'Kochukhet', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `start_point`, `driver`, `bus_number`, `comment`) VALUES (NULL, '2', '0', '6.50am', 'Kochukhet', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `start_point`, `driver`, `bus_number`, `comment`) VALUES (NULL, '2', '0', '7.30am', 'Kochukhet', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `start_point`, `driver`, `bus_number`, `comment`) VALUES (NULL, '2', '0', '8.00am', 'Kochukhet', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `start_point`, `driver`, `bus_number`, `comment`) VALUES (NULL, '2', '0', '9.00am', 'Kochukhet', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `start_point`, `driver`, `bus_number`, `comment`) VALUES (NULL, '2', '0', '9.45am', 'Kochukhet', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `start_point`, `driver`, `bus_number`, `comment`) VALUES (NULL, '2', '1', '12.20pm', 'Kochukhet', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `start_point`, `driver`, `bus_number`, `comment`) VALUES (NULL, '2', '1', '1.10pm', 'Kochukhet', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `start_point`, `driver`, `bus_number`, `comment`) VALUES (NULL, '2', '1', '2.20pm', 'Kochukhet', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `start_point`, `driver`, `bus_number`, `comment`) VALUES (NULL, '2', '1', '3.30pm', 'Kochukhet', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `start_point`, `driver`, `bus_number`, `comment`) VALUES (NULL, '2', '1', '4.30pm', 'Kochukhet', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `start_point`, `driver`, `bus_number`, `comment`) VALUES (NULL, '2', '1', '5.30pm', 'Kochukhet', '', '', '');

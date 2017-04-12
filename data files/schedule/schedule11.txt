@@ -1,0 +1,36 @@
+11
+0 4
+6.35am
+IIT School
+Stops at VC Chottor
+Double Decker
+7.15am
+IIT School
+Stops at VC Chottor
+Double Decker
+8.00am
+Chittagong Road
+Stops at VC Chottor
+Staff Bus
+8.35am
+IIT School
+Stops at Mall Chottor
+Single Decker
+
+1 4
+1.10pm
+IIT School
+Starts from Mall Chottor
+Single Decker
+3.10pm
+IIT School
+Starts from VC Chottor
+Double Decker
+5.05pm
+Chittagong Road
+Starts from VC Chottor
+Staff Bus
+5.15pm
+IIT School
+Starts from VC Chottor
+Double Decker

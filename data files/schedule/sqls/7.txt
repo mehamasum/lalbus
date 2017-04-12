@@ -1,0 +1,6 @@
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '7', '0', '6.45am', 'Badda/Gulshan', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '7', '0', '7.45am', 'Badda/Gulshan', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '7', '0', '8.40am', 'Badda/Gulshan', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '7', '1', '1.10pm', 'Badda/Gulshan', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '7', '1', '4.10pm', 'Badda/Gulshan', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '7', '1', '5.05pm', 'Badda/Gulshan', '', '', '');

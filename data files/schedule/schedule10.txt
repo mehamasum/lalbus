@@ -1,0 +1,18 @@
+10
+0 3
+6.50am
+DU Bus
+7.50am
+BRTC
+8.50am
+DU Bus
+
+1 4
+1.05pm
+DU Bus
+2.30pm
+DU Bus
+4.05pm
+BRTC
+5.10pm
+BRTC

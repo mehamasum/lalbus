@@ -1,0 +1,43 @@
+5
+0 7
+7.20am
+Double Decker
+Mugda Stadium
+7.20am
+Single Decker
+Bouddho Mondir
+8.15am
+Double Decker
+Mugda Stadium
+8.15am
+Single Decker
+Bouddho Mondir
+9.00am
+Double Decker
+Mugda Stadium
+9.00am
+Single Decker
+Bouddho Mondir
+10.00am
+Double Decker
+Mugda Stadium
+
+1 6
+12.05pm
+Double Decker
+VC Chottor
+1.30pm
+Double Decker
+TSC
+2.20pm
+Double Decker
+VC Chottor
+3.40pm
+Double Decker
+TSC
+4.30pm
+Double Decker
+TSC
+5.20pm
+Double Decker
+TSC
