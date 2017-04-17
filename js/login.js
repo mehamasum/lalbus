@@ -38,14 +38,14 @@ function validateLogin() {
 
                 if (reply.indexOf("ZERO") != -1) {
                     found = true;
-                    errors.innerHTML += "Registration or Mobile already in use" + "<br>";
+                    errors.innerHTML += "Wrong Mobile or Password" + "<br>";
                 }
-                else if (reply.indexOf("ONE") != -1) {
-                    window.location.href = "following.php";
+                else if (reply.indexOf("ERR") != -1) {
+                    found = true;
+                    errors.innerHTML += "Wrong Password" + "<br>";
                 }
                 else {
-                    found = true;
-                    errors.innerHTML += "Something went wrong" + "<br>";
+                    window.location.href = "home.php";
                 }
 
                 if (found)
@@ -56,12 +56,12 @@ function validateLogin() {
                 }
             }
         };
-        xhttp.open("POST", "backend/signup_handler.php", true);
+        xhttp.open("POST", "backend/login_handler.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
         //console.log(bus);
 
-        xhttp.send("n="+name+"&r="+reg_no+"&m="+mob_no+"&p="+password+"&c="+comm+"&b="+bus);
+        xhttp.send("m="+mob_no+"&p="+password);
     }
 }
 
