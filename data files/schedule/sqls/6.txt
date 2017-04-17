@@ -1,0 +1,22 @@
+                String time= sc.nextLine();
+                //String driver=sc.nextLine();
+                String bus_no =sc.nextLine();
+                String start_point=sc.nextLine();
+                String comments=sc.nextLine();
+                System.out.println("INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '"+busId+"', '"+tripType+"', '"+time +"', '"+ start_point+"', '', '"+bus_no+"', '"+comments+"');");
+
+
+
+
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '6', '0', '6.40am', 'Meghna ', '', 'Single Decker', 'Stops at Mall Chattar');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '6', '0', '7.10am', 'Signboard', '', 'Single Decker', 'Stops at Mall Chattar');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '6', '0', '7.40am', 'Meghna', '', 'Double Decker', 'Stops at Mall Chattar');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '6', '0', '8.00am', 'Meghna', '', 'Single Decker', 'Stops at Mall Chattar');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '6', '0', '9.00am', 'Kachpur', '', 'Double Decker', 'Stops at VC Chattar');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '6', '0', '10.00am', 'Kachpur', '', 'Single Decker', 'Stops at  Mall Chattar');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '6', '0', '10.05am', 'Kachpur', '', 'Single Decker', 'Stops at Mall Chattar');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '6', '1', '1.15pm', 'Meghna', '', 'Double Decker', 'Starts from VC Chattar');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '6', '1', '2.30pm', 'Kachpur', '', 'Single Decker', 'Starts from Mall Chattar');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '6', '1', '4.10pm', 'Kachpur', '', 'Double Decker', 'Starts from Mall Chattar');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '6', '1', '5.05pm', 'Meghna', '', 'Single Decker', 'Starts from Mall Chattar');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '6', '1', '5.15pm', 'Meghna', '', 'Double Decker', 'Starts from VC Chattar');

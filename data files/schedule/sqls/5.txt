@@ -1,0 +1,13 @@
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '5', '0', '7.20am', 'Mugda Stadium', '', 'Double Decker', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '5', '0', '7.20am', 'Bouddho Mondir', '', 'Single Decker', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '5', '0', '8.15am', 'Mugda Stadium', '', 'Double Decker', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '5', '0', '8.15am', 'Bouddho Mondir', '', 'Single Decker', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '5', '0', '9.00am', 'Mugda Stadium', '', 'Double Decker', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '5', '0', '9.00am', 'Bouddho Mondir', '', 'Single Decker', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '5', '0', '10.00am', 'Mugda Stadium', '', 'Double Decker', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '5', '1', '12.05pm', 'VC Chottor', '', 'Double Decker', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '5', '1', '1.30pm', 'TSC', '', 'Double Decker', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '5', '1', '2.20pm', 'VC Chottor', '', 'Double Decker', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '5', '1', '3.40pm', 'TSC', '', 'Double Decker', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '5', '1', '4.30pm', 'TSC', '', 'Double Decker', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '5', '1', '5.20pm', 'TSC', '', 'Double Decker', '');

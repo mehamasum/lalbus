@@ -1,0 +1,5 @@
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '8', '0', '7.00am ', 'Nabinogor', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '8', '0', '8.00am', 'Nabinogor', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '8', '1', '1.10pm', 'Nabinogor', '', '', 'Starts from Mall Chattar');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '8', '1', '3.10pm', 'Nabinogor', '', '', 'Starts from Mall Chattar');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '8', '1', '5.10pm', 'Nabinogor', '', '', 'Starts from Curzon Hall');

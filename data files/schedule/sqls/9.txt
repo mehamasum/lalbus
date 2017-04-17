@@ -1,0 +1,12 @@
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '9', '0', '7.00am', 'Postogola', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '9', '0', '8.00am', 'Dholaipar', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '9', '0', '8.00am', 'Postogola', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '9', '0', '9.00am', 'Postogola', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '9', '0', '9.35am', 'Postogola', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '9', '0', '10.00am', 'Postogola', '', '', '');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '9', '1', '12.10pm', 'Postogola Cantonment', '', '', 'Starts from VC Chottor');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '9', '1', '1.10pm', 'Postogola Cantonment', '', '', 'Starts from TSC');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '9', '1', '2.10pm', 'Postogola Cantonment', '', '', 'Starts from VC Chottor');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '9', '1', '3.10', 'Postogola Cantonment', '', '', 'Starts from VC Chottor');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '9', '1', '4.10pm', 'Postogola Cantonment', '', '', 'Starts from VC Chottor');
+INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES (NULL, '9', '1', '5.10pm', 'Postogola Cantonment', '', '', 'Starts from VC Chottor');

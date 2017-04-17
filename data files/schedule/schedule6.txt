@@ -1,0 +1,52 @@
+6
+0 7
+6.40am
+Single Decker
+Meghna 
+Stops at Mall Chattar
+7.10am
+Single Decker
+Signboard
+Stops at Mall Chattar
+7.40am
+Double Decker
+Meghna
+Stops at Mall Chattar
+8.00am
+Single Decker
+Meghna
+Stops at Mall Chattar
+9.00am
+Double Decker
+Kachpur
+Stops at VC Chattar
+10.00am
+Single Decker
+Kachpur
+Stops at  Mall Chattar
+10.05am
+Single Decker
+Kachpur
+Stops at Mall Chattar
+
+1 5
+1.15pm
+Double Decker
+Meghna
+Starts from VC Chattar
+2.30pm
+Single Decker
+Kachpur
+Starts from Mall Chattar
+4.10pm
+Double Decker
+Kachpur
+Starts from Mall Chattar
+5.05pm
+Single Decker
+Meghna
+Starts from Mall Chattar
+5.15pm
+Double Decker
+Meghna
+Starts from VC Chattar

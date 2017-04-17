@@ -1,0 +1,52 @@
+9
+0 6
+7.00am
+Double Decker
+Postogola
+
+8.00am
+Single Decker
+Dholaipar
+
+8.00am
+Double Decker
+Postogola
+
+9.00am
+Double Decker
+Postogola
+
+9.35am
+Double Decker
+Postogola
+
+10.00am
+Double Decker
+Postogola
+
+
+1 6
+12.10pm
+Single Decker
+Postogola Cantonment
+Starts from VC Chottor
+1.10pm
+Double Decker
+Postogola Cantonment
+Starts from TSC
+2.10pm
+Double Decker
+Postogola Cantonment
+Starts from VC Chottor
+3.10
+Double Decker
+Postogola Cantonment
+Starts from VC Chottor
+4.10pm
+Double Decker
+Postogola Cantonment
+Starts from VC Chottor
+5.10pm
+Double Decker
+Postogola Cantonment
+Starts from VC Chottor
