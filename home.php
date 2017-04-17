@@ -1,3 +1,15 @@
+<?php
+session_start();
+if(!isset($_SESSION['id']))
+{
+    ob_start();
+    header('Location: login.php');
+    ob_end_flush();
+    die();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

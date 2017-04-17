@@ -36,13 +36,13 @@
 
 			<div class="form-group">
 				<input type="number" name="reg_no" class="form-control form-control-solid placeholder-no-fix"
-					   placeholder="DU Reg No (i.e. 2017...)" value="" required="">
+					   placeholder="DU Reg No (2017812...)" value="" required="">
 			</div>
 
 			<div class="form-group">
 				<div>
 					<input type="number" name="mob_no" class="form-control form-control-solid placeholder-no-fix"
-						   placeholder="Mobile (i.e. 01...)" value="" minlength="11" required="">
+						   placeholder="Mobile (015...)" value="" minlength="11" required="">
 				</div>
 
 			</div>
@@ -89,14 +89,14 @@
 			</div>
 			<div class="create-account">
 				<p>
-					<a href="login.html">Login with an existing account</a>
+					<a href="login.php">Login with an existing account</a>
 				</p>
 			</div>
 		</form>
 
 	</div>
 
-	<div class="copyright">© 2016 Batfia</div>
+	<div class="copyright">© 2017 Batfia</div>
 
     </body>
 

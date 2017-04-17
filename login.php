@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php
+session_start();
+?>
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -61,7 +65,7 @@
 
 	</div>
 
-	<div class="copyright">© 2016 Batfia</div>
+	<div class="copyright">© 2017 Batfia</div>
 </body>
 
 </html>

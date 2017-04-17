@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 //  xhttp.send("n="+name+"&r="+reg_no+"&m="+mob_no+"&p="+password+"&c="+comm);
 
@@ -45,10 +46,17 @@ else {
 
     $sql = "INSERT INTO users (name, reg_no, mob_no, password, bus_id, level_req, status, code) ".
         "VALUES ('" .  $name . "','" . $reg_no . "','". $mob_no . "','" . $hash . "', " . $bus_id . "," . $comm . ", ". 1 .",". $six_digit_random_number. ");";
-    echo $sql;
+    //echo $sql;
 
 
     if ($conn->query($sql) == TRUE) {
+
+        $follow = "INSERT INTO following (user_id, bus_id)".
+            "VALUES ($conn->insert_id, $bus_id)";
+
+        $conn->query($follow);
+
+        $_SESSION['id']=$conn->insert_id;
         echo "ONE";
     }
     else {

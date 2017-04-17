@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['id']))
+    {
+        ob_start();
+        header('Location: login.php');
+        ob_end_flush();
+        die();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,66 +22,51 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="css/static_top.css">
+    <script src="js/following.js"></script>
 
 
 </head>
 <body>
 <?php include("includes/static_top.html"); ?>
 
-<div id='map'></div>
+<div class="container">
+    <h3>Follow Buses</h3>
+    <p>Buses you follow will show up in your home</p>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Bus Name</th>
+            <th>Route</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
 
-<div id="data">
+        <?php
 
-    <div class="dropdown">
-        <button class="btn btn-default btn-block dropdown-toggle" type="button" data-toggle="dropdown">
-            Name of the Bus
-            <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-            <li><a href="#">HTML</a></li>
-            <li><a href="#">CSS</a></li>
-            <li><a href="#">JavaScript</a></li>
-        </ul>
-    </div>
+        include_once ('backend/dbconnect.php');
+        $sql = "select * from bus";
 
-    <div>
-        <div>
-            <span><strong>Shahbag, Dhaka</strong></span><span style="margin-left: 10px; color: grey">22 min ago</span>
-            <br>
-            <span>4:30 PM Up trip</span>
-            <br>
-            <span class="circle-green"></span><span>10</span> <span style="margin-left: 10px" class="circle-red"></span><span>10</span>
-            <hr>
+        $result = $conn->query($sql);
 
-            <div>
-                <img src="img/default.png" alt="Avatar" style="width: 40px; height: 40px;float: left">
-                <div >
-                    <span><strong>Meha Masum</strong></span><span style="margin-left: 5px; color: grey">CSE</span><br>
-                    <span class="star"></span><span>10</span>
-                </div>
+        $n = $result->num_rows;
+        for($i=0; $i<$n; $i++) {
+            $row = $result->fetch_assoc();
+            $name = $row['name'];
+            $route = $row['route'];
+            $id = $row['id'];
 
-            </div>
+            echo "<tr><td>$name</td><td>$route</td><td><button onclick='toggleFollow(".$id.")' class='btn btn-danger pull-right'>Follow</button></td></tr>";
 
-        </div>
+        }
+        ?>
 
-    </div>
 
-    <hr>
-    <button class="btn btn-success">Upvote</button>
-    <button class="btn btn-danger">Report</button>
 
+        </tbody>
+    </table>
 </div>
 
-</div>
-
-
-
-<script>
-    L.mapbox.accessToken = 'pk.eyJ1IjoibWVoYW1hc3VtIiwiYSI6ImNpdnhscWRvbzAyN2wyeXRhY2w1eGRvYngifQ.Cwlq3LDDRoBdsIZ_kQPHig';
-    var map = L.mapbox.map('map', 'mapbox.streets')
-        .setView([23.8103, 90.4125], 16).addControl(L.mapbox.geocoderControl('mapbox.places', {
-            autocomplete: true
-        }));
-</script>
 
 </body>
 <!-- Bootstrap core JavaScript -->
