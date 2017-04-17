@@ -25,7 +25,7 @@
 <body class="login">
 
 <div class="logo">
-    <a href=""><img style="width: 20%;" src="./img/logo-w.png?res" alt="OverDrive"></a>
+    <a href=""><img style="width: 20%;" src="./img/logo-w.png?res" alt="Lalbus"></a>
 </div>
 
 <div class="content">

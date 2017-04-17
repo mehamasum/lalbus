@@ -9,6 +9,7 @@
     <link rel="icon" href="./img/favicon.png">
 	<link rel="canonical" href="">
 	<link rel="stylesheet" href="./css/screen.css">
+	<script src="js/signup.js"></script>
 	<script src="js/main.js"></script>
 
 </head>
@@ -88,7 +89,7 @@
 			</div>
 			<div class="create-account">
 				<p>
-					<a href="/">Login with an existing account</a>
+					<a href="login.html">Login with an existing account</a>
 				</p>
 			</div>
 		</form>
