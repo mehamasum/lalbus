@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <nav class="navbar navbar-lalbus navbar-static-top">
     <div class="container">
         <div class="navbar-header">
@@ -12,10 +13,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Schedules</a></li>
-                <li><a href="#" data-type='about' data-toggle='modal' data-target='#myModal'>About</a></li>
-                <li><a href="#" data-type='help' data-toggle='modal' data-target='#myModal'>Help</a></li>
+                <li class="active"><a href="home.php">Home</a></li>
+                <li><a href="following.php">Following</a></li>
+                <li><a href="schedule.php">Schedules</a></li>
+
+            <li><a href="#" data-type='help' data-toggle='modal' data-target='#myModal'>Help</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Welcome, Fahim!</a></li>
