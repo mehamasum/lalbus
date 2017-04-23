@@ -21,6 +21,7 @@ if ($result->num_rows > 0) {
     if (hash_equals($hash, crypt($password, $hash)) ) {
 
         $_SESSION['id']=$row['id'];
+        $_SESSION['name']=$row['name'];
         echo "ONE";
 
         /*$reply = array('name'=>$row['name'],

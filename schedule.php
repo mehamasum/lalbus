@@ -18,7 +18,13 @@
 
     </head>
     <body>
-    <?php include("includes/static_top.html");?>
+    <?php include("includes/static_top.php");?>
+    <script>
+        document.getElementById("page_home").classList.remove("active");
+        document.getElementById("page_schedule").className += "active";
+    </script>
+
+
     <div class="dropdown">
         <button id ="busname_top" class="btn btn-default btn-block dropdown-toggle" type="button" data-toggle="dropdown">
             Name of the Bus

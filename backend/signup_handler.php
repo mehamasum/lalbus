@@ -57,6 +57,7 @@ else {
         $conn->query($follow);
 
         $_SESSION['id']=$conn->insert_id;
+        $_SESSION['name']=$name;
         echo "ONE";
     }
     else {

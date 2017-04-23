@@ -13,7 +13,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home | Lalbas</title>
+    <title>Following | Lalbas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="./img/favicon.png">
     <link rel="canonical" href="">
@@ -34,13 +34,16 @@
             }
             return false;
         }
-
     </script>
 
 
 </head>
 <body>
 <?php include("includes/static_top.php"); ?>
+<script>
+    document.getElementById("page_home").classList.remove("active");
+    document.getElementById("page_following").className += "active";
+</script>
 
 <div class="container">
     <h3>Follow Buses</h3>
@@ -54,43 +57,6 @@
         </tr>
         </thead>
         <tbody id="table_body">
-
-        <?php
-
-        include_once ('backend/dbconnect.php');
-
-        $sid = $_SESSION['id'];
-        $sql = "select * from following where user_id = $sid";
-        $result = $conn->query($sql);
-        $n = $result->num_rows;
-        for($i=0; $i<$n; $i++) {
-            $row = $result->fetch_assoc();
-            $bus_id = $row['bus_id'];
-            echo "<script> var obj=$bus_id; following.push(obj);</script>";
-        }
-
-
-        $sql = "select * from bus";
-
-        $result = $conn->query($sql);
-
-        $n = $result->num_rows;
-        for($i=0; $i<$n; $i++) {
-            $row = $result->fetch_assoc();
-            $name = $row['name'];
-            $route = $row['route'];
-            $id = $row['id'];
-
-
-            echo "<script> var obj={\"id\":$id, \"name\":'$name', \"route\":'$route'}; busses.push(obj); console.log(obj);</script>";
-
-            //echo "<tr><td>$name</td><td>$route</td><td><button onclick='toggleFollow(".$id.")' class='btn btn-danger pull-right'>Follow</button></td></tr>";
-
-        }
-        ?>
-
-
-
         </tbody>
     </table>
 </div>
@@ -100,30 +66,66 @@
 
 
 <script>
-    var i=0;
 
-    for(i=0; i<following.length; i++) {
-        console.log(following[i]);
-    }
+    // add data
 
-    var parent = document.getElementById("table_body");
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
 
-    console.log(busses.length);
+            console.log(this.responseText);
 
-    for(i=0; i<busses.length; i++) {
-        console.log(busses[i]);
-        console.log(i);
-        console.log(busses.length);
-        var b_id = busses[i]["id"];
-        var b_name = busses[i]["name"];
-        var b_route = busses[i]["route"];
-        if(following.contains(b_id)) {
-            parent.innerHTML+="<tr><td>"+b_name+"</td><td>"+b_route+"</td><td><button onclick='toggleFollow("+b_id+","+0+")' id='btn_"+b_id +"' class='btn btn-danger pull-right'>Unfollow</button></td></tr>";
-        } else {
-            parent.innerHTML+="<tr><td>"+b_name+"</td><td>"+b_route+"</td><td><button onclick='toggleFollow("+b_id+","+1+")' id='btn_"+b_id +"' class='btn btn-success pull-right'>Follow</button></td></tr>";
+            var parent = document.getElementById("table_body");
+
+            var reply = JSON.parse(this.responseText);
+            console.log(reply[0]);
+
+            var idx;
+            for( idx=0; idx<reply[0].length; idx++) {
+                following.push(reply[0][idx]["bus_id"]);
+            }
+
+            console.log(reply[1]);
+
+            for(idx=0; idx<reply[1].length; idx++) {
+                var d = reply[1][idx];
+                var obj={"id":d["id"], "name":d["name"], "route":d["route"]};
+                busses.push(obj);
+            }
+
+
+            // echo "var obj=$bus_id; following.push(obj);\n";
+            // echo "var obj={\"id\":$id, \"name\":'$name', \"route\":'$route'}; busses.push(obj); \n";
+
+            // then add this
+
+            var i=0;
+
+            for(i=0; i<following.length; i++) {
+                console.log(following[i]);
+            }
+
+            console.log(busses.length);
+
+            for(i=0; i<busses.length; i++) {
+                console.log(busses[i]);
+                console.log(i);
+                console.log(busses.length);
+                var b_id = busses[i]["id"];
+                var b_name = busses[i]["name"];
+                var b_route = busses[i]["route"];
+                if(following.contains(b_id)) {
+                    parent.innerHTML+="<tr><td>"+b_name+"</td><td>"+b_route+"</td><td><button onclick='toggleFollow("+b_id+","+0+")' id='btn_"+b_id +"' class='btn btn-danger pull-right'>Unfollow</button></td></tr>";
+                } else {
+                    parent.innerHTML+="<tr><td>"+b_name+"</td><td>"+b_route+"</td><td><button onclick='toggleFollow("+b_id+","+1+")' id='btn_"+b_id +"' class='btn btn-success pull-right'>Follow</button></td></tr>";
+                }
+            }
+
         }
-    }
-
+    };
+    xhttp.open("POST", "backend/following_handler.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("id="+ <?php echo $_SESSION['id']; ?>);
 
 </script>
 
