@@ -1,183 +1,60 @@
 
 <!doctype html>
     <html lang="en">
-    <?php
 
-        if (isset($_POST['bus_id']) && !empty($_POST['bus_id'])) {
-            $bus_id= $_POST['bus_id'];
-        }
-        else {
-            $bus_id=11;
-        }
-
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "lalbus_db";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        $conn->query("SET CHARACTER SET utf8");
-        $conn->query("SET SESSION collation_connection =’utf8_general_ci'");
-
-        if($conn->connect_error)
-        {
-            die("Database connection error".$conn->connect_error);
-        }
-
-        $busquery=$conn->query("SELECT `name` FROM `bus` WHERE `id` = $bus_id");
-        $value = $busquery->fetch_assoc();
-        $busname=$value['name']
-
-    ?>
     <head>
       <meta charset="UTF-8">
-      <title>Schedule</title>
+      <title>Schedule | Lalbus</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="./img/favicon.png">
+        <link rel="canonical" href="">
+
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <link rel="stylesheet" href="css/static_top.css">
         <script src="js/sorttable.js"></script>
-        <style>
-            table {
-                float : left;
-                border-collapse: collapse;
-                width: 40%;
-                margin-right: 10%;
-            }
+        <script src="js/schedule.js"></script>
 
-            th, td {
-                text-align: left;
-                padding: 8px;
-            }
-
-            tr:nth-child(even){background-color: #f2f2f2}
-
-            th {
-                background-color: #796799;
-                color: white;
-            }
-        </style>
     </head>
     <body>
-      <?php
+    <?php include("includes/static_top.html");?>
+    <div class="dropdown">
+        <button id ="busname_top" class="btn btn-default btn-block dropdown-toggle" type="button" data-toggle="dropdown">
+            Name of the Bus
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu">
 
-      $query="SELECT * FROM `schedule` WHERE `bus_id` = $bus_id AND `trip_type` = 0 ORDER BY `time` ASC";
 
-      $result= $conn->query($query);
 
-      $commentquery="select COUNT(`comment`) from `schedule` WHERE `bus_id` =". $bus_id." AND `trip_type` = 0 AND `comment` != \"\" ";
-      $commentId=$conn->query($commentquery);
+        <?php
+        include_once ('backend/dbconnect.php');
+        $sql = "select * from bus";
 
-      $get_total_rows = $commentId->fetch_row(); //hold total records in variable
+        $result = $conn->query($sql);
 
-      if($get_total_rows[0] > 0)
-      {
-          $commentStatus =1;
-      }
-      else
-      {
-          $commentStatus=0;
-      }
+        $n = $result->num_rows;
+        for($i=0; $i<$n; $i++) {
+            $row = $result->fetch_assoc();
+            $name = $row['name'];
+            $route = $row['route'];
+            $id = $row['id'];
 
-      ?>
-      <div style="overflow-x:auto;">
+            echo "<li><button class='btn btn-block' onclick='search($id,\"$name\")'>$name</button></li>";
+        }
+        ?>
 
-      <table class="sortable" >
-          <thead>
-          <tr>
-              <?php
-              if($commentStatus==0)
-                  echo "<th colspan=\"3\" style='text-align: center ;font-size: larger; background-color: #8815ff'> $busname : Up Trip</th>";
-              else
-                  echo "<th colspan=\"4\" style='text-align: center ;font-size: larger; background-color: #8815ff'> $busname : Up Trip</th>";
-              ?>
 
-          </tr>
-          <tr>
-              <?php
-              echo "<th>Time</th>";
-              echo "<th>Start</th>";
-              echo "<th>Bus_Number</th>";
-              if($commentStatus==1)
-                  echo "<th>Note</th>"
-              ?>
-          </tr>
-          </thead>
-          <tbody>
-          <?php
-          while($row = $result->fetch_assoc())
-          {
-              echo
-              "<tr>
-              <td>{$row['time']}</td>
-              <td>{$row['endpoint']}</td>
-              <td>{$row['bus_number']}</td>";
-              if($commentStatus===1)
-                  echo "<td>{$row['comment']}</td>";
-               echo "</tr>\n";
-          }
-          ?>
-          </tbody>
-      </table>
+        </ul>
+    </div>
 
-      <?php
+    <div id="received_table">
 
-      //$query = "SELECT * FROM schedule";
-      $query="SELECT * FROM `schedule` WHERE `bus_id` = $bus_id AND `trip_type` = 1  ORDER BY `time` ASC";
-
-      $result= $conn->query($query);
-
-      $commentquery="select COUNT(`comment`) from `schedule` WHERE `bus_id` =". $bus_id." AND `trip_type` = 1 AND `comment` != \"\" ";
-      $commentId=$conn->query($commentquery);
-
-      $get_total_rows = $commentId->fetch_row(); //hold total records in variable
-
-      if($get_total_rows[0] > 0)
-      {
-          $commentStatus =1;
-      }
-      else
-      {
-          $commentStatus=0;
-      }
-      ?>
-          <table class="sortable">
-              <thead>
-              <tr>
-                  <?php
-                  if($commentStatus==0)
-                      echo "<th colspan=\"3\" style='text-align: center ;font-size: larger; background-color: #8815ff'> $busname : Down Trip</th>";
-                  else
-                      echo "<th colspan=\"4\" style='text-align: center ;font-size: larger; background-color: #8815ff'> $busname : Down Trip</th>";
-                  ?>
-
-              </tr>
-              <tr>
-                  <?php
-                  echo "<th>Time</th>";
-                  echo "<th>Destination</th>";
-                  echo "<th>Bus_Number</th>";
-                  if($commentStatus==1)
-                      echo "<th>Note</th>"
-                  ?>
-              </tr>
-              </thead>
-              <tbody>
-              <?php
-              while($row = $result->fetch_assoc())
-              {
-                  echo
-                  "<tr>
-              <td>{$row['time']}</td>
-              <td>{$row['endpoint']}</td>
-              <td>{$row['bus_number']}</td>";
-                  if($commentStatus===1)
-                      echo "<td>{$row['comment']}</td>";
-                  echo "</tr>\n";
-              }
-              ?>
-              </tbody>
-          </table>
-      </div>
-<?php $conn->close()?>
+    </div>
 
 </body>
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
 </html>
