@@ -27,7 +27,7 @@
 
 </head>
 <body>
-<?php include("includes/static_top.html"); ?>
+<?php include("includes/static_top.php"); ?>
 
 <div class="container">
     <h3>Follow Buses</h3>

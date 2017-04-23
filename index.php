@@ -32,7 +32,7 @@ if(isset($_SESSION['id']))
 <body class="login">
 
 
-    <?php include("includes/static_top.html"); ?>
+    <?php include("includes/static_top.php"); ?>
 
     <div class="content">
 

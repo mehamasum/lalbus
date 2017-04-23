@@ -82,7 +82,7 @@ if(!isset($_SESSION['id']))
     </style>
 </head>
 <body>
-    <?php include("includes/static_top.html"); ?>
+    <?php include("includes/static_top.php"); ?>
 
     <div id='map'></div>
 
