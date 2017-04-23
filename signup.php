@@ -20,10 +20,6 @@
 		<a href=""><img src="./img/logo-w.png" alt="Lalbus"></a>
 	</div>
 
-	<div id="errorMessageContent" class="content" style="display: none; color: red">
-		<div id="errorMessages"></div>
-	</div>
-
 	<div class="content">
 
 		<form class="login-form" action="#" method="POST">
@@ -47,7 +43,16 @@
 
 			</div>
 
-			<div class="form-group">
+            <div class="form-group">
+                <div>
+                    <input type="email" name="email" class="form-control form-control-solid placeholder-no-fix"
+                           placeholder="Email (abc..@...)" value="" minlength="3" required="">
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
 				<input type="password" name="password" class="form-control form-control-solid placeholder-no-fix"
 					   placeholder="Password" minlength="8" required="">
 			</div>
@@ -82,7 +87,10 @@
 					<option value="1">I am a committee member</option>
 				</select>
 			</div>
-			
+
+            <div id="errorMessageContent" class="content" style="display: none; color: red">
+                <div id="errorMessages"></div>
+            </div>
 
 			<div class="form-actions">
 				<button type="button" onclick="validateSignUp()" class="btn red btn-block" data-loading-text="Registering..">Register</button>

@@ -1,15 +1,14 @@
 <?php
 session_start();
 
-$mob = $_POST['m'];
-$password = $_POST['p'];
-
 require_once('dbconnect.php');
 
+$email = mysqli_real_escape_string($conn,$_POST['e']);
+$password = mysqli_real_escape_string($conn,$_POST['p']);
 // sql injection check
 
 // query
-$sql = "SELECT * FROM users WHERE mob_no='". $mob . "'";
+$sql = "SELECT * FROM users WHERE email='". $email . "'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -21,7 +20,7 @@ if ($result->num_rows > 0) {
     if (hash_equals($hash, crypt($password, $hash)) ) {
 
         $_SESSION['id']=$row['id'];
-        $_SESSION['name']=$row['name'];
+		$_SESSION['name']=$row['name'];
         echo "ONE";
 
         /*$reply = array('name'=>$row['name'],

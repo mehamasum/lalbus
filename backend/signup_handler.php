@@ -3,12 +3,16 @@ session_start();
 
 //  xhttp.send("n="+name+"&r="+reg_no+"&m="+mob_no+"&p="+password+"&c="+comm);
 
-$name = $_POST['n'];
-$reg_no = $_POST['r'];
-$mob_no = $_POST['m'];
-$password = $_POST['p'];
-$comm =  $_POST['c'];
-$bus_id = $_POST['b'];
+// no injection
+require_once('dbconnect.php');
+
+$name =mysqli_real_escape_string($conn, $_POST['n']);
+$reg_no =mysqli_real_escape_string($conn,$_POST['r']);
+$mob_no = mysqli_real_escape_string($conn,$_POST['m']);
+$email=mysqli_real_escape_string($conn,$_POST['e']);
+$password = mysqli_real_escape_string($conn,$_POST['p']);
+$comm =  mysqli_real_escape_string($conn,$_POST['c']);
+$bus_id = mysqli_real_escape_string($conn,$_POST['b']);
 
 // check for sql injection
 
@@ -16,10 +20,9 @@ $bus_id = $_POST['b'];
 $comm = intval($comm);
 //echo $comm;
 
-// no injection
-require_once('dbconnect.php');
+
 // already in ?
-$sql = "SELECT * FROM users WHERE reg_no='$reg_no' OR mob_no='$mob_no'";
+$sql = "SELECT * FROM users WHERE reg_no='$reg_no' OR mob_no='$mob_no' OR email='$email'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -44,8 +47,8 @@ else {
     $six_digit_random_number = mt_rand(100000, 999999);
 
 
-    $sql = "INSERT INTO users (name, reg_no, mob_no, password, bus_id, level_req, status, code) ".
-        "VALUES ('" .  $name . "','" . $reg_no . "','". $mob_no . "','" . $hash . "', " . $bus_id . "," . $comm . ", ". 1 .",". $six_digit_random_number. ");";
+    $sql = "INSERT INTO users (name, reg_no, mob_no,email, password, bus_id, level_req, status, code) ".
+        "VALUES ('" .  $name . "','" . $reg_no . "','". $mob_no . "','". $email . "','" . $hash . "', " . $bus_id . "," . $comm . ", ". 1 .",". $six_digit_random_number. ");";
     //echo $sql;
 
 
@@ -57,7 +60,7 @@ else {
         $conn->query($follow);
 
         $_SESSION['id']=$conn->insert_id;
-        $_SESSION['name']=$name;
+		$_SESSION['name']=$name;
         echo "ONE";
     }
     else {
