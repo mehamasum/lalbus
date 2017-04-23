@@ -1,3 +1,14 @@
+<?php
+session_start();
+if(!isset($_SESSION['id']))
+{
+    ob_start();
+    header('Location: login.php');
+    ob_end_flush();
+    die();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -25,7 +36,7 @@
 <body class="login">
 
 <div class="logo">
-    <a href=""><img style="width: 20%;" src="./img/logo-w.png?res" alt="Lalbus"></a>
+    <a href=""><img src="./img/logo-w.png?res" alt="Lalbus"></a>
 </div>
 
 <div class="content">
@@ -33,14 +44,37 @@
     <div>
         <h3 class="form-title font-dark">Report</h3>
 
+
+        <div class="form-group">
+            <select name="bus" class="form-control form-control-solid placeholder-no-fix">
+                <?php
+                require_once('backend/dbconnect.php');
+                // already in ?
+                $sql = "SELECT * FROM bus";
+                $result = $conn->query($sql);
+
+                $total = $result->num_rows;
+
+                for($i=0; $i<$total; $i++) {
+                    $row = $result->fetch_assoc();
+
+                    $id = $row["id"];
+                    $name = $row["name"];
+
+                    echo "<option value=$id>$name</option>";
+                }
+                ?>
+            </select>
+        </div>
+
         <div class="form-actions">
-            <button class="btn red btn-block" onclick="getLocation()">Report</button>
+            <button class="btn red btn-block" onclick="getLocation()">Use GPS to Report</button>
         </div>
 
         <div id="mapholder"></div>
 
         <script>
-            var x = document.getElementById("demo");
+            var x = document.getElementById("mapholder");
 
             function getLocation() {
                 if (navigator.geolocation) {
@@ -51,17 +85,38 @@
             }
 
             function showPosition(position) {
-                var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+                var latlon = "Latitude: "+position.coords.latitude + "<br>"+ "Longitude"+ position.coords.longitude +"<br>";
 
                 var map = document.getElementById("mapholder");
-                console.log(map.style);
+                map.innerHTML = latlon;
 
-                var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
-                    +latlon+"&zoom=14&size=400x300&sensor=false&key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU";
-                document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+                var bus = document.getElementsByName("bus")[0].value;
+
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        //this.responseText;
+                        var reply = this.responseText;
+
+                        console.log(reply);
+
+                        if (reply.indexOf("ONE") != -1) {
+                            window.location.href = "home.php";
+                        }
+                        else {
+                            map.innerHTML += "Something went wrong" + "<br>";
+                        }
+
+                    }
+                };
+                xhttp.open("POST", "backend/report_receiver.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("u=<?php echo $_SESSION['id'];?>&b="+bus+"&lat="+lat+"&lng="+lng);
+
             }
-            //To use this code on your website, get a free API key from Google.
-            //Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 
             function showError(error) {
                 switch(error.code) {

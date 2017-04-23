@@ -31,7 +31,7 @@ session_start();
 <body class="login">
 
 	<div class="logo">
-		<a href=""><img style="width: 20%;" src="./img/logo-w.png?res" alt="Lalbus"></a>
+		<a href=""><img src="./img/logo-w.png?res" alt="Lalbus"></a>
 	</div>
 
 
