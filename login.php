@@ -53,7 +53,7 @@ session_start();
             <div id="errorMessageContent" class="content" style="display: none; color: red">
                 <div id="errorMessages"></div>
             </div>
-            
+
 			<div class="form-actions">
 				<button type="button" class="btn red" onclick="validateLogin()">Login</button>
 				<a class="forget-password" href="">Forgot Password?</a>
