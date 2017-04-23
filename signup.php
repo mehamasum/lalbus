@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php
+require_once 'System.php';
+var_dump(class_exists('System', false));
+?>
+<!DOCTYPE html>
 
 <html>
 
@@ -20,10 +24,6 @@
 		<a href=""><img src="./img/logo-w.png" alt="Lalbus"></a>
 	</div>
 
-	<div id="errorMessageContent" class="content" style="display: none; color: red">
-		<div id="errorMessages"></div>
-	</div>
-
 	<div class="content">
 
 		<form class="login-form" action="#" method="POST">
@@ -31,25 +31,34 @@
 			<br>
 			<div class="form-group">
 				<input type="text" name="name" class="form-control form-control-solid placeholder-no-fix"
-					   placeholder="Name" value="" minlength="3" maxlength="64" required="">
+					   placeholder="Name" value="Fahim" minlength="3" maxlength="64" required="">
 			</div>
 
 			<div class="form-group">
 				<input type="number" name="reg_no" class="form-control form-control-solid placeholder-no-fix"
-					   placeholder="DU Reg No (2017812...)" value="" required="">
+					   placeholder="DU Reg No (2017812...)" value="2013312031" required="">
 			</div>
 
 			<div class="form-group">
 				<div>
 					<input type="number" name="mob_no" class="form-control form-control-solid placeholder-no-fix"
-						   placeholder="Mobile (015...)" value="" minlength="11" required="">
+						   placeholder="Mobile (015...)" value="01521430881" minlength="11" required="">
 				</div>
 
 			</div>
 
-			<div class="form-group">
+            <div class="form-group">
+                <div>
+                    <input type="email" name="email" class="form-control form-control-solid placeholder-no-fix"
+                           placeholder="Email (abc..@...)" value="fahim6119@gmail.com" minlength="3" required="">
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
 				<input type="password" name="password" class="form-control form-control-solid placeholder-no-fix"
-					   placeholder="Password" minlength="8" required="">
+					   placeholder="Password" value="fahim6119" minlength="8" required="">
 			</div>
 
 
@@ -82,7 +91,10 @@
 					<option value="1">I am a committee member</option>
 				</select>
 			</div>
-			
+
+            <div id="errorMessageContent" class="content" style="display: none; color: red">
+                <div id="errorMessages"></div>
+            </div>
 
 			<div class="form-actions">
 				<button type="button" onclick="validateSignUp()" class="btn red btn-block" data-loading-text="Registering..">Register</button>
