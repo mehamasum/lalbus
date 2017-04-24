@@ -2,13 +2,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>NETTUTS > Sign up</title>
+    <title>Lalbus > Sign up</title>
     <link href="css/style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <!-- start header div -->
 <div id="header">
-    <h3>NETTUTS > Sign up</h3>
+    <h3>Lalbus> Sign up</h3>
 </div>
 <!-- end header div -->
 
