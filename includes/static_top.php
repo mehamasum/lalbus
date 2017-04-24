@@ -20,6 +20,7 @@ if(isset($_SESSION['id'])) { ?>
                     <li id="page_home" class="active"><a href="home.php">Home</a></li>
                     <li id="page_following"><a href="following.php">Following</a></li>
                     <li id="page_schedule"><a href="schedule.php">Schedules</a></li>
+                    <li id="page_stoppage"><a href="places.php">Search Bus</a></li>
                     <li id="page_stat"><a href="#">Monthly Stats</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -53,6 +54,7 @@ else { ?>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="index.php">Home</a></li>
                     <li><a href="schedule.php">Schedules</a></li>
+                    <li><a href="places.php">Search Bus</a></li>
                     <li><a href="#" data-type='help' data-toggle='modal' data-target='#myModal'>Help</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
