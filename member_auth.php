@@ -5,14 +5,14 @@
  * Date: 4/25/2017
  * Time: 12:16 AM
  */
-    session_start();
+    /*session_start();
     if(!isset($_SESSION['id']))
     {
         ob_start();
         header('Location: login.php');
         ob_end_flush();
         die();
-    }
+    }*/
 ?>
 
 <!DOCTYPE html>
@@ -39,8 +39,19 @@
 </script>
 
 <div class="container">
-    <h3>Committee Member Requests</h3>
-    <p>Authorize bus committee members</p>
+
+    <div>
+        <span>
+            <h3>Committee Member Requests</h3>
+            <span>Authorize bus committee members</span>
+        </span>
+        <button class="btn btn-danger pull-right"> Refresh </button>
+    </div>
+
+    <br><br>
+
+
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -56,6 +67,8 @@
         <tbody id="usertable_body">
         </tbody>
     </table>
+
+
 </div>
 
 </body>
