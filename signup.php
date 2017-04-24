@@ -31,18 +31,18 @@ var_dump(class_exists('System', false));
 			<br>
 			<div class="form-group">
 				<input type="text" name="name" class="form-control form-control-solid placeholder-no-fix"
-					   placeholder="Name" value="Fahim" minlength="3" maxlength="64" required="">
+					   placeholder="Name" value="" minlength="3" maxlength="64" required="">
 			</div>
 
 			<div class="form-group">
 				<input type="number" name="reg_no" class="form-control form-control-solid placeholder-no-fix"
-					   placeholder="DU Reg No (2017812...)" value="2013312031" required="">
+					   placeholder="DU Reg No (2017812...)" value="" required="">
 			</div>
 
 			<div class="form-group">
 				<div>
 					<input type="number" name="mob_no" class="form-control form-control-solid placeholder-no-fix"
-						   placeholder="Mobile (015...)" value="01521430881" minlength="11" required="">
+						   placeholder="Mobile (015...)" value="" minlength="11" required="">
 				</div>
 
 			</div>
@@ -50,7 +50,7 @@ var_dump(class_exists('System', false));
             <div class="form-group">
                 <div>
                     <input type="email" name="email" class="form-control form-control-solid placeholder-no-fix"
-                           placeholder="Email (abc..@...)" value="fahim6119@gmail.com" minlength="3" required="">
+                           placeholder="Email (abc..@...)" value="" minlength="3" required="">
                 </div>
 
             </div>
@@ -58,7 +58,7 @@ var_dump(class_exists('System', false));
 
             <div class="form-group">
 				<input type="password" name="password" class="form-control form-control-solid placeholder-no-fix"
-					   placeholder="Password" value="fahim6119" minlength="8" required="">
+					   placeholder="Password" value="" minlength="8" required="">
 			</div>
 
 

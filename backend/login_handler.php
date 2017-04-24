@@ -21,8 +21,11 @@ if ($result->num_rows > 0) {
 
         $_SESSION['id']=$row['id'];
 		$_SESSION['name']=$row['name'];
-        echo "ONE";
+		if($row['level']<2)
+            echo "ONE";
 
+		if($row['level']==2)
+		    echo "ADMIN";
         /*$reply = array('name'=>$row['name'],
             'url'=>$row['url']);
 

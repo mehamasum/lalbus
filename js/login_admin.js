@@ -1,6 +1,7 @@
 /**
- * Created by USER on 4/23/2017.
+ * Created by USER on 4/25/2017.
  */
+
 function validateLogin() {
 
     var email = document.getElementsByName("email")[0].value;
@@ -46,7 +47,7 @@ function validateLogin() {
                     found = true;
                     errors.innerHTML += "Wrong Password" + "<br>";
                 }
-                else if( reply.indexOf("ADMIN")!=-1)
+                else if( reply.indexOf("TWO")!=-1)
                 {
                     console.log("Admin");
                     window.location.href = "member_auth.php";
