@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2017 at 09:00 PM
+-- Generation Time: Apr 25, 2017 at 12:10 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -37,20 +37,20 @@ CREATE TABLE `bus` (
 --
 
 INSERT INTO `bus` (`id`, `name`, `route`) VALUES
-(1, 'চৈতালি', 'মিরপুর-১২'),
-(2, 'বৈশাখী', 'কচুক্ষেত'),
-(3, 'তরঙ্গ', 'মোহাম্মদপুর / জাপান গার্ডেন'),
-(4, 'ক্ষণিকা', 'টঙ্গী/গাজীপুর'),
-(5, 'শ্রাবণ', 'মুগদাপাড়া'),
-(6, 'ঈশা খাঁ', 'মেঘনা ঘাট'),
-(7, 'ফাল্গুনী', 'বাড্ডা / গুলশান'),
-(8, 'হেমন্ত', 'নবীনগর (সাভার)'),
-(9, 'উল্লাস', 'পোস্তগোলা'),
-(10, 'আনন্দ', 'নারায়ণগঞ্জ'),
-(11, 'মৈত্রী', 'আদমজী আইটি স্কুল'),
-(12, 'কিঞ্চিৎ', 'কমলাপুর'),
-(13, 'বসন্ত ', 'রামপুরা '),
-(14, 'উয়ারী বটেশ্বর', 'নরসিংদী / ইটাখোলা');
+(1, 'Choitali', 'মিরপুর-১২'),
+(2, 'Boishakhi', 'কচুক্ষেত'),
+(3, 'Taranga', 'মোহাম্মদপুর / জাপান গার্ডেন'),
+(4, 'Khonika', 'টঙ্গী/গাজীপুর'),
+(5, 'Srabon', 'মুগদাপাড়া'),
+(6, 'Isha Kha', 'মেঘনা ঘাট'),
+(7, 'Falguni', 'বাড্ডা / গুলশান'),
+(8, 'Hemonto', 'নবীনগর (সাভার)'),
+(9, 'Ullash', 'পোস্তগোলা'),
+(10, 'Anando', 'নারায়ণগঞ্জ'),
+(11, 'Moitri', 'আদমজী আইটি স্কুল'),
+(12, 'Kinchit', 'কমলাপুর'),
+(13, 'Boshonto', 'রামপুরা '),
+(14, 'Uwari Batesshar', 'নরসিংদী / ইটাখোলা');
 
 -- --------------------------------------------------------
 
@@ -170,9 +170,165 @@ INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES
 --
 
 CREATE TABLE `following` (
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `bus_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `following`
+--
+
+INSERT INTO `following` (`id`, `user_id`, `bus_id`) VALUES
+(1, 9, 1),
+(2, 10, 1),
+(4, 11, 1),
+(5, 12, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `places`
+--
+
+CREATE TABLE `places` (
+  `id` int(11) NOT NULL,
+  `stoppage_name` varchar(600) NOT NULL,
+  `lat` double NOT NULL,
+  `lng` double NOT NULL,
+  `bus_id` int(11) NOT NULL,
+  `stoppage_type` int(11) NOT NULL,
+  `remarks` varchar(600) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `places`
+--
+
+INSERT INTO `places` (`id`, `stoppage_name`, `lat`, `lng`, `bus_id`, `stoppage_type`, `remarks`) VALUES
+(1, 'Mirpur-1', 23.795604, 90.353655, 1, 2, ''),
+(2, 'Mirpur-2', 23.797675, 90.3845, 1, 2, ''),
+(3, '﻿Setara Convention Hall, Begum Rokeya Avenue, Dhaka, Bangladesh', 23.822524, 90.364233, 1, 2, ''),
+(4, 'Digilab Diagnostic Center, Mirpur, Dhaka, Bangladesh', 23.821176, 90.364963, 1, 2, ''),
+(5, 'Rabbani Hotel and Restaurant, Mirpur Road, Dhaka, Bangladesh', 23.81574, 90.366251, 1, 2, ''),
+(6, 'Original 10, Dhaka, Dhaka Division, Bangladesh', 23.81037, 90.367522, 1, 2, ''),
+(7, 'Proshika More Bus Stop, Dhaka, Bangladesh', 23.809472, 90.360999, 1, 2, ''),
+(8, 'Janata housing, Mirpur-1, Dhaka, Dhaka Division, Bangladesh', 23.798939, 90.358655, 1, 2, ''),
+(9, 'Ansar Camp Road, Mirpur, Dhaka, Bangladesh', 23.791159, 90.354722, 1, 2, ''),
+(10, 'Bangla College, Dhaka, Dhaka Division, Bangladesh', 23.784822, 90.352773, 1, 2, ''),
+(11, 'Kallyanpur, Mirpur, Dhaka, Dhaka Division, Bangladesh', 23.782204, 90.359537, 1, 2, ''),
+(12, 'Kalyanpur', 23.782204, 90.359537, 1, 2, ''),
+(13, 'Shyamoli, Dhaka, Dhaka Division, Bangladesh', 23.771783, 90.363067, 1, 2, ''),
+(14, '﻿Kachukhet Bus Stop, Kachukhet Road, Dhaka, Bangladesh', 23.792862, 90.388043, 2, 2, ''),
+(15, 'Mirpur 14 Bus Stand, Kachukhet Road, Dhaka, Bangladesh', 23.798269, 90.387561, 2, 2, ''),
+(16, 'Shaheed police smrity college,Police Complex, Mirpur-14, Dhaka 1206, Bangladesh', 23.799965, 90.384936, 2, 2, ''),
+(17, 'Police Staff College,14 Mirpur Rd, Dhaka 1206, Bangladesh', 23.802712, 90.380262, 2, 2, ''),
+(18, 'Mirpur-13', 23.807393, 90.378485, 2, 2, ''),
+(19, 'Mirpur-10 Water Tank', 23.806796, 90.373566, 2, 2, ''),
+(20, 'Mirpur 10 Bus Stopage, Dhaka, Bangladesh', 23.806744, 90.368555, 2, 2, ''),
+(21, 'Kazipara Overpass, Dhaka, Bangladesh', 23.797165, 90.372993, 2, 2, ''),
+(22, 'ShewraPara Bus Stand, Begum Rokeya Ave, Dhaka 1216, Bangladesh', 23.790398, 90.375568, 2, 2, ''),
+(23, 'Taltola, Begum Rokeya Ave, Dhaka 1207, Bangladesh', 23.783516, 90.378483, 2, 2, ''),
+(24, 'Sher E Bangla Agricultural University', 23.77123, 90.375225, 2, 2, ''),
+(25, '﻿Residential School', 23.765836, 90.3699, 3, 2, ''),
+(26, 'DRMC', 23.765836, 90.3699, 3, 2, ''),
+(27, 'Lalmatia, Dhaka, Bangladesh', 23.755407, 90.368951, 3, 2, ''),
+(28, 'State University of Bangladesh,77 Satmasjid Road, Dhaka 1205, Bangladesh', 23.751436, 90.367424, 3, 2, ''),
+(29, 'Dhanmondi 15, Dhaka 1209, Bangladesh', 23.747463, 90.370273, 3, 2, ''),
+(30, 'Zigatola Bus stop,Dhaka, Bangladesh', 23.738528, 90.376074, 3, 2, ''),
+(31, 'Star Kabab,9/A Dhanmondi Lake Rd,Dhanmondi 15 Dhaka, Bangladesh', 23.747463, 90.370273, 3, 2, ''),
+(32, 'Sankar Bus Stop, Satmasjid Road, Dhaka 1209, Bangladesh', 23.750748, 90.368419, 3, 2, ''),
+(33, 'Lalmatia, Dhaka, Bangladesh', 23.755407, 90.368951, 3, 2, ''),
+(34, 'City Hospital Ltd, Lalmatia', 23.754067, 90.365531, 3, 2, ''),
+(35, 'Nurjahan Rd, Dhaka 1209, Bangladesh', 23.76043, 90.361774, 3, 2, ''),
+(36, 'Mugdapara Bus Stop, Atish Deepankar Rd, Dhaka, Bangladesh', 23.73119, 90.428569, 5, 2, ''),
+(37, 'Bashabo, Dhaka, Bangladesh', 23.742604, 90.430784, 5, 2, ''),
+(38, 'Khilgaon Railgate Staff Quarter Jame Masjid', 23.743767, 90.426865, 5, 2, ''),
+(39, 'Maniknagar, Dhaka, Bangladesh', 23.724744, 90.43432, 5, 2, ''),
+(40, 'Kazla Bus Stop, Dhaka-Chittagong Highway (Mukti Sharani), Dhaka, Bangladesh', 23.705691, 90.444072, 6, 2, ''),
+(41, 'Shonir Akhra Bus Stop, Dhaka, Bangladesh', 23.702913, 90.450395, 6, 2, ''),
+(42, 'Rayerbag Bus Stop, Dhaka, Bangladesh', 23.699351, 90.457106, 6, 2, ''),
+(43, 'Matuail Medi Care Hospital & Diagnostic Center', 23.713089, 90.469681, 6, 2, ''),
+(44, 'Saddam Market Bus Stop, Tushar Dhara Ave New Rd, Dhaka, Bangladesh', 23.692969, 90.472957, 6, 2, ''),
+(45, 'Sign Board Bus Stop, Dhaka - Narayanganj Rd, Dhaka, Bangladesh', 23.693685, 90.480834, 6, 2, ''),
+(46, 'Sanarpar Bus Stop, Bangladesh', 23.694756, 90.490233, 6, 2, ''),
+(47, 'Mouchak Rd, Dhaka, Bangladesh', 23.688806, 90.496899, 6, 2, ''),
+(48, 'Chittagong Road Bus Stop, Shiddhirganj, Bangladesh', 23.697853, 90.509706, 6, 2, ''),
+(49, 'Kanchpur Bus Stop, N1, Bangladesh', 23.706083, 90.522011, 6, 2, ''),
+(50, 'Kachpur Bus Stop, N1, Bangladesh', 23.706083, 90.522011, 6, 2, ''),
+(51, 'Modonpur Bus Stop, Bandar, Bangladesh', 23.690578, 90.546538, 6, 2, ''),
+(52, 'Sonargaon, Bangladesh', 23.63661, 90.594665, 6, 2, ''),
+(53, 'Meghna Ghat Bus Stop, Bangladesh', 23.61841, 90.609353, 6, 2, ''),
+(54, 'Natun Bazaar Bus Stand, Dhaka, Bangladesh', 23.797383, 90.42371, 7, 2, ''),
+(55, 'Bashtola Bus Stand, Baash Tola Rd, Dhaka, Bangladesh', 23.794514, 90.4241, 7, 2, ''),
+(56, 'Shahjadpur, Dhaka, Bangladesh', 23.791707, 90.424891, 7, 2, ''),
+(57, 'suvastu nazar valley', 23.789814, 90.425198, 7, 2, ''),
+(58, 'Uttar Badda, Dhaka, Bangladesh', 23.782043, 90.423123, 7, 2, ''),
+(59, 'Link Rd, Dhaka, Bangladesh', 23.745727, 90.393648, 7, 2, ''),
+(60, 'Gudaraghat', 23.779708, 90.418796, 7, 2, ''),
+(61, 'Gulshan 1, Dhaka, Bangladesh', 23.782062, 90.416053, 7, 2, ''),
+(62, 'TB Gate Bus Stop, TB Gate Rd, Dhaka, Bangladesh', 23.780213, 90.409404, 7, 2, ''),
+(63, 'Wireless More Bus Stop, Bir Uttam AK Khandakar Rd, Dhaka 1212, Bangladesh', 23.780672, 90.405538, 7, 2, ''),
+(64, 'Amtali ,Shaheed Tajuddin Ahmed Ave, Dhaka 1212, Bangladesh', 23.775458, 90.399168, 7, 2, ''),
+(65, 'Mohakhali Bus Stop, Dhaka, Bangladesh', 23.778239, 90.397739, 7, 2, ''),
+(66, 'Nabisco', 23.768937, 90.401385, 7, 2, ''),
+(67, 'Bijoy Sarani, Dhaka, Bangladesh', 23.764771, 90.385474, 7, 2, ''),
+(68, 'Awlad Hossain Market, Kazi Nazrul Islam Ave, Dhaka 1215, Bangladesh', 23.763027, 90.38944, 7, 2, ''),
+(69, 'Nabinagar Bazar Bus Stop, Fatulla, Bangladesh', 23.619711, 90.463335, 8, 2, ''),
+(70, 'Bish Mail, Savar, Bangladesh', 23.894674, 90.269634, 8, 2, ''),
+(71, 'Prantic Bus Stop,JU, Dhaka - Aricha Hwy, Savar, Bangladesh', 23.889703, 90.272239, 8, 2, ''),
+(72, 'Radio Colony Bus Stop, Dhaka - Aricha Hwy, Savar, Bangladesh', 23.858745, 90.262358, 8, 2, ''),
+(73, 'Savar Bazar, Savar, Bangladesh', 23.850077, 90.25907, 8, 2, ''),
+(74, 'Savar Thana Bus Station, Dhaka - Aricha Hwy, Savar, Bangladesh', 23.839529, 90.257713, 8, 2, ''),
+(75, 'Hemayetpur Bus Stand, Hemayetpur, Bangladesh', 23.793326, 90.271127, 8, 2, ''),
+(76, 'Gabtoli, Bangladesh', 23.783726, 90.344245, 8, 2, ''),
+(77, 'Postgola Cantonment,Dhaka-Narayanganj Rd, Dhaka, Bangladesh', 23.689429, 90.428721, 9, 2, ''),
+(78, 'Jurain, Dhaka, Bangladesh', 23.688272, 90.443162, 9, 2, ''),
+(79, 'Muradpur CNG Station, Dhaka, Bangladesh', 23.692732, 90.444341, 9, 2, ''),
+(80, 'Dholaipar More', 23.702689, 90.438427, 9, 2, ''),
+(81, 'Mir Hazir Bagh Bus Stop, Dhaka, Bangladesh', 23.705882, 90.431216, 9, 2, ''),
+(82, 'Dayaganj Temple, Dhaka, Bangladesh', 0, 90.423712, 9, 2, ''),
+(83, 'Dayaganj Mor, Dhaka, Bangladesh', 0, 90.423712, 9, 2, ''),
+(84, 'Tikatuli Flyover Connection Lane', 23.720314, 90.422534, 9, 2, ''),
+(85, 'Salauddin Bhaban, House No. 44/A, Mayor Mohammad Hanif Flyover, Dhaka 1203, Bangladesh', 23.716955, 90.420108, 9, 2, ''),
+(86, 'Sign Board Bus Stop, Dhaka - Narayanganj Rd, Dhaka, Bangladesh', 23.693685, 90.480834, 10, 2, ''),
+(87, 'Jalkuri Bus Stop, Jalkury, Dhaka - Narayanganj Rd, Bangladesh', 23.663766, 90.486888, 10, 2, ''),
+(88, 'Shibu Market , Fatulla', 23.644249, 90.493484, 10, 2, ''),
+(89, 'Chashara, Narayanganj, Bangladesh', 23.626361, 90.499207, 10, 2, ''),
+(90, 'IET School Bus Stop, Narayanganj Hwy, Narayanganj, Bangladesh', 23.63497, 90.511617, 11, 2, ''),
+(91, 'Chittagong Road Bus Stop, Shiddhirganj, Bangladesh', 23.697853, 90.509706, 11, 2, ''),
+(92, 'Arambagh, Dhaka, Bangladesh', 23.730736, 90.418998, 12, 2, ''),
+(93, 'Kamalapur Railway Station, kamalapur, Kamalapur Rd, Dhaka 1222, Bangladesh', 23.73202, 90.425922, 12, 2, ''),
+(94, 'Rajarbagh, Dhaka, Bangladesh', 23.741159, 90.415464, 12, 2, ''),
+(95, 'Malibagh Rail Gate Bus Stop, Dhaka, Bangladesh', 23.750097, 90.413041, 12, 2, ''),
+(96, 'Mouchak', 23.745608, 90.411977, 12, 2, ''),
+(97, 'Wireless Railgate Bara Moghbazar, Dhaka, Bangladesh', 0, 90.408159, 12, 2, ''),
+(98, 'Rampura TV Centre', 23.765164, 90.418977, 13, 2, ''),
+(99, 'Rampura Bazar', 23.760395, 90.41863, 13, 2, ''),
+(100, 'Hazipara Petrol Pump', 23.757052, 90.417201, 13, 2, ''),
+(101, 'Malibagh community center', 23.749626, 90.416288, 13, 2, ''),
+(102, 'Khilgaon Policefari', 23.74629, 90.426106, 13, 2, ''),
+(103, 'Farmgate Bus Stop, Dhaka 1215, Bangladesh', 23.757273, 90.389996, 4, 2, ''),
+(104, 'Bijoy Sarani, Dhaka, Bangladesh', 23.764771, 90.385474, 4, 2, ''),
+(105, 'Birshreshto Shaheed Jahangir Gate,Shaheed Sharani, Dhaka, Bangladesh', 23.775392, 90.389876, 4, 2, ''),
+(106, 'Mohakhali Bus Stop, Dhaka, Bangladesh', 23.778239, 90.397739, 4, 2, ''),
+(107, 'Banani, Dhaka, Bangladesh', 23.793993, 90.404272, 4, 2, ''),
+(108, 'MES Bus Stop, Dhaka, Bangladesh', 23.816136, 90.405322, 4, 2, ''),
+(109, 'Shewra Bus Stop, Dhaka, Bangladesh', 23.819137, 90.415008, 4, 2, ''),
+(110, 'Bishwa Road Bus Stop, Tongi Diversion Rd, Dhaka, Bangladesh', 23.821414, 90.418451, 4, 2, ''),
+(111, 'Khilkhet, Dhaka, Bangladesh', 23.831122, 90.424301, 4, 2, ''),
+(112, 'Hazrat Shahjalal International Airport, Airport Road, Sector 1, Kurmitola, Dhaka 1229, Bangladesh', 23.846615, 90.402623, 4, 2, ''),
+(113, 'Jasimuddin Bus Stop, Dhaka 1230, Bangladesh', 23.860852, 90.400158, 4, 2, ''),
+(114, 'Rajlakshmi Bus Stop, Dhaka - Mymensingh Hwy, Dhaka 1230, Bangladesh', 23.863762, 90.400183, 4, 2, ''),
+(115, 'Azampur Local Bus Stop, Dhaka 1230, Bangladesh', 23.868364, 90.400427, 4, 2, ''),
+(116, 'House Building Bus Stop, Dhaka - Mymensingh Hwy, Dhaka 1230, Bangladesh', 23.873722, 90.400733, 4, 2, ''),
+(117, 'Abdullahpur Bus Stop, Dhaka - Ashulia Hwy, Dhaka 1230, Bangladesh', 23.879751, 90.401143, 4, 2, ''),
+(118, 'College Gate Bus Stop, Dhaka - Mymensingh Hwy, Tongi, Bangladesh', 23.908806, 90.398099, 4, 2, ''),
+(119, 'Board Bazar Bus Stop, Dhaka - Mymensingh Hwy, Bangladesh', 23.945287, 90.382715, 4, 2, ''),
+(120, 'Shib Bari Bus Stand, Joydebpur Rd, Joydebpur, Bangladesh', 23.996777, 90.417025, 4, 2, ''),
+(121, 'Chowrasta - Joydebpur Rd, Joydebpur, Bangladesh', 23.998997, 90.419802, 4, 2, ''),
+(122, 'Maleker Bari Bus Stop, Dhaka - Mymensingh Hwy, Bangladesh', 23.96623, 90.380155, 4, 2, ''),
+(123, 'Tongi Bazar Bus Stop, Dhaka - Mymensingh Hwy, Tongi 1230, Bangladesh', 23.884197, 90.400542, 4, 2, '');
 
 -- --------------------------------------------------------
 
@@ -196,7 +352,7 @@ CREATE TABLE `schedule` (
 --
 
 INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`) VALUES
-(1, 14, 0, '07.10 am ', 'নরসিংদী / ইটাখোলা ', '', '', ''),
+(1, 14, 0, '7.10 am ', 'Norshingdi', '', '', ''),
 (3, 8, 0, '6.20am', 'Nabinogor', '', '', ''),
 (4, 1, 0, '6.40am', 'Mirpur-12', 'Shamim', '1324', ''),
 (5, 1, 0, '6.40am', 'Mirpur-12', 'Rokibul Hasan', '6199 ', ''),
@@ -213,21 +369,21 @@ INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver
 (16, 1, 1, '4:30pm', 'Mirpur-12', 'Kawser', '1329', ''),
 (17, 1, 1, '5:00pm', 'Mirpur-12', 'Motaleb', '6042', ''),
 (18, 1, 1, '5:30pm', 'Mirpur-12', 'Salam', '5992', ''),
-(19, 2, 0, '6.35am', 'Kochukhet', '', '', ''),
-(20, 2, 0, '6.50am', 'Kochukhet', '', '', ''),
-(21, 2, 0, '7.30am', 'Kochukhet', '', '', ''),
-(22, 2, 0, '8.00am', 'Kochukhet', '', '', ''),
+(19, 2, 0, '6.35am', 'Kochukhet', '', '11-1349', ''),
+(20, 2, 0, '6.50am', 'Kochukhet', '', '11-1289', 'Ullash Sticker'),
+(21, 2, 0, '7.30am', 'Kochukhet', '', '11-0451', ''),
+(22, 2, 0, '8.00am', 'Kochukhet', '', '11-1353', ''),
 (23, 2, 0, '9.00am', 'Kochukhet', '', '', ''),
-(24, 2, 0, '9.45am', 'Kochukhet', '', '', ''),
-(25, 2, 1, '12.20pm', 'Kochukhet', '', '', ''),
-(26, 2, 1, '1.10pm', 'Kochukhet', '', '', ''),
-(27, 2, 1, '2.20pm', 'Kochukhet', '', '', ''),
-(28, 2, 1, '3.30pm', 'Kochukhet', '', '', ''),
-(29, 2, 1, '4.30pm', 'Kochukhet', '', '', ''),
-(30, 2, 1, '5.30pm', 'Kochukhet', '', '', ''),
+(24, 2, 0, '9.45am', 'Kochukhet', '', '11-1349', ''),
+(25, 2, 1, '12.20pm', 'Kochukhet', '', '11-6124', ''),
+(26, 2, 1, '1.10pm', 'Kochukhet', '', '11-1353', ''),
+(27, 2, 1, '2.20pm', 'Kochukhet', '', '11-1349', ''),
+(28, 2, 1, '3.30pm', 'Kochukhet', '', '11-0451', ''),
+(29, 2, 1, '4.30pm', 'Kochukhet', '', '11-5821', ''),
+(30, 2, 1, '5.30pm', 'Kochukhet', '', '11-1353', ''),
 (31, 3, 0, '7.00am', 'Mohammadpur', '', '', ''),
-(32, 3, 0, '7.30am', 'মৈত্রী কাউন্টার', '', '', ''),
-(33, 3, 0, '8.00am', 'মৈত্রী কাউন্টার', '', '', ''),
+(32, 3, 0, '7.30am', 'Moitri Counter', '', '', ''),
+(33, 3, 0, '8.00am', 'Moitri Counter', '', '', ''),
 (34, 3, 0, '8.30am', 'Mohammadpur', '', '', 'Single Decker'),
 (35, 3, 0, '9.00am', 'Mohammadpur', '', '', ''),
 (36, 3, 0, '10.00am', 'Mohammadpur', '', '', ''),
@@ -335,7 +491,211 @@ INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver
 (138, 13, 1, '1.30pm', 'Rampura TV Centre', '', '5992', ''),
 (139, 13, 1, '2.35pm', 'Rampura TV Centre', '', '6042', ''),
 (140, 13, 1, '3.45pm', 'Rampura TV Centre', '', '5973', ''),
-(141, 13, 1, '5.10pm', 'Rampura TV Centre', '', '6199', '');
+(141, 13, 1, '5.10pm', 'Rampura TV Centre', '', '6199', ''),
+(142, 14, 1, '4.00pm', 'Norshingdi', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stoppage`
+--
+
+CREATE TABLE `stoppage` (
+  `id` int(11) NOT NULL,
+  `stoppage` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `bus_id` int(11) NOT NULL,
+  `stoppage_type` int(11) NOT NULL,
+  `Remarks` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stoppage`
+--
+
+INSERT INTO `stoppage` (`id`, `stoppage`, `bus_id`, `stoppage_type`, `Remarks`) VALUES
+(1, 'চৌরঙ্গী', 1, 2, ''),
+(2, 'সেতারা কনভেনশন হল  ', 1, 2, ''),
+(3, 'ডিজি ল্যাব ', 1, 0, ''),
+(4, 'রাব্বানী হোটেল ', 1, 2, ''),
+(5, 'অরিজিনাল দশ (হলমার্ক)', 1, 2, ''),
+(6, 'প্রশিকা (স্বপ্ন)', 1, 2, ''),
+(7, 'মিরপুর ২ (থানার সামনে)', 1, 2, ''),
+(8, 'জনতা হাউজিং (BIBM)', 1, 2, ''),
+(9, 'মিরপুর এক নাম্বার (সনির সিনেমার বিপরীত পাশে) ', 1, 2, ''),
+(10, 'মিরপুর এক নাম্বার (ওভার ব্রিজের আগে), ', 1, 1, ''),
+(11, 'মিরপুর এক নাম্বার চাইনিজ ', 1, 2, ''),
+(12, 'আনসার ক্যাম্প ', 1, 2, ''),
+(13, 'বাঙলা কলেজ (A টাইপ কোয়ার্টারে ঢোকার গলি)', 1, 2, ''),
+(14, 'কল্যাণপুর (BRTC টিকেট কাউন্টার)', 1, 0, ''),
+(15, 'কল্যাণপুর (ওভার ব্রিজের নিচে),', 1, 1, ''),
+(16, 'শ্যামলী ( রোচক মিস্টির দোকান)', 1, 2, ''),
+(17, 'টেকনিক্যাল মোড়', 1, 1, ''),
+(18, '﻿কচুক্ষেত ভাগ্যকূল মোড়', 2, 2, ''),
+(19, 'পুলপাড় ', 2, 2, ''),
+(20, 'মিলি সুপার মার্কেট,', 2, 2, ''),
+(21, 'মিরপুর ১৪ নম্বর ', 2, 2, ''),
+(22, 'পুলিশ কলেজ ', 2, 2, ''),
+(23, 'পুলিশ স্টাফ কলেজ,', 2, 2, ''),
+(24, 'মিরপুর ১৩ নম্বর, ', 2, 2, ''),
+(25, 'মিরপুর ১০ নম্বর পানির ট্যাংকি, ', 2, 2, ''),
+(26, 'মিরপুর ১০ নম্বর শাহজালাল ইসলামী ব্যাংকের পরে', 2, 0, ''),
+(27, 'কাজীপাড়া ওভারব্রীজ ', 2, 2, ''),
+(28, 'শেওড়াপাড়া বাসস্ট্যান্ড', 2, 2, ''),
+(29, ' তালতলা', 2, 2, ''),
+(30, ' শেরে বাংলা কৃষি বিশ্ববিদ্যালয় সেকেন্ড গেট ', 2, 2, ''),
+(31, 'আল হেলাল এর অপোজিট', 2, 1, ''),
+(32, ' মিরপুর ১০ নম্বর ওভার ব্রীজ', 2, 1, ''),
+(33, 'নবীনগর ( সাভার )', 8, 2, ''),
+(34, '﻿রেসিডেন্সিয়াল স্কুল (২ নং গেট, ফার্টিলিটি হাসপাতালের বিপরীতে) ', 3, 2, ''),
+(35, 'মৈত্রী কাউন্টার(কাজী নজরুল ইসলাম রোডের উত্তর মাথায়, অগ্রণী ব্যাংকের বিপরীতে) ', 3, 0, ''),
+(36, 'মোহাম্মদপুর বাস স্ট্যান্ড(বিআরটিসি বাস কাউন্টারের বিপরীতে) ', 3, 2, ''),
+(37, 'লালমাটিয়া বাস স্ট্যান্ড(Costly Kabab এর বিপরীতে, লোকাল বাস কাউন্টারের পর)', 3, 0, ''),
+(38, '২৭ নাম্বার যাত্রী ছাউনি(State University এর বিপরীতে)', 3, 0, ''),
+(39, '১৫ নাম্বার(ইবনে সিনা হসপিটালের পর, কাকলি স্কুলের আগে) ', 3, 0, ''),
+(40, 'জিগাতলা (লায়লাতি রেস্টুরেন্টের পর, Chicken King রেস্টুরেন্টের আগে) ', 3, 0, ''),
+(41, 'জিগাতলা বাস স্ট্যান্ড ', 3, 1, ''),
+(42, '১৫ নাম্বার বাস স্ট্যান্ড', 3, 1, ''),
+(43, '১৯ নাম্বার বাস স্ট্যান্ড (স্টার কাবাব)', 3, 2, ''),
+(44, 'শঙ্কর বাস স্ট্যান্ড', 3, 1, ''),
+(45, 'লালমাটিয়া (সিটি হসপিটালের বিপরীতে, গ্রাফিক আর্টস ইন্সিটিউটের আগে)', 3, 1, ''),
+(46, 'নুরজাহান রোড', 3, 1, ''),
+(47, 'সলিমুল্লাহ রোড', 3, 1, ''),
+(48, 'টাউন হল', 3, 1, ''),
+(49, 'আই.ই.টি স্কুল(আদমজী)', 11, 2, ''),
+(50, 'চিটাগাংরোড', 11, 2, ''),
+(51, 'মুগদাপাড়া', 5, 2, ''),
+(52, 'বৌদ্ধ মন্দির', 5, 2, ''),
+(53, 'বাসাবো', 5, 2, ''),
+(54, 'খিলগাঁও রেলগেট', 5, 2, ''),
+(55, 'মানিকনগর', 5, 1, ''),
+(56, 'পোস্তগোলা ক্যান্টনমেন্ট', 9, 2, ''),
+(57, 'জুরাইন আজিজিয়া মিষ্টান্ন', 9, 0, ''),
+(58, 'মুরাদপুর সিএনজি স্টেশন', 9, 0, ''),
+(59, 'ধোলাইপাড় মোড়', 9, 0, ''),
+(60, 'মীরহাজীরবাগ জোছনা হোটেলের বিপরীতে', 9, 2, ''),
+(61, 'নবীনগর', 9, 2, ''),
+(62, 'দয়াগঞ্জ মন্দির', 9, 0, ''),
+(63, 'টিকাটুলি', 9, 0, ''),
+(64, 'সালাউদ্দিন হাসপাতাল', 9, 0, ''),
+(65, 'জুরাইন ক্রসিং', 9, 1, ''),
+(66, 'টিকাটুলি ফ্লাইওভার কানেকশন লেন', 9, 1, ''),
+(67, 'ধোলাইপাড়', 9, 1, ''),
+(68, 'দয়াগঞ্জ মোড়', 9, 1, ''),
+(69, 'রামপুরা টিভি সেন্টার', 13, 2, ''),
+(70, 'রামপুরা বাজার', 13, 2, ''),
+(71, 'হাজীপাড়া পেট্রোল পাম্প', 13, 2, ''),
+(72, 'মালিবাগ কমিউনিটি সেন্টার', 13, 2, ''),
+(73, 'খিলগাঁও পুলিশফাঁড়ি', 13, 2, ''),
+(74, 'ফার্মগেট', 7, 2, ''),
+(75, 'Farm gate ', 4, 2, ''),
+(76, 'Bijoy shoroni', 4, 2, ''),
+(77, 'Jahangir gate ', 4, 2, ''),
+(78, 'Mohakhali', 4, 2, ''),
+(79, 'Banani', 4, 2, ''),
+(80, 'Mes', 4, 2, ''),
+(81, 'Sheora', 4, 2, ''),
+(82, 'Bishshoroad', 4, 2, ''),
+(83, 'Khilkhet', 4, 2, ''),
+(84, 'Airport', 4, 2, ''),
+(85, 'Jasimuddin', 4, 2, ''),
+(86, 'Rajlakhhi', 4, 2, ''),
+(87, 'Ajampur', 4, 2, ''),
+(88, 'House building', 4, 2, ''),
+(89, 'Abdullahpur', 4, 2, ''),
+(90, 'Station gate', 4, 2, ''),
+(91, 'College gate ( Tongi )', 4, 2, ''),
+(92, 'Board Bazar', 4, 2, ''),
+(93, 'Shibbari', 4, 2, ''),
+(94, 'Chowrasta (Gazipur)', 4, 2, ''),
+(95, 'ফার্মগেট', 4, 2, ''),
+(96, 'বিজয় সরণী', 4, 2, ''),
+(97, 'জাহাঙ্গীর গেট', 4, 2, ''),
+(98, 'মহাখালী', 4, 2, ''),
+(99, 'বনানী', 4, 2, ''),
+(100, 'এম,ই,এস', 4, 2, ''),
+(101, 'শেওড়া', 4, 2, ''),
+(102, 'বিশ্বরোড', 4, 2, ''),
+(103, 'খিলক্ষেত', 4, 2, ''),
+(104, 'এয়ারপোর্ট', 4, 2, ''),
+(105, 'জসীমউদ্দীন', 4, 2, ''),
+(106, 'রাজলক্ষ্মী', 4, 2, ''),
+(107, 'আজমপুর', 4, 2, ''),
+(108, 'হাউজ বিল্ডিং', 4, 2, ''),
+(109, 'আব্দুল্লাহপুর', 4, 2, ''),
+(110, 'স্টেশন গেট', 4, 2, ''),
+(111, 'কলেজগেট ( টঙ্গী )', 4, 2, ''),
+(112, 'বোর্ড বাজার', 4, 2, ''),
+(113, 'শিববাড়ী', 4, 2, ''),
+(114, 'চৌরাস্তা ( গাজীপুর )', 4, 2, ''),
+(115, 'কাজলা', 6, 2, ''),
+(116, 'শনির আখরা', 6, 2, ''),
+(117, 'রায়েরবাগ', 6, 2, ''),
+(118, 'মাতুয়াইল মেডিকেল', 6, 2, ''),
+(119, 'সাদ্দাম মার্কেট', 6, 2, ''),
+(120, 'সাইনবোর্ড', 6, 2, ''),
+(121, 'সানারপার ', 6, 2, ''),
+(122, 'মৌচাক', 6, 2, ''),
+(123, 'চিটাগাং রোড', 6, 2, ''),
+(124, 'কাঁচপুর ', 6, 2, ''),
+(125, 'মদনপুর', 6, 2, ''),
+(126, 'সোনারগাঁ ', 6, 2, ''),
+(127, 'মেঘনা', 6, 2, ''),
+(128, 'আরামবাগ', 12, 2, ''),
+(129, 'কমলাপুর', 12, 2, ''),
+(130, 'পীরজঙ্গী মাজার', 12, 2, ''),
+(131, 'রাজারবাগ', 12, 2, ''),
+(132, 'মালিবাগ', 12, 2, ''),
+(133, 'মৌচাক', 12, 2, ''),
+(134, 'ওয়ারলেস', 12, 2, ''),
+(135, 'সাইনবোর্ড ', 10, 2, ''),
+(136, 'জালকুড়ি', 10, 2, ''),
+(137, 'শিবু মার্কেট ', 10, 2, ''),
+(138, 'চাষাড়া', 10, 2, ''),
+(139, 'কাওলা ', 4, 2, ''),
+(140, 'kawla', 4, 2, ''),
+(141, 'বিশ্বরোড', 2, 4, ''),
+(142, 'Bisshoroad', 2, 4, ''),
+(143, 'বড়বাড়ি', 4, 2, ''),
+(144, 'borobari', 4, 2, ''),
+(145, 'মালেকের বাড়ি', 4, 2, ''),
+(146, 'Maleker Bari', 4, 2, ''),
+(147, 'টঙ্গী বাজার', 4, 2, ''),
+(148, 'Tongi Bazar', 4, 2, ''),
+(149, 'নতুন বাজার', 7, 2, ''),
+(150, 'বাশতলা', 7, 2, ''),
+(151, 'শাহজাদপুর', 7, 2, ''),
+(152, 'সুভাস্তু নজর ভ্যালী', 7, 2, ''),
+(153, 'উত্তর বাড্ডা', 7, 2, ''),
+(154, 'লিংক রোড', 7, 2, ''),
+(155, 'গুদারাঘাট', 7, 2, ''),
+(156, 'গুলশান-১', 7, 2, ''),
+(157, 'টিবি গেট ', 7, 2, ''),
+(158, 'ওয়ারলেস গেট', 7, 2, ''),
+(159, 'আমতলী', 7, 2, ''),
+(160, 'মহাখালী(রেল ক্রস)', 7, 2, ''),
+(161, 'নাবিস্কো', 7, 2, ''),
+(162, 'বিজয় স্মরণী', 7, 1, ''),
+(163, 'আওলাদ হোসেন মার্কেট।', 7, 2, ''),
+(164, 'nobinogor', 8, 2, ''),
+(165, '20 mile', 8, 2, ''),
+(166, 'bish mile', 8, 2, ''),
+(167, 'JU prantik', 8, 2, ''),
+(168, 'C and B ', 8, 2, ''),
+(169, 'radio colony ', 8, 2, ''),
+(170, 'savar ', 8, 2, ''),
+(171, 'thana stand ', 8, 2, ''),
+(172, 'hemayetpur ', 8, 2, ''),
+(173, 'gabtoli', 8, 2, ''),
+(174, 'নবীনগর', 8, 2, ''),
+(175, '২০ মাইল', 8, 2, ''),
+(176, 'বিশ মাইল', 8, 2, ''),
+(177, 'সি এন্ড বি', 8, 2, ''),
+(178, 'প্রান্তিক (  জাহাঙ্গীরনগর )', 8, 2, ''),
+(179, 'রেডিও কলোনী', 8, 2, ''),
+(180, 'সাভার', 8, 2, ''),
+(181, 'থানা স্ট্যান্ড', 8, 2, ''),
+(182, 'হেমায়েতপুর', 8, 2, ''),
+(183, 'গাবতলী', 8, 2, '');
 
 -- --------------------------------------------------------
 
@@ -348,21 +708,24 @@ CREATE TABLE `users` (
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `reg_no` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `mob_no` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `dept_id` int(11) NOT NULL,
+  `dept_id` int(11) DEFAULT NULL,
   `status` int(11) NOT NULL,
   `code` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `url` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `level` int(11) NOT NULL
+  `url` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bus_id` int(11) NOT NULL,
+  `level` int(11) DEFAULT '0',
+  `level_req` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `reg_no`, `mob_no`, `email`, `password`, `dept_id`, `status`, `code`, `url`, `level`) VALUES
-(1, 'Fahim', '2013-312-035', '01521430883', 'fahim6119@gmail.com', 'fahim', 20, 0, '123456', '', 0);
+INSERT INTO `users` (`id`, `name`, `reg_no`, `mob_no`, `email`, `password`, `dept_id`, `status`, `code`, `url`, `bus_id`, `level`, `level_req`) VALUES
+(11, 'Fahim', '2013312035', '01521430883', 'fahim6119@gmail.com', '$2a$10$23a1noMZGtIjwykSqZtTs.j/2jNVX6PjkA5T2/PVb4eR3RtR8idv.', NULL, 2, '954186', NULL, 1, 2, 2),
+(12, 'Fahim Arefin', '2013312031', '01521430881', 'f.arefin8@gmail.com', '$2a$10$jz7vDCsFlHwPTBmIsKZzi.8LrUfXrtHQM.ZGudFKjatvGhfRoBsny', NULL, 2, '176552', NULL, 1, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -381,9 +744,27 @@ ALTER TABLE `depts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `following`
+--
+ALTER TABLE `following`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `places`
+--
+ALTER TABLE `places`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `schedule`
 --
 ALTER TABLE `schedule`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stoppage`
+--
+ALTER TABLE `stoppage`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -407,15 +788,30 @@ ALTER TABLE `bus`
 ALTER TABLE `depts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 --
+-- AUTO_INCREMENT for table `following`
+--
+ALTER TABLE `following`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `places`
+--
+ALTER TABLE `places`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+--
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+--
+-- AUTO_INCREMENT for table `stoppage`
+--
+ALTER TABLE `stoppage`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
