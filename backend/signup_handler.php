@@ -60,10 +60,7 @@ else {
 
         $conn->query($follow);
 
-        if(is_localhost())
-            sendVerificationBySwift($email,$name,$six_digit_random_number);
-        else
-            sendVerification($email,$name,$six_digit_random_number);
+        sendVerificationBySwift($email,$name,$six_digit_random_number);
         echo "ONE";
     }
     else {
@@ -81,35 +78,15 @@ function is_localhost() {
         return true;
 }
 
-function sendVerification($email,$name,$id)
-{
-    $subject = 'Lalbus Signup | Verification'; // Give the email a subject
-    $body = '
- 
-Thanks for signing up!
-Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
- 
-------------------------
-Username: '.$name.'
-------------------------
- 
-Please click this link to activate your account:
-http://103.28.121.126/lalbus/verify.php?email='.$email.'&hash='.$id.'
- 
-';
-
-    $headers = 'From:lalbus@du.ac.bd' . "\r\n";
-
-    mail($email, $subject, $body, $headers);
-
-}
-
 
 function sendVerificationBySwift($email,$name,$id)
 {
     require_once 'lib/swift_required.php';
 
     $subject = 'Lalbus Signup | Verification'; // Give the email a subject
+    $address="http://103.28.121.126/lalbus/verify.php?email='.$email.'&hash='.$id.'";
+    if(is_localhost())
+        $address="http://localhost/lalbus/verify.php?email='.$email.'&hash='.$id.'";
     $body = '
  
 Thanks for signing up!
@@ -119,10 +96,8 @@ Your account has been created, you can login with the following credentials afte
 Username: '.$name.'
 ------------------------
  
-Please click this link to activate your account:
-http://localhost/lalbus/verify.php?email='.$email.'&hash='.$id.'
- 
-';
+Please click this link to activate your account:.
+ '.$address;
 
         $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
             ->setUsername('lalbus.du@gmail.com')
@@ -135,10 +110,8 @@ http://localhost/lalbus/verify.php?email='.$email.'&hash='.$id.'
             ->setTo(array($email))
             ->setBody($body);
 
-
-    $result = $mailer->send($message);
-
-    printf("Sent %d messages\n", $result);
+    if(is_localhost())
+        $result = $mailer->send($message);
 }
 ?>
 
