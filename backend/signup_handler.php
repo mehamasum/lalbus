@@ -101,7 +101,8 @@ Please click this link to activate your account:.
 
         $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
             ->setUsername('lalbus.du@gmail.com')
-            ->setPassword('lalbusweb');
+            ->setPassword('lalbusweb')
+            ->setEncryption('ssl');
 
         $mailer = Swift_Mailer::newInstance($transport);
 
