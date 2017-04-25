@@ -20,8 +20,59 @@ $bus_id = mysqli_real_escape_string($conn,$_POST['b']);
 $comm = intval($comm);
 //echo $comm;
 
+
+// already in ?
+$sql = "SELECT * FROM users WHERE reg_no='$reg_no' OR email='$email'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    echo "ZERO";
+}
+else {
+    /*
+    // insert in db
+
+    $cost = 10;
+
+    // Create a random salt
+    $salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
+
+    // Prefix information about the hash so PHP knows how to verify it later.
+    // "$2a$" Means we're using the Blowfish algorithm. The following two digits are the cost parameter.
+    $salt = sprintf("$2a$%02d$", $cost) . $salt;
+
+    // Hash the password with the salt
+    $hash = crypt($password, $salt);
+
+
+    $six_digit_random_number = mt_rand(100000, 999999);
+
+
+    $sql = "INSERT INTO users (name, reg_no, mob_no,email, password, bus_id, level_req, status, code) ".
+        "VALUES ('" .  $name . "','" . $reg_no . "','". $mob_no . "','". $email . "','" . $hash . "', " . $bus_id . "," . $comm . ", ". 1 .",". $six_digit_random_number. ");";
+    //echo $sql;
+
+
+    if ($conn->query($sql) == TRUE) {
+
+        $follow = "INSERT INTO following (user_id, bus_id)".
+            "VALUES ($conn->insert_id, $bus_id)";
+
+        $conn->query($follow);
+
+        sendVerification($email,$name,$six_digit_random_number);
+
+
+        echo "ONE";
+    }
+    else {
+        echo "ERR";
+    }
+    */
+    echo "ONE";
+}
 $_SESSION['id']=1;
-$_SESSION['name']='fahim';
+$_SESSION['name']=$name;
 echo "ONE";
 mysqli_close($conn);
 ?>
