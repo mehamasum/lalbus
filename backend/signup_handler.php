@@ -22,7 +22,7 @@ $comm = intval($comm);
 
 
 // already in ?
-$sql = "SELECT * FROM users WHERE reg_no='$reg_no' OR mob_no='$mob_no' OR email='$email'";
+$sql = "SELECT * FROM users WHERE reg_no='$reg_no' OR email='$email'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
