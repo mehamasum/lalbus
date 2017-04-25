@@ -32,7 +32,8 @@ else {
     // insert in db
 
     $cost = 10;
-/*
+
+
     // Create a random salt
     $salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
 
@@ -67,11 +68,46 @@ else {
     else {
         echo "ERR";
     }
-    */
 }
-//$_SESSION['id']=$conn->insert_id;
-$_SESSION['id']=1;
+$_SESSION['id']=$conn->insert_id;
 $_SESSION['name']=$name;
-echo "ONE";
 mysqli_close($conn);
+
+
+function sendVerification($email,$name,$id)
+{
+    require_once 'lib/swift_required.php';
+
+    $subject = 'Lalbus Signup | Verification'; // Give the email a subject
+    $body = '
+ 
+Thanks for signing up!
+Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
+ 
+------------------------
+Username: '.$name.'
+------------------------
+ 
+Please click this link to activate your account:
+http://localhost/lalbus/verify.php?email='.$email.'&hash='.$id.'
+ 
+'; // Our message above including the link
+
+    $headers = 'From:noreply@batfia.com' . "\r\n"; // Set from headers
+
+    $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
+        ->setUsername('lalbus.du@gmail.com')
+        ->setPassword('lalbusweb');
+
+    $mailer = Swift_Mailer::newInstance($transport);
+
+    $message = Swift_Message::newInstance($subject)
+        ->setFrom(array('noreply@lalbus.com' => 'Lalbus'))
+        ->setTo(array($email))
+        ->setBody($body);
+
+    $result = $mailer->send($message);
+
+}
 ?>
+
