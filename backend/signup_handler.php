@@ -29,7 +29,6 @@ if ($result->num_rows > 0) {
     echo "ZERO";
 }
 else {
-    /*
     // insert in db
 
     $cost = 10;
@@ -52,7 +51,7 @@ else {
         "VALUES ('" .  $name . "','" . $reg_no . "','". $mob_no . "','". $email . "','" . $hash . "', " . $bus_id . "," . $comm . ", ". 1 .",". $six_digit_random_number. ");";
     //echo $sql;
 
-
+    /*
     if ($conn->query($sql) == TRUE) {
 
         $follow = "INSERT INTO following (user_id, bus_id)".
@@ -71,6 +70,7 @@ else {
     */
     echo "ONE";
 }
+//$_SESSION['id']=$conn->insert_id;
 $_SESSION['id']=1;
 $_SESSION['name']=$name;
 echo "ONE";
