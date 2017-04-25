@@ -9,9 +9,6 @@
     <link rel="icon" href="./img/favicon.png">
 	<link rel="canonical" href="">
 	<link rel="stylesheet" href="./css/screen.css">
-	<script src="js/signup.js"></script>
-	<script src="js/main.js"></script>
-
 </head>
 
 <body class="login">
@@ -107,5 +104,6 @@
 	<div class="copyright">© 2017 Batfia</div>
 
     </body>
-
+<script src="js/signup.js"></script>
+<script src="js/main.js"></script>
 </html>

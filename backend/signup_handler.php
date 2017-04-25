@@ -43,7 +43,7 @@ else {
     // Hash the password with the salt
     $hash = crypt($password, $salt);
 
-
+    /*
     $six_digit_random_number = mt_rand(100000, 999999);
 
 
@@ -51,7 +51,7 @@ else {
         "VALUES ('" .  $name . "','" . $reg_no . "','". $mob_no . "','". $email . "','" . $hash . "', " . $bus_id . "," . $comm . ", ". 1 .",". $six_digit_random_number. ");";
     //echo $sql;
 
-    /*
+
     if ($conn->query($sql) == TRUE) {
 
         $follow = "INSERT INTO following (user_id, bus_id)".
