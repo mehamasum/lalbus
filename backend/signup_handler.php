@@ -60,9 +60,10 @@ else {
 
         $conn->query($follow);
 
-        sendVerification($email,$name,$six_digit_random_number);
-
-
+        if(is_localhost())
+            sendVerificationBySwift($email,$name,$six_digit_random_number);
+        else
+            sendVerification($email,$name,$six_digit_random_number);
         echo "ONE";
     }
     else {
@@ -74,7 +75,37 @@ $_SESSION['name']=$name;
 mysqli_close($conn);
 
 
+function is_localhost() {
+    $whitelist = array( '127.0.0.1', '::1' );
+    if( in_array( $_SERVER['REMOTE_ADDR'], $whitelist) )
+        return true;
+}
+
 function sendVerification($email,$name,$id)
+{
+    $subject = 'Lalbus Signup | Verification'; // Give the email a subject
+    $body = '
+ 
+Thanks for signing up!
+Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
+ 
+------------------------
+Username: '.$name.'
+------------------------
+ 
+Please click this link to activate your account:
+http://103.28.121.126/lalbus/verify.php?email='.$email.'&hash='.$id.'
+ 
+';
+
+    $headers = 'From:lalbus@du.ac.bd' . "\r\n";
+
+    mail($email, $subject, $body, $headers);
+
+}
+
+
+function sendVerificationBySwift($email,$name,$id)
 {
     require_once 'lib/swift_required.php';
 
@@ -91,23 +122,23 @@ Username: '.$name.'
 Please click this link to activate your account:
 http://localhost/lalbus/verify.php?email='.$email.'&hash='.$id.'
  
-'; // Our message above including the link
+';
 
-    $headers = 'From:noreply@batfia.com' . "\r\n"; // Set from headers
+        $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
+            ->setUsername('lalbus.du@gmail.com')
+            ->setPassword('lalbusweb');
 
-    $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
-        ->setUsername('lalbus.du@gmail.com')
-        ->setPassword('lalbusweb');
+        $mailer = Swift_Mailer::newInstance($transport);
 
-    $mailer = Swift_Mailer::newInstance($transport);
+        $message = Swift_Message::newInstance($subject)
+            ->setFrom(array('noreply@lalbus.com' => 'Lalbus'))
+            ->setTo(array($email))
+            ->setBody($body);
 
-    $message = Swift_Message::newInstance($subject)
-        ->setFrom(array('noreply@lalbus.com' => 'Lalbus'))
-        ->setTo(array($email))
-        ->setBody($body);
 
     $result = $mailer->send($message);
 
+    printf("Sent %d messages\n", $result);
 }
 ?>
 
