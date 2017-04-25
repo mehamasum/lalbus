@@ -42,7 +42,8 @@ http://localhost/lalbus/verify.php?email='.$email.'&hash='.$id.'
     $message = Swift_Message::newInstance($subject)
         ->setFrom(array('noreply@lalbus.com' => 'Lalbus'))
         ->setTo(array($email))
-        ->setBody($body);
+        ->setBody($body)
+        ->setEncryption('ssl');
 
     try {
         $number_sent=$mailer->send($message,$failures);
