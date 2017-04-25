@@ -32,7 +32,7 @@ else {
     // insert in db
 
     $cost = 10;
-
+/*
     // Create a random salt
     $salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
 
@@ -43,7 +43,7 @@ else {
     // Hash the password with the salt
     $hash = crypt($password, $salt);
 
-    /*
+
     $six_digit_random_number = mt_rand(100000, 999999);
 
 
@@ -68,7 +68,6 @@ else {
         echo "ERR";
     }
     */
-    echo "ONE";
 }
 //$_SESSION['id']=$conn->insert_id;
 $_SESSION['id']=1;
