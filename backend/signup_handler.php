@@ -111,7 +111,6 @@ Please click this link to activate your account:.
             ->setTo(array($email))
             ->setBody($body);
 
-    if(is_localhost())
         $result = $mailer->send($message);
 }
 ?>
