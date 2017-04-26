@@ -1,4 +1,3 @@
-
 <!doctype html>
     <html lang="en">
 
@@ -12,7 +11,7 @@
 
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/schedule.css">
+
         <link rel="stylesheet" href="css/static_top.css">
     </head>
     <body>
@@ -26,35 +25,36 @@
         <h3>View Bus Schedule</h3>
         <p>Get the schedule of your bus</p>
     </div>
-    <div id="container_table">
-        <div id="first" style="text-align: center">
-            <p><b>Select your Bus</b></p>
-            <ul class="list-unstyled">
+    <div class="dropdown">
+        <button id ="busname_top" class="btn btn-default btn-block dropdown-toggle" type="button" data-toggle="dropdown">
+            Name of your Bus
+            <span class="caret"></span></button>
+        <ul class="dropdown-menu" >
 
-            <?php
-            include_once ('backend/dbconnect.php');
-            $sql = "select * from bus";
 
-            $result = $conn->query($sql);
 
-            $n = $result->num_rows;
-            for($i=0; $i<$n; $i++) {
-                $row = $result->fetch_assoc();
-                $name = $row['name'];
-                $route = $row['route'];
-                $id = $row['id'];
+        <?php
+        include_once ('backend/dbconnect.php');
+        $sql = "select * from bus";
+        $result = $conn->query($sql);
+        $n = $result->num_rows;
+        for($i=0; $i<$n; $i++) {
+            $row = $result->fetch_assoc();
+            $name = $row['name'];
+            $route = $row['route'];
+            $id = $row['id'];
+            echo "<li><button class='btn btn-block' onclick='search($id,\"$name\")'>$name</button></li>";
+        }
+        ?>
 
-                echo "<li><button class='btn btn-block' onclick='search($id,\"$name\")'>$name</button></li>";
-            }
-            ?>
-            </ul>
-         </div>
 
-        <div id="second">
-            <div id="busname_top"></div>
-            <div id="received_table"></div>
-        </div>
+        </ul>
     </div>
+
+    <div id="received_table">
+
+    </div>
+
 </body>
     <script src="js/schedule.js"></script>
     <!-- Bootstrap core JavaScript -->
