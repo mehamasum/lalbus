@@ -43,9 +43,9 @@
     document.getElementById("page_following").className += "active";
 </script>
 
-<div class="container">
-    <h3>Follow Buses</h3>
-    <p>Buses you follow will show up in your home</p>
+<div class="container" >
+    <h3 style="width: 100%; text-align: center">Follow Buses</h3>
+    <p style="width: 100%; text-align: center">Buses you follow will show up in your home</p>
     <table class="table table-striped">
         <thead>
         <tr>

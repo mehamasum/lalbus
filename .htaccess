@@ -1,5 +1,6 @@
 RewriteEngine on
 RewriteRule ^index$ index.php [NC]
+RewriteRule ^home$ home.php [NC]
 RewriteRule ^login$ login.php [NC]
 RewriteRule ^following$ following.php [NC]
 RewriteRule ^signup$ signup.php [NC]

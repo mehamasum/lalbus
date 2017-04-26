@@ -24,7 +24,7 @@
     <input id="autocomplete" align="center" placeholder="Enter your address" type="text" style="width: 60%; height: 3em"></input>
 </div>
 
-<div class="container">
+<div class="container" style="width: 100%; text-align: center">
     <h3>Search Bus by Stoppage</h3>
     <p>Search Buses which go near your address</p>
     <table class="table table-striped">
