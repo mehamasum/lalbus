@@ -3,7 +3,7 @@
     if(!isset($_SESSION['id']))
     {
         ob_start();
-        header('Location: login.php');
+        header('Location: login');
         ob_end_flush();
         die();
     }

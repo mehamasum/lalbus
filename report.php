@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['id']))
 {
     ob_start();
-    header('Location: login.php');
+    header('Location: login');
     ob_end_flush();
     die();
 }
@@ -111,7 +111,7 @@ if(!isset($_SESSION['id']))
                 console.log(reply);
 
                 if (reply.indexOf("ONE") != -1) {
-                    window.location.href = "home.php";
+                    window.location.href = "home";
                 }
                 else {
                     map.innerHTML += "Something went wrong" + "<br>";

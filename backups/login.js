@@ -45,7 +45,7 @@ function validateLogin() {
                     errors.innerHTML += "Wrong Password" + "<br>";
                 }
                 else {
-                    window.location.href = "home.php";
+                    window.location.href = "home";
                 }
 
                 if (found)

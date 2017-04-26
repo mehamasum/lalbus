@@ -65,7 +65,7 @@ session_start();
 
         <div class="create-account">
             <p>
-                <a href="signup.php">Create an account</a>
+                <a href="signup">Create an account</a>
             </p>
         </div>
     </form>

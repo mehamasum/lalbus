@@ -50,10 +50,10 @@ function validateLogin() {
                 else if( reply.indexOf("TWO")!=-1)
                 {
                     console.log("Admin");
-                    window.location.href = "member_auth.php";
+                    window.location.href = "member_auth";
                 }
                 else {
-                    window.location.href = "home.php";
+                    window.location.href = "home";
                 }
 
 

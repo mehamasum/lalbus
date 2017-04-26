@@ -31,7 +31,7 @@ function showPosition(position) {
             console.log(reply);
 
             if (reply.indexOf("ONE") != -1) {
-                window.location.href = "home.php";
+                window.location.href = "home";
             }
             else {
                 map.innerHTML += "Something went wrong" + "<br>";

@@ -61,7 +61,7 @@ function validateSignUp() {
                     errors.innerHTML += "Registration or Mobile already in use" + "<br>";
                 }
                 else if (reply.indexOf("ONE") != -1) {
-                    window.location.href = "following.php";
+                    window.location.href = "following";
                 }
                 else {
                     found = true;

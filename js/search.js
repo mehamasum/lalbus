@@ -162,7 +162,7 @@ function loadPlaces()
 */
         }
     };
-    xhttp.open("POST", "backend/places_handler.php", true);
+    xhttp.open("POST", "backend/search_handler.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send();
 }

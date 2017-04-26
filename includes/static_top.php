@@ -52,13 +52,13 @@ else { ?>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.php">Home</a></li>
-                    <li><a href="schedule.php">Schedules</a></li>
-                    <li><a href="places.php">Search Bus</a></li>
+                    <li class="active"><a href="index">Home</a></li>
+                    <li><a href="schedule">Schedules</a></li>
+                    <li><a href="places">Search Bus</a></li>
                     <li><a href="#" data-type='help' data-toggle='modal' data-target='#myModal'>Help</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="login.php">Login</a></li>
+                    <li><a href="login">Login</a></li>
                 </ul>
             </div>
         </div>

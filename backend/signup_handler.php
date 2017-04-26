@@ -84,9 +84,9 @@ function sendVerificationBySwift($email,$name,$id)
     require_once 'lib/swift_required.php';
 
     $subject = 'Lalbus Signup | Verification'; // Give the email a subject
-    $address="http://103.28.121.126/lalbus/verify.php?email=".$email."&hash=".$id;
+    $address="http://103.28.121.126/lalbus/verify?email=".$email."&hash=".$id;
     if(is_localhost())
-        $address="http://localhost/lalbus/verify.php?email=".$email."&hash=".$id;
+        $address="http://localhost/lalbus/verify?email=".$email."&hash=".$id;
     $body = '
  
 Thanks for signing up!

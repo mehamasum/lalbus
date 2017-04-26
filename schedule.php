@@ -2,6 +2,7 @@
 <!doctype html>
     <html lang="en">
 
+
     <head>
       <meta charset="UTF-8">
       <title>Schedule | Lalbus</title>
@@ -13,7 +14,6 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <link rel="stylesheet" href="css/static_top.css">
-
     </head>
     <body>
     <?php include("includes/static_top.php");?>
@@ -22,12 +22,15 @@
         document.getElementById("page_schedule").className += "active";
     </script>
 
-
+    <div class="container">
+        <h3>View Bus Schedule</h3>
+        <p>Get the schedule of your bus</p>
+    </div>
     <div class="dropdown">
         <button id ="busname_top" class="btn btn-default btn-block dropdown-toggle" type="button" data-toggle="dropdown">
-            Name of the Bus
+            Name of your Bus
             <span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" >
 
 
 
