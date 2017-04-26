@@ -2,9 +2,8 @@ RewriteEngine on
 RewriteRule ^login$ login.php
 RewriteRule ^following$ following.php
 RewriteRule ^signup$ signup.php
-RewriteRule ^member_auth$ member_auth.php
 RewriteRule ^schedule$ schedule.php
 RewriteRule ^verify$ verify.php
 RewriteRule ^report$ report.php
 RewriteRule ^search$ places.php
-RewriteRule ^adminlogin login_admin.php
+RewriteRule ^adminlogin$ login_admin.php

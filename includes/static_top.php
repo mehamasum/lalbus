@@ -17,10 +17,10 @@ if(isset($_SESSION['id'])) { ?>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li id="page_home" class="active"><a href="home.php">Home</a></li>
-                    <li id="page_following"><a href="following.php">Following</a></li>
-                    <li id="page_schedule"><a href="schedule.php">Schedules</a></li>
-                    <li id="page_stoppage"><a href="places.php">Search Bus</a></li>
+                    <li id="page_home" class="active"><a href="home">Home</a></li>
+                    <li id="page_following"><a href="following">Following</a></li>
+                    <li id="page_schedule"><a href="schedule">Schedules</a></li>
+                    <li id="page_stoppage"><a href="search">Search Bus</a></li>
                     <li id="page_stat"><a href="#">Monthly Stats</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
