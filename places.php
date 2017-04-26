@@ -12,8 +12,13 @@
     <script src="js/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="css/static_top.css">
 </head>
+
 <body onload="initialize()">
 <?php include("includes/static_top.php"); ?>
+<script>
+    document.getElementById("page_home").classList.remove("active");
+    document.getElementById("page_stoppage").className += "active";
+</script>
 <div id="locationField" align="center"  style="width: 100%;padding-top: 10px">
     <label for="autocomplete">Address:</label>
     <input id="autocomplete" align="center" placeholder="Enter your address" type="text" style="width: 60%; height: 3em"></input>
