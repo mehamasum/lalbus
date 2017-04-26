@@ -22,7 +22,7 @@
         document.getElementById("page_schedule").className += "active";
     </script>
 
-    <div class="container">
+    <div class="container" style="width: 100%; text-align: center">
         <h3>View Bus Schedule</h3>
         <p>Get the schedule of your bus</p>
     </div>
