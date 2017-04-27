@@ -1,7 +1,12 @@
 <?php
 
-	$dbUSER = 'lalbus';
-	$dbPASS = 'lalbus';
+	//$dbUSER = 'lalbus';
+	//$dbPASS = 'lalbus';
+
+	$dbUSER = 'root';
+	$dbPASS = '';
+
+
 	$dbHOST = 'localhost';
 	$dbDB   ='lalbus_db';
 	

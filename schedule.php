@@ -14,6 +14,11 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/schedule.css">
         <link rel="stylesheet" href="css/static_top.css">
+
+        <style>
+            .btn {border-radius: 0;}
+        </style>
+
     </head>
     <body onload="search(1)">
     <?php include("includes/static_top.php");?>
@@ -29,7 +34,7 @@
     </div>
     <div id="container_table">
         <div id="first" style="text-align: center">
-            <p><b>Select your Bus</b></p>
+            <p><b>Select Bus:</b></p>
             <ul class="list-unstyled">
 
             <?php

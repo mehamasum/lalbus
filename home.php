@@ -132,7 +132,7 @@ if(!isset($_SESSION['id']))
     <script>
         L.mapbox.accessToken = 'pk.eyJ1IjoibWVoYW1hc3VtIiwiYSI6ImNpdnhscWRvbzAyN2wyeXRhY2w1eGRvYngifQ.Cwlq3LDDRoBdsIZ_kQPHig';
         var map = L.mapbox.map('map', 'mapbox.streets')
-                .setView([23.8103, 90.4125], 16).addControl(L.mapbox.geocoderControl('mapbox.places', {
+                .setView([23.8103, 90.4125], 10).addControl(L.mapbox.geocoderControl('mapbox.places', {
                     autocomplete: true
                 }));
     </script>
