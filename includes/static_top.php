@@ -52,7 +52,7 @@ else { ?>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index">Home</a></li>
+                    <li class="active"><a href="home">Home</a></li>
                     <li><a href="schedule">Schedules</a></li>
                     <li><a href="search">Search Bus</a></li>
                     <li><a href="#" data-type='help' data-toggle='modal' data-target='#myModal'>Help</a></li>

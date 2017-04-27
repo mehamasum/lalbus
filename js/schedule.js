@@ -1,9 +1,16 @@
-function search(busid,name) {
+function search(busid) {
 
     var slot=document.getElementById("received_table");
-    var busname_top=document.getElementById("busname_top");
-    busname_top.innerHTML=name+" "+"<span class=\"caret\"></span>";
-    console.log(busid+" "+name);
+    var lastButton=document.getElementById(activeButton);
+    if(lastButton!=null)
+    {
+        lastButton.classList.remove('btn-danger');
+    }
+    activeButton='btn_'+busid;
+    var currentButton=document.getElementById(activeButton);
+    currentButton.classList.add('btn-danger');
+
+    console.log(busid+" ");
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {

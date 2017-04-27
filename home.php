@@ -24,9 +24,6 @@ if(!isset($_SESSION['id']))
     <script src="js/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="css/static_top.css">
 
-    <script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
-    <link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' />
-
     <style>
 
         .star:before {
@@ -129,7 +126,8 @@ if(!isset($_SESSION['id']))
 
     </div>
 
-
+    <script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' />
 
     <script>
         L.mapbox.accessToken = 'pk.eyJ1IjoibWVoYW1hc3VtIiwiYSI6ImNpdnhscWRvbzAyN2wyeXRhY2w1eGRvYngifQ.Cwlq3LDDRoBdsIZ_kQPHig';

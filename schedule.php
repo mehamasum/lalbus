@@ -15,9 +15,10 @@
         <link rel="stylesheet" href="css/schedule.css">
         <link rel="stylesheet" href="css/static_top.css">
     </head>
-    <body>
+    <body onload="search(1)">
     <?php include("includes/static_top.php");?>
     <script>
+        var activeButton='btn_1';
         document.getElementById("page_home").classList.remove("active");
         document.getElementById("page_schedule").className += "active";
     </script>
@@ -44,14 +45,13 @@
                 $route = $row['route'];
                 $id = $row['id'];
 
-                echo "<li><button class='btn btn-block' onclick='search($id,\"$name\")'>$name</button></li>";
+                echo "<li><button id='btn_".$id."' class='btn btn-block' onclick='search($id)'>$name</button></li>";
             }
             ?>
             </ul>
          </div>
 
         <div id="second">
-            <div id="busname_top"></div>
             <div id="received_table"></div>
         </div>
     </div>
