@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2017 at 12:10 PM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.1
+-- Generation Time: Apr 27, 2017 at 10:41 PM
+-- Server version: 5.7.11
+-- PHP Version: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -183,7 +183,11 @@ INSERT INTO `following` (`id`, `user_id`, `bus_id`) VALUES
 (1, 9, 1),
 (2, 10, 1),
 (4, 11, 1),
-(5, 12, 1);
+(5, 12, 1),
+(6, 13, 5),
+(7, 13, 2),
+(8, 13, 8),
+(9, 13, 1);
 
 -- --------------------------------------------------------
 
@@ -329,6 +333,65 @@ INSERT INTO `places` (`id`, `stoppage_name`, `lat`, `lng`, `bus_id`, `stoppage_t
 (121, 'Chowrasta - Joydebpur Rd, Joydebpur, Bangladesh', 23.998997, 90.419802, 4, 2, ''),
 (122, 'Maleker Bari Bus Stop, Dhaka - Mymensingh Hwy, Bangladesh', 23.96623, 90.380155, 4, 2, ''),
 (123, 'Tongi Bazar Bus Stop, Dhaka - Mymensingh Hwy, Tongi 1230, Bangladesh', 23.884197, 90.400542, 4, 2, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reports1`
+--
+
+CREATE TABLE `reports1` (
+  `id` int(11) NOT NULL,
+  `bus_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `lat` double NOT NULL,
+  `lng` double NOT NULL,
+  `time` datetime NOT NULL,
+  `pos_cnt` int(11) NOT NULL,
+  `neg_cnt` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `reports1`
+--
+
+INSERT INTO `reports1` (`id`, `bus_id`, `user_id`, `lat`, `lng`, `time`, `pos_cnt`, `neg_cnt`) VALUES
+(1, 1, 13, 23.7025385, 90.4329108, '2017-04-28 00:52:34', 0, 0),
+(2, 1, 13, 23.7025385, 90.4329108, '2017-04-28 00:52:52', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reports5`
+--
+
+CREATE TABLE `reports5` (
+  `id` int(11) NOT NULL,
+  `bus_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `lat` double NOT NULL,
+  `lng` double NOT NULL,
+  `time` datetime NOT NULL,
+  `pos_cnt` int(11) NOT NULL,
+  `neg_cnt` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reports8`
+--
+
+CREATE TABLE `reports8` (
+  `id` int(11) NOT NULL,
+  `bus_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `lat` double NOT NULL,
+  `lng` double NOT NULL,
+  `time` datetime NOT NULL,
+  `pos_cnt` int(11) NOT NULL,
+  `neg_cnt` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -716,16 +779,19 @@ CREATE TABLE `users` (
   `url` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `bus_id` int(11) NOT NULL,
   `level` int(11) DEFAULT '0',
-  `level_req` int(11) NOT NULL DEFAULT '0'
+  `level_req` int(11) NOT NULL DEFAULT '0',
+  `pos_repu` int(11) NOT NULL DEFAULT '0',
+  `neg_repu` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `reg_no`, `mob_no`, `email`, `password`, `dept_id`, `status`, `code`, `url`, `bus_id`, `level`, `level_req`) VALUES
-(11, 'Fahim', '2013312035', '01521430883', 'fahim6119@gmail.com', '$2a$10$23a1noMZGtIjwykSqZtTs.j/2jNVX6PjkA5T2/PVb4eR3RtR8idv.', NULL, 2, '954186', NULL, 1, 2, 2),
-(12, 'Fahim Arefin', '2013312031', '01521430881', 'f.arefin8@gmail.com', '$2a$10$jz7vDCsFlHwPTBmIsKZzi.8LrUfXrtHQM.ZGudFKjatvGhfRoBsny', NULL, 2, '176552', NULL, 1, 0, 0);
+INSERT INTO `users` (`id`, `name`, `reg_no`, `mob_no`, `email`, `password`, `dept_id`, `status`, `code`, `url`, `bus_id`, `level`, `level_req`, `pos_repu`, `neg_repu`) VALUES
+(11, 'Fahim', '2013312035', '01521430883', 'fahim6119@gmail.com', '$2a$10$23a1noMZGtIjwykSqZtTs.j/2jNVX6PjkA5T2/PVb4eR3RtR8idv.', NULL, 2, '954186', NULL, 1, 2, 2, 0, 0),
+(12, 'Fahim Arefin', '2013312031', '01521430881', 'f.arefin8@gmail.com', '$2a$10$jz7vDCsFlHwPTBmIsKZzi.8LrUfXrtHQM.ZGudFKjatvGhfRoBsny', NULL, 2, '176552', NULL, 1, 0, 0, 0, 0),
+(13, 'Masum', '2013812345', '01521112085', 'haha@maildrop.cc', '$2a$10$Kn9QyedU7ol2VpFV2KWT5OhoJx4Ov.A7HZlMpURT9GAxe2zUWkLXi', NULL, 1, '870116', NULL, 5, 0, 0, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -753,6 +819,24 @@ ALTER TABLE `following`
 -- Indexes for table `places`
 --
 ALTER TABLE `places`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reports1`
+--
+ALTER TABLE `reports1`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reports5`
+--
+ALTER TABLE `reports5`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reports8`
+--
+ALTER TABLE `reports8`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -791,12 +875,27 @@ ALTER TABLE `depts`
 -- AUTO_INCREMENT for table `following`
 --
 ALTER TABLE `following`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `places`
 --
 ALTER TABLE `places`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+--
+-- AUTO_INCREMENT for table `reports1`
+--
+ALTER TABLE `reports1`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `reports5`
+--
+ALTER TABLE `reports5`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `reports8`
+--
+ALTER TABLE `reports8`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `schedule`
 --
@@ -811,7 +910,7 @@ ALTER TABLE `stoppage`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

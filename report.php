@@ -24,7 +24,10 @@ if(!isset($_SESSION['id']))
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="./img/favicon.png">
     <link rel="canonical" href="">
-    <link rel="stylesheet" href="./css/screen.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="css/static_top.css">
 
     <style type="text/css">
         html {
@@ -39,11 +42,7 @@ if(!isset($_SESSION['id']))
     </style>
 </head>
 
-<body class="login">
-
-<div class="logo">
-    <a href=""><img src="./img/logo-w.png?res" alt="Lalbus"></a>
-</div>
+<?php include("includes/static_top.php"); ?>
 
 <div class="content">
 
@@ -95,7 +94,7 @@ if(!isset($_SESSION['id']))
 
         var lat = position.coords.latitude;
         var lng = position.coords.longitude;
-        var latlon = "Latitude: "+position.coords.latitude + "<br>"+ "Longitude"+ position.coords.longitude +"<br>";
+        var latlon = "Latitude: "+position.coords.latitude + "<br>"+ "Longitude: "+ position.coords.longitude +"<br>";
 
         var map = document.getElementById("mapholder");
         map.innerHTML = latlon;
@@ -146,8 +145,6 @@ if(!isset($_SESSION['id']))
     </div>
 
 </div>
-
-<div class="copyright">© 2016 Batfia</div>
 </body>
 <!--<script src="js/report.js"></script>-->
 </html>

@@ -23,12 +23,13 @@ if(!isset($_SESSION['id']))
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="css/static_top.css">
+    <script src="js/home.js"></script>
 
     <style>
 
         .star:before {
             content: ' \2605';
-            font-size: 20px;
+            font-size: 15px;
             color: coral;
         }
 
@@ -85,46 +86,11 @@ if(!isset($_SESSION['id']))
 
     <div id="data">
 
-        <div class="dropdown">
-            <button class="btn btn-default btn-block dropdown-toggle" type="button" data-toggle="dropdown">
-                Name of the Bus
-                <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#">HTML</a></li>
-                <li><a href="#">CSS</a></li>
-                <li><a href="#">JavaScript</a></li>
-            </ul>
+        <select id="followingList" class="form-control" onchange="findMyBus(this.value);">
+        </select>
+
+        <div id="resultDetails">
         </div>
-
-        <div>
-            <div>
-                <span><strong>Shahbag, Dhaka</strong></span><span style="margin-left: 10px; color: grey">22 min ago</span>
-                <br>
-                <span>4:30 PM Up trip</span>
-                <br>
-                <span class="circle-green"></span><span>10</span> <span style="margin-left: 10px" class="circle-red"></span><span>10</span>
-                <hr>
-
-                <div>
-                    <img src="img/default.png" alt="Avatar" style="width: 40px; height: 40px;float: left">
-                    <div >
-                        <span><strong>Meha Masum</strong></span><span style="margin-left: 5px; color: grey">CSE</span><br>
-                        <span class="star"></span><span>10</span>
-                    </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <hr>
-            <button class="btn btn-success">Upvote</button>
-            <button class="btn btn-danger">Report</button>
-
-        </div>
-
-    </div>
 
     <script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' />
@@ -135,6 +101,34 @@ if(!isset($_SESSION['id']))
                 .setView([23.8103, 90.4125], 10).addControl(L.mapbox.geocoderControl('mapbox.places', {
                     autocomplete: true
                 }));
+
+        // add data
+
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+                console.log(this.responseText);
+                var reply = JSON.parse(this.responseText);
+
+                var idx;
+                for (idx = 0; idx < reply.length; idx++) {
+                    console.log(reply[idx]["bus_id"]);
+                    var obj = "<option value='"+reply[idx]['id']+"'>"+reply[idx]['name']+"</option>";
+                    console.log(obj);
+                    $("#followingList").append(obj);
+                }
+
+                if(reply.length>0) {
+                    findMyBus(reply[0]["id"]);
+                }
+
+            }
+        };
+        xhttp.open("POST", "backend/following_list_for_user.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("id="+ <?php echo $_SESSION['id']; ?>);
     </script>
 
 </body>
