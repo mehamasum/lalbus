@@ -11,6 +11,8 @@ function findMyBus(busId, name) {
 
             // add upvote btn, down vote btn, report btn
 
+            // get prev votes true or false
+
             var div = $("#resultDetails");
             div.html('');
 
@@ -31,6 +33,8 @@ function findMyBus(busId, name) {
                 var user = reply['user'];
                 var posrepu = reply['pos_repu'];
 
+                var voted = reply['voted'];
+
                 // Split timestamp into [ Y, M, D, h, m, s ]
                 var t = time.split(/[- :]/);
 
@@ -43,15 +47,15 @@ function findMyBus(busId, name) {
                 console.log(rel_time);*/
 
                 div.html('<div>'+
-                    '<span id>'+time+'</span><span style="margin-left: 10px" class="circle-green"></span><small>'+pos+'</small>'+
+                    '<span id>'+time+'</span><span style="margin-left: 10px" class="circle-green"></span><span id="green">'+pos+'</span>'+
                     '<span style="margin-left: 10px" class="circle-red">'+
-                    '</span><small>'+neg+'</small>'+
+                    '</span><span id="red">'+neg+'</span>'+
                     '<hr><div><div style="color: grey">'+
-                    '<span>'+user+'</span><span class="star"></span><small>'+posrepu+'</small>'+
+                    '<span>'+user+'</span><span class="star"></span><span id="star">'+posrepu+'</span>'+
                     '</div></div></div>'+
                     '<hr style="margin-bottom: 10px">'+
-                    '<button onclick="upvote('+ reportId+ ')" class="btn btn-success">Upvote</button>'+
-                    '<button style="margin-left: 5px" onclick="downvote('+ reportId+ ')" class="btn btn-danger">Downvote</button>'+
+                    '<button id="plus" onclick="upvote('+ reportId+ ')" class="btn btn-success">Upvote</button>'+
+                    '<button id="minus" style="margin-left: 5px" onclick="downvote('+ reportId+ ')" class="btn btn-danger">Downvote</button>'+
                     '<button id="reporter"  data-id="'+busId+'" style="margin-left: 5px" onclick="add_report('+ busId+ ')" class="btn btn-primary">New Location</button>');
 
 
@@ -81,14 +85,15 @@ function findMyBus(busId, name) {
                     infowindow.open(map, marker);
                 });
 
-                map.panTo(myLatlng);
+                //map.panTo(myLatlng);
                 //map.setZoom( data[2]);
 
+                if(voted.indexOf("true")!=-1) {
+                    $("#plus").prop('disabled', true);
+                    $("#minus").prop('disabled', true);
+                }
+
             }
-
-
-
-
 
         }
     };
@@ -99,10 +104,66 @@ function findMyBus(busId, name) {
 
 function upvote(reprtId) {
     console.log("UP "+ reprtId);
+    sendVote(reprtId, "POS");
 }
 
 function downvote(reprtId) {
     console.log("DOWN "+ reprtId);
+    sendVote(reprtId, "NEG");
+}
+
+function sendVote(reprtId, type) {
+
+    var busId = $("#reporter").data('id');
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+
+            var reply = this.responseText;
+
+            console.log(reply.indexOf("ONE"));
+            if(reply.indexOf("ONE")!=-1) {
+
+                var green = $("#green");
+                var red = $("#red");
+                var star = $("#star");
+
+                var old = 0;
+
+                if(type==="POS") {
+                    old = parseInt(green.html());
+                    old++;
+                    green.html(""+ old);
+
+                    old = parseInt(star.html());
+                    old++;
+                    star.html(""+ old);
+
+                }
+                else {
+                    old = parseInt(red.html());
+                    old++;
+                    red.html(""+ old);
+
+                }
+
+                $("#plus").prop('disabled', true);
+                $("#minus").prop('disabled', true);
+
+            }
+            else {
+                alert("Sorry! Something went wrong!");
+            }
+
+
+        }
+    };
+    xhttp.open("POST", "backend/vote_handler.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("b="+busId+"&r="+reprtId+"&type="+type);
+
 }
 
 function add_report(busId) {

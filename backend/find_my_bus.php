@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once ('dbconnect.php');
 
 $bus_id = $_POST['busId'];
@@ -33,7 +33,6 @@ function get($con, $bus_id) {
     $sql2 = "SELECT name, pos_repu from users where id = (SELECT user_id FROM `reports".$bus_id."` ORDER BY id DESC LIMIT 1);";
 
 
-
     $result1 = $con->query($sql1);
     $result2 = $con->query($sql2);
 
@@ -41,8 +40,17 @@ function get($con, $bus_id) {
         $row1 = $result1->fetch_assoc();
         $row2 = $result2->fetch_assoc();
 
+        $sql3 = "SELECT * FROM `votes` WHERE `user_id`= " . $_SESSION["id"]." AND `bus_id`=".$bus_id. " AND `report_id`=". $row1['id'];
+
+        //echo $sql3;
+
+        $bool = "false";
+        $result3 = $con->query($sql3);
+        if($result3->num_rows > 0) $bool="true";
+
+
         $row = ["reportId"=> $row1['id'], "lat"=>$row1['lat'], "lng"=>$row1['lng'], "time"=>$row1['time'],
-            "pos_cnt"=>$row1['pos_cnt'], "neg_cnt"=>$row1['neg_cnt'], "user"=>$row2['name'], "pos_repu"=>$row2['pos_repu'] ];
+            "pos_cnt"=>$row1['pos_cnt'], "neg_cnt"=>$row1['neg_cnt'], "user"=>$row2['name'], "pos_repu"=>$row2['pos_repu'], "voted"=>$bool ];
 
         echo json_encode($row)."\n";
     }
