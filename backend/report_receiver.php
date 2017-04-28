@@ -5,11 +5,11 @@
  * Date: 4/24/2017
  * Time: 12:12 AM
  */
-
+session_start();
 
 
 $bus_id = $_POST['b'];
-$user = $_POST['u'];
+$user = $_SESSION['id'];
 $lat = $_POST['lat'];
 $lng = $_POST['lng'];
 

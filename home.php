@@ -57,7 +57,7 @@ if(!isset($_SESSION['id']))
             margin: 20px;
             position: absolute;
             bottom:0;
-            right: 0;
+            left: 0;
             text-align:center;
         }
 
@@ -69,7 +69,7 @@ if(!isset($_SESSION['id']))
                 background-color: white;
                 position: absolute;
                 bottom:0;
-                right: 0;
+                left: 0;
                 text-align:center;
             }
         }
@@ -86,7 +86,7 @@ if(!isset($_SESSION['id']))
 
     <div id="data">
 
-        <select id="followingList" class="form-control" onchange="findMyBus(this.value);">
+        <select id="followingList" class="form-control" onchange="findMyBus(this.value, this.options[this.selectedIndex].innerHTML);">
         </select>
 
         <div id="resultDetails">
@@ -95,12 +95,16 @@ if(!isset($_SESSION['id']))
     <script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' />
 
+
     <script>
-        L.mapbox.accessToken = 'pk.eyJ1IjoibWVoYW1hc3VtIiwiYSI6ImNpdnhscWRvbzAyN2wyeXRhY2w1eGRvYngifQ.Cwlq3LDDRoBdsIZ_kQPHig';
-        var map = L.mapbox.map('map', 'mapbox.streets')
-                .setView([23.8103, 90.4125], 10).addControl(L.mapbox.geocoderControl('mapbox.places', {
-                    autocomplete: true
-                }));
+        function initMap() {
+            var dhaka = {lat: 23.7315, lng: 90.3925};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 17,
+                center: dhaka
+            });
+        }
+
 
         // add data
 
@@ -121,7 +125,7 @@ if(!isset($_SESSION['id']))
                 }
 
                 if(reply.length>0) {
-                    findMyBus(reply[0]["id"]);
+                    findMyBus(reply[0]["id"], reply[0]['name']);
                 }
 
             }
@@ -131,9 +135,14 @@ if(!isset($_SESSION['id']))
         xhttp.send("id="+ <?php echo $_SESSION['id']; ?>);
     </script>
 
+
+
 </body>
 <!-- Bootstrap core JavaScript -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="js/bootstrap.min.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeH9FGEigaoT9FRddspqhiIe75TZLJ48&callback=initMap">
+</script>
 </html>

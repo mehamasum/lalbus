@@ -1,5 +1,5 @@
-function findMyBus(busId) {
-    console.log("find my bus with " + busId);
+function findMyBus(busId, name) {
+    console.log("find my bus with " + busId + " name "+name);
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
@@ -17,7 +17,7 @@ function findMyBus(busId) {
             if(this.responseText.indexOf("EMPTY")!=-1) {
                 div.html("<div style='margin: 10px'><span>No data found</span></div>");
                 div.append('<hr style="margin-bottom: 10px">');
-                div.append('<button onclick="add_report('+ busId+ ')" class="btn btn-primary">New Location</button>');
+                div.append('<button id="reporter"  data-id="'+busId+'" onclick="add_report('+ busId+ ')" class="btn btn-primary">New Location</button>');
             }
             else {
                 var reply = JSON.parse(this.responseText);
@@ -52,14 +52,43 @@ function findMyBus(busId) {
                     '<hr style="margin-bottom: 10px">'+
                     '<button onclick="upvote('+ reportId+ ')" class="btn btn-success">Upvote</button>'+
                     '<button style="margin-left: 5px" onclick="downvote('+ reportId+ ')" class="btn btn-danger">Downvote</button>'+
-                    '<button style="margin-left: 5px" onclick="add_report('+ busId+ ')" class="btn btn-primary">New Location</button>');
+                    '<button id="reporter"  data-id="'+busId+'" style="margin-left: 5px" onclick="add_report('+ busId+ ')" class="btn btn-primary">New Location</button>');
+
+
+                // add marker and zoom in
+                var myLatlng = new google.maps.LatLng(lat,lng);
+                var mapOptions = {
+                    zoom: 18,
+                    center: myLatlng
+                };
+                var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    title: name
+                });
+
+
+                var contentString = '<div style="padding: 10px">'+ name+ '</div>';
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                // To add the marker to the map, call setMap();
+                marker.setMap(map);
+                marker.addListener('click', function() {
+                    infowindow.open(map, marker);
+                });
+
+                map.panTo(myLatlng);
+                //map.setZoom( data[2]);
 
             }
 
 
 
-            // add marker and zoom in
-            //L.marker([38.913184, -77.031952]).addTo(mapLeaflet);
+
 
         }
     };
@@ -78,6 +107,7 @@ function downvote(reprtId) {
 
 function add_report(busId) {
     console.log("add report bus id :" + busId);
+    getLocation();
 }
 
 function timeSince(timeStamp) {
@@ -97,5 +127,58 @@ function timeSince(timeStamp) {
         month = timeStamp.toDateString().match(/ [a-zA-Z]*/)[0].replace(" ","");
         year = timeStamp.getFullYear() == now.getFullYear() ? "" :  " "+timeStamp.getFullYear();
         return day + " " + month + year;
+    }
+}
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    var bus = $("#reporter").data('id');
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //this.responseText;
+            var reply = this.responseText;
+
+            console.log(reply);
+
+            if (reply.indexOf("ONE") != -1) {
+                window.location.href = "home";
+            }
+            else {
+                alert("Sorry. Something went wrong.");
+            }
+
+        }
+    };
+    xhttp.open("POST", "backend/report_receiver.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("b="+bus+"&lat="+lat+"&lng="+lng);
+}
+
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            alert("User denied the request for Geolocation.");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            alert("Location information is unavailable.");
+            break;
+        case error.TIMEOUT:
+            alert("The request to get user location timed out.");
+            break;
+        case error.UNKNOWN_ERROR:
+            alert("An unknown error occurred.");
+            break;
     }
 }
