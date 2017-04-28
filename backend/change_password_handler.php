@@ -5,15 +5,7 @@
  * Date: 4/28/2017
  * Time: 11:01 AM
  */
-session_start();
-if(!isset($_SESSION['id']))
-{
-    ob_start();
-    header('Location: login');
-    ob_end_flush();
-    die();
-}
-$userid=$_SESSION['id'];
+
 //  xhttp.send("n="+name+"&r="+reg_no+"&m="+mob_no+"&p="+password+"&c="+comm);
 
 // no injection
@@ -22,22 +14,20 @@ require_once('dbconnect.php');
 $uid =mysqli_real_escape_string($conn, $_POST['id']);
 $newpass= mysqli_real_escape_string($conn,$_POST['p']);
 $oldpass=mysqli_real_escape_string($conn,$_POST['op']);
-if($uid!=$userid)
-{
-    ob_start();
-    header('Location: login');
-    ob_end_flush();
-    die();
-}
-$sql = "SELECT * FROM users WHERE id=$uid";
+
+$sql = "SELECT * FROM users WHERE id='$uid'";
+
+echo $sql;
+
 $result = $conn->query($sql);
-$row= $result->fetch_row();
-$pass=$row['password'];
+
 if ($result->num_rows == 0) {
     echo "ZERO";
 }
 else
 {
+    $row= $result->fetch_assoc();
+    $pass=$row['password'];
 
     // Hash the password with the salt
 
