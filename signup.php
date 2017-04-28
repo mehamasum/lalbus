@@ -63,7 +63,7 @@
 							$id = $row["id"];
 							$name = $row["name"];
 
-							echo "<option value=$id>$name</option>";
+							echo "<option value='$id'>$name</option>";
 						}
 					?>
 				</select>

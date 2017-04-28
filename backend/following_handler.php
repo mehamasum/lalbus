@@ -4,7 +4,7 @@ include_once ('dbconnect.php');
 
 $sid = $_POST['id'];
 
-$sql = "select * from following where user_id = $sid";
+$sql = "select * from following where user_id = '$sid'";
 $result = $conn->query($sql);
 $n = $result->num_rows;
 

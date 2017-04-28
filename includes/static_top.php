@@ -45,7 +45,7 @@ if(isset($_SESSION['id'])) {
                     ?>
 
                     <li id="page_stoppage"><a href="search">Search Bus</a></li>
-                    <li id="page_stat"><a href="#">Monthly Stats</a></li>
+                    <!--<li id="page_stat"><a href="#">Monthly Stats</a></li>-->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -59,7 +59,7 @@ if(isset($_SESSION['id'])) {
                             <li><a href="profile">Profile</a></li>
                             <li><a href="change_password">Change Password</a></li>
                             <li><a href="#">Help</a></li>
-                            <li><a href="#">Logout</a></li>
+                            <li><a href="logout.php">Logout</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -57,14 +57,15 @@ else {
             $conn->query($follow);
         }
 
+        $_SESSION['name']=$name;
         echo "ONE";
     }
     else {
         echo "ERR";
     }
 }
-$_SESSION['id']=$uid;
-$_SESSION['name']=$name;
+
+
 mysqli_close($conn);
 
 

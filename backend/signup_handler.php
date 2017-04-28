@@ -55,20 +55,23 @@ else {
 
     if ($conn->query($sql) == TRUE) {
 
-        $follow = "INSERT INTO following (user_id, bus_id)".
-            "VALUES ($conn->insert_id, $bus_id)";
+        $_SESSION['id']=$conn->insert_id;
+        $_SESSION['name']=$name;
+
+
+        $follow = "INSERT INTO following (user_id, bus_id) VALUES ($conn->insert_id, $bus_id)";
+        //echo $follow;
 
         $conn->query($follow);
 
-        sendVerificationBySwift($email,$name,$six_digit_random_number);
-        echo "ONE";
+        //sendVerificationBySwift($email,$name,$six_digit_random_number);
+        echo $_SESSION['id'];
     }
     else {
         echo "ERR";
     }
 }
-$_SESSION['id']=$conn->insert_id;
-$_SESSION['name']=$name;
+
 mysqli_close($conn);
 
 

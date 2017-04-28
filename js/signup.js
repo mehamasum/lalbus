@@ -60,12 +60,12 @@ function validateSignUp() {
                     found = true;
                     errors.innerHTML += "Registration or Mobile already in use" + "<br>";
                 }
-                else if (reply.indexOf("ONE") != -1) {
-                    window.location.href = "following";
-                }
-                else {
+                else if (reply.indexOf("ERR") != -1){
                     found = true;
                     errors.innerHTML += "Something went wrong" + "<br>";
+                }
+                else  {
+                    window.location.href = "following";
                 }
 
                 if (found)
