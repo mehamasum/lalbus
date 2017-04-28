@@ -1,1 +1,22 @@
 Department of Graphic Design
+
+
+Table for Schedule Modification log
+Table for Schedule Modification Request
+
+Minimum password length to 5 
+Password check test
+- Change_password_handler line 44
+
+aiccha, profile update e bus update korle ager bus re ki unfollow marum ?
+
+1.verify er page e ektu rong chong maris
+
+Sign up er por following e bug ase maybe
+
+768 er kom width hoile top bar re vertical banano lagbo..content baira gese
+
+
+r tui tor db te ekta lalbus naam e user account banay ne..taile server e pathanor somoy r change kora lagbo na ..
+
+oikhane user account, password hoilo lalbus..tai omne disilam code e 

@@ -32,7 +32,8 @@ $bus_id=intval($bus_id);
 // already in ?
 $sql = "SELECT * FROM users WHERE id=$uid";
 $result = $conn->query($sql);
-
+$row=$result->fetch_row();
+$oldbus=$row['bus_id'];
 if ($result->num_rows == 0) {
     echo "ZERO";
 }
@@ -45,6 +46,7 @@ else {
 
     if ($conn->query($sql) == TRUE) {
 
+        //TODO : Remove $oldbus from following
         $check="SELECT * FROM following WHERE user_id=$uid and bus_id=$bus_id";
         $res=$conn->query($check);
         if($res->num_rows==0)

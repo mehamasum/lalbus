@@ -64,6 +64,7 @@ function validateLogin() {
                 }
             }
         };
+
         xhttp.open("POST", "backend/login_handler.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 

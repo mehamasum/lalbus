@@ -54,12 +54,20 @@ else
 <script>
     var sid=<?php echo $user ?>;
     var bid=<?php echo $bus ?>;
+    console.log(bid);
     document.getElementById("page_home").classList.remove("active");
     document.getElementById("page_admin_schedule").className += "active";
 </script>
 <div class="container" >
-    <h3 style="width: 100%; text-align: center">Update Bus Schedule</h3>
-    <p style="width: 100%; text-align: center">Update the schedule of Choitaly</p>
+   <div>
+       <div>
+           <h3 style="width: 100%; text-align: center">Update Bus Schedules</h3>
+           <p style="width: 100%; text-align: center">Update the schedule of Choitaly</p>
+       </div>
+       <button class="btn btn-danger pull-right" onClick="addTrip()"> Add New Trip </button>
+   </div>
+
+
     <table class="table table-striped col-md-12" >
         <thead>
         <tr>
