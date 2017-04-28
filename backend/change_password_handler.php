@@ -17,7 +17,7 @@ $oldpass=mysqli_real_escape_string($conn,$_POST['op']);
 
 $sql = "SELECT * FROM users WHERE id='$uid'";
 
-echo $sql;
+//echo $sql;
 
 $result = $conn->query($sql);
 
