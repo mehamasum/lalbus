@@ -24,7 +24,7 @@ INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Bi
 INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Applied Mathematics', 'APMAT');
 INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Law', 'LAW');
 INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Management', 'MAN');
-INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Accounting & Information Systems', 'AIS');
+INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Accounting & Information Systems (AIS) ', 'AIS');
 INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Marketing', 'MRK');
 INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Finance', 'FIN');
 INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Banking and Insurance', 'BAN');
@@ -72,7 +72,7 @@ INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Co
 INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Nuclear Engineering', 'NE');
 INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Robotics and Mechatronics Engineering', 'RME');
 INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Drawing and Painting', 'DDP');
-INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'department of graphic design', 'GDESIGN');
+INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Graphic Design', 'GDESIGN');
 INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Printmaking', 'DPMK');
 INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Oriental Art', 'OARTS');
 INSERT INTO `depts` (`id`, `name`, `short_name`) VALUES (NULL, 'Department of Ceramics', 'DCER');

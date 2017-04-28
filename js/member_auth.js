@@ -46,6 +46,7 @@ function initialize(sid)
         if (this.readyState == 4 && this.status == 200) {
 
             var parent = document.getElementById("usertable_body");
+            parent.innerHTML="";
 
             var reply = JSON.parse(this.responseText);
 

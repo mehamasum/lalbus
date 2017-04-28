@@ -35,6 +35,11 @@ function validateScheduleEdit() {
             else if (reply.indexOf("ONE") != -1) {
                 window.location.href = "schedule_edit";
             }
+            else if( reply.indexOf("UNAUTHORIZED")!=-1)
+            {
+                console.log("UNAUTHORIZED ACCESS");
+                parent.innerHTML="You don't have permission to edit this schedule"+ "<br>";
+            }
             else {
                 found = true;
                 errors.innerHTML += "Something went wrong" + "<br>";
@@ -48,7 +53,7 @@ function validateScheduleEdit() {
             }
         }
     };
-    xhttp.open("POST", "backend/schedule_update_handler.php", true);
+    xhttp.open("POST", "backend/schedule_editor_handler.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     //console.log(bus);

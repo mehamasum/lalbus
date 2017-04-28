@@ -6,9 +6,9 @@ session_start();
 // no injection
 require_once('dbconnect.php');
 
+
 $name =mysqli_real_escape_string($conn, $_POST['n']);
 $reg_no =mysqli_real_escape_string($conn,$_POST['r']);
-$mob_no = mysqli_real_escape_string($conn,$_POST['m']);
 $email=mysqli_real_escape_string($conn,$_POST['e']);
 $password = mysqli_real_escape_string($conn,$_POST['p']);
 $comm =  mysqli_real_escape_string($conn,$_POST['c']);
@@ -48,8 +48,8 @@ else {
     $six_digit_random_number = mt_rand(100000, 999999);
 
 
-    $sql = "INSERT INTO users (name, reg_no, mob_no,email, password, bus_id, level_req, status, code) ".
-        "VALUES ('" .  $name . "','" . $reg_no . "','". $mob_no . "','". $email . "','" . $hash . "', " . $bus_id . "," . $comm . ", ". 1 .",". $six_digit_random_number. ");";
+    $sql = "INSERT INTO users (name, reg_no,email, password, bus_id, level_req, status, code,dept_id) ".
+        "VALUES ('" .  $name . "','" . $reg_no . "','". $email . "','" . $hash . "', " . $bus_id . "," . $comm . ", ". 1 .",". $six_digit_random_number. ", ". 0 . ");";
     //echo $sql;
 
 
@@ -60,7 +60,7 @@ else {
 
         $conn->query($follow);
 
-        //sendVerificationBySwift($email,$name,$six_digit_random_number);
+        sendVerificationBySwift($email,$name,$six_digit_random_number);
         echo "ONE";
     }
     else {

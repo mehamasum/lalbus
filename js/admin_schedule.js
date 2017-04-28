@@ -35,7 +35,7 @@ xhttp.onreadystatechange = function() {
             var d=schedule[i];
             var trip='up';
             var bus_id=d.bus_id;
-            var link='schedule_editor.php?id=4&m=0&b='+bus_id;
+            var link='schedule_editor?id=4&m=0&b='+bus_id;
             if(d.trip_type==1)
                 trip='down';
             parent.innerHTML+="<tr><td>"+d.bus_name+"</td><td>"+trip+"</td><td>"+d.time+"</td><td>"+d.endpoint+"</td><td>"+d.driver+"</td><td>"+d.bus_number+"</td><td>"+d.comment+"</td><td><a href="+link+" class='btn btn-xs btn-info'>Edit</a></td></tr>";
@@ -43,7 +43,7 @@ xhttp.onreadystatechange = function() {
 
     }
 };
-xhttp.open("POST", "backend/schedule_edit_handler.php", true);
+xhttp.open("POST", "backend/admin_schedule_handler.php", true);
 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xhttp.send("id="+ sid+"&b="+1);
+xhttp.send("id="+ sid+"&b="+bid);
 

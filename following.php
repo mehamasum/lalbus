@@ -71,19 +71,20 @@
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
 
-            console.log(this.responseText);
+            //console.log(this.responseText);
 
             var parent = document.getElementById("table_body");
 
             var reply = JSON.parse(this.responseText);
-            console.log(reply[0]);
+            //console.log(reply[0]);
 
             var idx;
             for( idx=0; idx<reply[0].length; idx++) {
                 following.push(reply[0][idx]["bus_id"]);
             }
 
-            console.log(reply[1]);
+
+           // console.log(reply[1]);
 
             for(idx=0; idx<reply[1].length; idx++) {
                 var d = reply[1][idx];
@@ -106,9 +107,9 @@
             console.log(busses.length);
 
             for(i=0; i<busses.length; i++) {
-                console.log(busses[i]);
-                console.log(i);
-                console.log(busses.length);
+                //console.log(busses[i]);
+                //console.log(i);
+                //console.log(busses.length);
                 var b_id = busses[i]["id"];
                 var b_name = busses[i]["name"];
                 var b_route = busses[i]["route"];
@@ -124,6 +125,7 @@
     xhttp.open("POST", "backend/following_handler.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("id="+ <?php echo $_SESSION['id']; ?>);
+    console.log("Session " +<?php echo $_SESSION['id']; ?>);
 
 </script>
 

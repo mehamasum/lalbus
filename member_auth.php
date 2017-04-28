@@ -5,14 +5,31 @@
  * Date: 4/25/2017
  * Time: 12:16 AM
  */
-    /*session_start();
-    if(!isset($_SESSION['id']))
+session_start();
+include_once ('backend/dbconnect.php');
+if(!isset($_SESSION['id']))
+{
+    ob_start();
+    header('Location: login');
+    ob_end_flush();
+    die();
+}
+else
+{
+    $user = $_SESSION['id'];
+    $sql = "select * from users WHERE id=$user";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    $level=$row['level'];
+    if($level<2)
     {
         ob_start();
-        header('Location: login.php');
+        header('Location: home');
         ob_end_flush();
         die();
-    }*/
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +51,7 @@
 <?php include("includes/static_top.php"); ?>
 <script>
     document.getElementById("page_home").classList.remove("active");
-    document.getElementById("page_following").className += "active";
+    document.getElementById("page_member_authorization").className += "active";
 </script>
 
 <div class="container">
@@ -44,7 +61,7 @@
             <h3>Committee Member Requests</h3>
             <span>Authorize bus committee members</span>
         </span>
-        <button class="btn btn-danger pull-right"> Refresh </button>
+        <button class="btn btn-danger pull-right" onClick="window.location.reload()"> Refresh </button>
     </div>
 
     <br><br>

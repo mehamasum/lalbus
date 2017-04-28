@@ -32,14 +32,6 @@
 					   placeholder="DU Reg No (2017812...)" value="" required="">
 			</div>
 
-			<div class="form-group">
-				<div>
-					<input type="number" name="mob_no" class="form-control form-control-solid placeholder-no-fix"
-						   placeholder="Mobile (015...)" value="" minlength="11" required="">
-				</div>
-
-			</div>
-
             <div class="form-group">
                 <div>
                     <input type="email" name="email" class="form-control form-control-solid placeholder-no-fix"

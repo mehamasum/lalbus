@@ -2,15 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: USER
- * Date: 4/25/2017
- * Time: 12:22 AM
+ * Date: 4/27/2017
+ * Time: 8:27 PM
  */
 
-include_once ('dbconnect.php');
+require_once('dbconnect.php');
 
-$sid = $_POST['id'];
-
-$sql = "select * from  `users` WHERE  (`level_req` =1 and `level`=0);";
+$sql = "SELECT * FROM depts";
 $result = $conn->query($sql);
 $n = $result->num_rows;
 
@@ -23,11 +21,8 @@ foreach($result as $row){
 
 $jsonArr[] = $jsonData;
 
-
 $sql = "select * from bus";
-
 $result = $conn->query($sql);
-
 $n = $result->num_rows;
 
 $jsonData = array();
@@ -36,22 +31,6 @@ foreach($result as $row){
 }
 
 $jsonArr[] = $jsonData;
-
-
-$sql = "select * from depts";
-
-$result = $conn->query($sql);
-
-$n = $result->num_rows;
-
-$jsonData = array();
-foreach($result as $row){
-    $jsonData[] = $row;
-}
-
-$jsonArr[] = $jsonData;
-
 
 echo json_encode($jsonArr)."\n";
-
 ?>
