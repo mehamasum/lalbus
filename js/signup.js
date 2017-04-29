@@ -88,7 +88,7 @@ function validateSignUp() {
 
 function showAlert() {
     $("#success-alert").alert();
-    $("#success-alert").fadeTo(1500, 500).slideUp(500, function(){
+    $("#success-alert").fadeTo(800, 500).slideUp(500, function(){
         $("#success-alert").slideUp(500);
         window.location.href = "following";
     });

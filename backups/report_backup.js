@@ -1,4 +1,6 @@
-
+/**
+ * Created by USER on 4/26/2017.
+ */
 var x = document.getElementById("mapholder");
 
 function getLocation() {
@@ -13,7 +15,7 @@ function showPosition(position) {
 
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
-    var latlon = "Latitude: "+position.coords.latitude + "<br>"+ "Longitude: "+ position.coords.longitude +"<br>";
+    var latlon = "Latitude: "+position.coords.latitude + "<br>"+ "Longitude"+ position.coords.longitude +"<br>";
 
     var map = document.getElementById("mapholder");
     map.innerHTML = latlon;
@@ -58,4 +60,6 @@ function showError(error) {
             x.innerHTML = "An unknown error occurred.";
             break;
     }
-}
+}/**
+ * Created by USER on 4/30/2017.
+ */

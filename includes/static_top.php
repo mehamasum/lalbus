@@ -80,9 +80,9 @@ else { ?>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="home">Home</a></li>
-                    <li><a href="schedule">Schedules</a></li>
-                    <li><a href="search">Search Bus</a></li>
+                    <li id="page_home" class="active"><a href="home">Home</a></li>
+                    <li id="page_schedule"><a href="schedule">Schedules</a></li>
+                    <li id="page_stoppage"><a href="search">Search Bus</a></li>
                     <li><a href="#" data-type='help' data-toggle='modal' data-target='#myModal'>Help</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" >

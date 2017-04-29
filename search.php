@@ -15,30 +15,28 @@
 
 <body onload="initialize()">
 <?php include("includes/static_top.php"); ?>
-<script>
-    document.getElementById("page_home").classList.remove("active");
-    document.getElementById("page_stoppage").className += "active";
-</script>
 <div id="locationField" align="center"  style="width: 100%;padding-top: 10px">
     <label for="autocomplete">Address:</label>
     <input id="autocomplete" align="center" placeholder="Enter your address" type="text" style="width: 60%; height: 3em"></input>
 </div>
-
+<script>
+    document.getElementById("page_home").classList.remove("active");
+    document.getElementById("page_stoppage").className += "active";
+</script>
 <div class="container" style="width: 100%; text-align: center">
     <h3>Search Bus by Stoppage</h3>
     <p>Search Buses which go near your address</p>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Nearest Stoppage</th>
-            <th>Bus Name</th>
-            <th>Distance(km) </th>
+            <th style="text-align: center">Nearest Stoppage</th>
+            <th style="text-align: center">Bus Name</th>
+            <th style="text-align: center">Distance(km) </th>
         </tr>
         </thead>
         <tbody id="buslist">
         </tbody>
     </table>
-</div>
 </div>
 </body>
 

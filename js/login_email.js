@@ -81,7 +81,7 @@ function validateLogin() {
 
 function showAlert(level) {
     $("#success-alert").alert();
-    $("#success-alert").fadeTo(1500, 500).slideUp(500, function(){
+    $("#success-alert").fadeTo(800, 500).slideUp(500, function(){
         $("#success-alert").slideUp(500);
         console.log(level);
         if(level==1)
