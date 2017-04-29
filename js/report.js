@@ -44,9 +44,13 @@ function showPosition(position) {
 }
 
 function showError(error) {
+
+    var modal = document.getElementById('myModal');
+    initModal();
     switch(error.code) {
         case error.PERMISSION_DENIED:
-            x.innerHTML = "User denied the request for Geolocation.";
+            //x.innerHTML = "User denied the request for Geolocation.";
+            modal.style.display = "block";
             break;
         case error.POSITION_UNAVAILABLE:
             x.innerHTML = "Location information is unavailable.";
@@ -58,4 +62,42 @@ function showError(error) {
             x.innerHTML = "An unknown error occurred.";
             break;
     }
+}
+
+function initModal()
+{
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+// When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    flag=0;
+    var autocomplete = new google.maps.places.Autocomplete(
+            /** @type {HTMLInputElement} */(document.getElementById('autocomplete')),
+            {types: ['geocode'],componentRestrictions: {country: "bd"}});
+        google.maps.event.addListener(autocomplete, 'place_changed', function()
+        {
+            try {
+                var place = autocomplete.getPlace();
+            }
+            catch (e) {
+                return;
+                //logMyErrors(e); // pass exception object to error handler
+            }
+            var latitude = place.geometry.location.lat();
+            var longitude = place.geometry.location.lng();
+
+            console.log(latitude);
+            console.log(longitude);
+
+            //getDrivingDistances(latitude,longitude);
+            //getDirectDistance(latitude,longitude);
+        });
 }

@@ -28,7 +28,7 @@ if(!isset($_SESSION['id']))
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="css/static_top.css">
-
+    <link rel="stylesheet" href="css/report_overlay.css">
     <style type="text/css">
         html {
             height: 100%;
@@ -80,7 +80,21 @@ if(!isset($_SESSION['id']))
 
     </div>
 
+
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="locationField" align="center"  style="width: 100%;padding-top: 10px">
+                <label for="autocomplete">Location of the bus:</label>
+                <input id="autocomplete" align="center" placeholder="Enter your address" type="text" style="width: 60%; height: 3em"></input>
+            </div>
+
+        </div>
+
+    </div>
 </div>
 </body>
 <script src="js/report.js"></script>
+<script src="js/report_overlay.js"></script>
 </html>
