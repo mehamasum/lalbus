@@ -1,10 +1,10 @@
 <?php
 
-	$dbUSER = 'lalbus';
-	$dbPASS = 'lalbus';
+	//$dbUSER = 'lalbus';
+	//$dbPASS = 'lalbus';
 
-	//$dbUSER = 'root';
-	//$dbPASS = '';
+	$dbUSER = 'root';
+	$dbPASS = '';
 
 
 	$dbHOST = 'localhost';

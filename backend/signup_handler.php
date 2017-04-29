@@ -64,7 +64,7 @@ else {
 
         $conn->query($follow);
 
-        sendVerificationBySwift($email,$name,$six_digit_random_number);
+        //sendVerificationBySwift($email,$name,$six_digit_random_number);
         echo $_SESSION['id'];
     }
     else {
