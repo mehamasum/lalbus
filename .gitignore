@@ -88,3 +88,6 @@ ENV/
 .ropeproject
 
 .idea/workspace.xml
+
+git update-index --assume-unchanged backend/signup_handler.php
+git update-index --assume-unchanged backend/dbconnect.php
