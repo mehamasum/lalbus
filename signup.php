@@ -96,6 +96,8 @@
 	<div class="copyright">© 2017 Batfia</div>
 
     </body>
+<script src='js/nprogress.js'></script>
+<link rel='stylesheet' href='css/nprogress.css'/>
 <script src="js/signup.js"></script>
 <script src="js/main.js"></script>
 </html>

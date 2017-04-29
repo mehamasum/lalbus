@@ -17,6 +17,11 @@ if ($result->num_rows > 0) {
 
     $hash = $row['password'];
 
+    $status= $row['status'];
+    if($status==1)
+    {
+        echo "UNVERIFIED";
+    }
     if (hash_equals($hash, crypt($password, $hash)) ) {
 
         $_SESSION['id']=$row['id'];

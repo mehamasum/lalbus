@@ -51,17 +51,17 @@ $userid=$_SESSION['id'];
         <br>
         <div class="form-group">
             <input type="password" name="oldpass" class="form-control form-control-solid placeholder-no-fix"
-                   placeholder="Password" value="" minlength="8" required="">
+                   placeholder="Old Password" value="" minlength="8" required="">
         </div>
 
         <div class="form-group">
             <input type="password" name="password" class="form-control form-control-solid placeholder-no-fix"
-                   placeholder="Password" value="" minlength="8" required="">
+                   placeholder="New Password" value="" minlength="8" required="">
         </div>
 
         <div class="form-group">
             <input type="password" name="newpass" class="form-control form-control-solid placeholder-no-fix"
-                   placeholder="Password" value="" minlength="8" required="">
+                   placeholder="Confirm Password" value="" minlength="8" required="">
         </div>
 
 
@@ -80,6 +80,8 @@ $userid=$_SESSION['id'];
 
 
 </body>
+<script src='js/nprogress.js'></script>
+<link rel='stylesheet' href='css/nprogress.css'/>
 <script src="js/change_password.js"></script>
 <script src="js/main.js"></script>
 </html>

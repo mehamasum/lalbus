@@ -45,12 +45,13 @@ function validateSignUp() {
         content.style.display = "block";
     else {
         content.style.display = "none";
+        NProgress.start();
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 //this.responseText;
                 var reply = this.responseText;
-
+                NProgress.done();
                 console.log(reply);
                 console.log(reply.indexOf("ZERO"));
                 console.log(reply.indexOf("ONE"));

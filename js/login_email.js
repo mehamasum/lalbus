@@ -2,7 +2,7 @@
  * Created by USER on 4/23/2017.
  */
 function validateLogin() {
-
+    NProgress.start();
     var email = document.getElementsByName("email")[0].value;
     var password = document.getElementsByName("password")[0].value;
 
@@ -31,6 +31,7 @@ function validateLogin() {
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 //this.responseText;
+                NProgress.done();
                 var reply = this.responseText;
 
                 console.log(reply);
@@ -45,6 +46,11 @@ function validateLogin() {
                 else if (reply.indexOf("ERR") != -1) {
                     found = true;
                     errors.innerHTML += "Wrong Password" + "<br>";
+                }
+                else if(reply.indexOf("UNVERIFIED")!=-1)
+                {
+                    found=true;
+                    errors.innerHTML+="Email not verified"+"<br>";
                 }
                 else if( reply.indexOf("ADMIN")!=-1)
                 {

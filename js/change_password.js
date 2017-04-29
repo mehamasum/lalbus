@@ -4,13 +4,13 @@
 
 function validatePassword()
 {
+    NProgress.start();
     var oldpass=document.getElementsByName('oldpass')[0].value;
     var newpass=document.getElementsByName('password')[0].value;
     var confirmpass=document.getElementsByName('newpass')[0].value;
 
     var content = document.getElementById("errorMessageContent");
     var errors = document.getElementById("errorMessages");
-
     var found=false;
     if(newpass.length<8) {
         found = true;
@@ -29,6 +29,7 @@ function validatePassword()
         content.style.display = "none";
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
+            NProgress.done();
             if (this.readyState == 4 && this.status == 200) {
                 //this.responseText;
                 var reply = this.responseText;

@@ -67,7 +67,8 @@ session_start();
 
 	<div class="copyright">© 2017 Batfia</div>
 </body>
-
+<script src='js/nprogress.js'></script>
+<link rel='stylesheet' href='css/nprogress.css'/>
 <script src="js/login_email.js"></script>
 <script src="js/main.js"></script>
 </html>
