@@ -13,12 +13,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Report | LalBus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="./img/favicon.png">
+    <link rel="icon" href="../img/favicon.png">
     <link rel="canonical" href="">
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <link rel="stylesheet" href="css/report_overlay.css">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="../css/report_overlay.css">
 </head>
 <body onload="initialize()">
 
@@ -38,6 +38,6 @@
 </div>
 
 </body>
-<script src="js/report_overlay.js"></script>
+<script src="overlay_test.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8TAiLd5IswFDLPKwv7vR_y5rrGbpe71U&libraries=places,geometry"></script>
 </html>
