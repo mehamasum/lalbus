@@ -46,21 +46,27 @@ $user_level=$row['level_req'];
     <link rel="canonical" href="">
     <link rel="stylesheet" href="./css/screen.css">
     <link rel="stylesheet" href="./css/profile.css">
-    <script>
-        var bus_default=<?php echo $bus ?>;
-        var dept_default=<?php echo $dept_id ?>;
-        var id=<?php echo $userid ?>;
-        console.log(bus_default);
-        console.log(dept_default);
-    </script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/static_top.css">
 </head>
 
 <body class="login">
-
+<?php include("includes/static_top.php"); ?>
 <div class="logo">
     <a href=""><img src="./img/logo-w.png" alt="Lalbus"></a>
 </div>
 
+<script>
+    document.getElementById("page_home").classList.remove("active");
+    document.getElementById("page_user").className += "active";
+    var bus_default=<?php echo $bus ?>;
+    var dept_default=<?php echo $dept_id ?>;
+    var id=<?php echo $userid ?>;
+    console.log(bus_default);
+    console.log(dept_default);
+</script>
 <div class="content">
 
     <form class="login-form" action="#" method="POST">
@@ -131,6 +137,12 @@ $user_level=$row['level_req'];
             </select>
         </div>
 
+        <div class="alert alert-success" id="success-alert" style="display: none;">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Success! </strong>
+            Your profile was updated successfully.
+        </div>
+
         <div id="errorMessageContent" class="content" style="display: none; color: red">
             <div id="errorMessages"></div>
         </div>
@@ -146,9 +158,14 @@ $user_level=$row['level_req'];
 
 
 </body>
+<script src='js/nprogress.js'></script>
+<link rel='stylesheet' href='css/nprogress.css'/>
 <script src="js/profile.js"></script>
 <script type="text/javascript">
     initialize();
 </script>
 <script src="js/main.js"></script>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="js/bootstrap.min.js"></script>
 </html>

@@ -55,6 +55,7 @@ function  initialize() {
 
 function validateUpdate() {
 
+    console.log("updated");
     var name = document.getElementsByName("name")[0].value;
     var reg_no = document.getElementsByName("reg_no")[0].value;
     var mob_no = document.getElementsByName("mob_no")[0].value;
@@ -66,9 +67,8 @@ function validateUpdate() {
     var bus_id, dept_id;
     var content = document.getElementById("errorMessageContent");
     var errors = document.getElementById("errorMessages");
+    var success=document.getElementById("success-alert");
     var found = false;
-
-    errors.innerHTML="";
 
     if(name.length<3) {
         found = true;
@@ -102,26 +102,14 @@ function validateUpdate() {
         errors.innerHTML+= "Invalid Mobile Number"+"<br>";
     }
 
-    /*
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(!re.test(email)) {
-        found = true;
-        errors.innerHTML+= "Invalid Email"+"<br>";
-    }
-
-
-    if(password.length<8) {
-        found = true;
-        errors.innerHTML+= "Password must be at least 8 characters"+"<br>";
-    }
-    */
-
     if(found)
         content.style.display = "block";
     else {
         content.style.display = "none";
+        NProgress.start();
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
+            NProgress.done();
             if (this.readyState == 4 && this.status == 200) {
                 //this.responseText;
                 var reply = this.responseText;
@@ -136,13 +124,13 @@ function validateUpdate() {
                     errors.innerHTML += "Registration or Mobile already in use" + "<br>";
                 }
                 else if (reply.indexOf("ONE") != -1) {
-                    window.location.href = "following";
+
+                       showAlert();
                 }
                 else {
                     found = true;
                     errors.innerHTML += "Something went wrong" + "<br>";
                 }
-
                 if (found)
                     content.style.display = "block";
                 else {
@@ -158,4 +146,12 @@ function validateUpdate() {
 
         xhttp.send("n="+name+"&r="+reg_no+"&m="+mob_no+"&c="+comm+"&b="+bus_id+"&d="+dept_id+"&id="+id);
     }
+}
+
+function showAlert() {
+    $("#success-alert").alert();
+    $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+        $("#success-alert").slideUp(500);
+        window.location.href = "home";
+    });
 }

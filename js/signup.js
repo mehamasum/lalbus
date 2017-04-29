@@ -66,14 +66,14 @@ function validateSignUp() {
                     errors.innerHTML += "Something went wrong" + "<br>";
                 }
                 else  {
-                    window.location.href = "following";
+
                 }
 
                 if (found)
                     content.style.display = "block";
                 else {
                     content.style.display = "none";
-
+                    showAlert();
                 }
             }
         };
@@ -86,7 +86,12 @@ function validateSignUp() {
     }
 }
 
-
-
+function showAlert() {
+    $("#success-alert").alert();
+    $("#success-alert").fadeTo(1500, 500).slideUp(500, function(){
+        $("#success-alert").slideUp(500);
+        window.location.href = "following";
+    });
+}
 
 

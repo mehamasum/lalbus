@@ -1,5 +1,12 @@
 ﻿<?php
 session_start();
+if(isset($_SESSION['id']))
+{
+    ob_start();
+    header('Location: home');
+    ob_end_flush();
+    die();
+}
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +19,10 @@ session_start();
 	<link rel="icon" href="./img/favicon.png">
 	<link rel="canonical" href="">
 	<link rel="stylesheet" href="./css/screen.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/static_top.css">
 	<style type="text/css">
 		html {
 			height: 100%;
@@ -26,7 +37,7 @@ session_start();
 </head>
 
 <body class="login">
-
+<?php include("includes/static_top.php"); ?>
 	<div class="logo">
 		<a href=""><img src="./img/logo-w.png?res" alt="Lalbus"></a>
 	</div>
@@ -46,6 +57,12 @@ session_start();
 				<input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off"
 					   placeholder="Password" name="password" required="">
 			</div>
+
+            <div class="alert alert-success" id="success-alert" style="display: none;">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong>Success! </strong>
+                Logged in Successfully.
+            </div>
 
             <div id="errorMessageContent" class="content" style="display: none; color: red">
                 <div id="errorMessages"></div>
@@ -71,4 +88,7 @@ session_start();
 <link rel='stylesheet' href='css/nprogress.css'/>
 <script src="js/login_email.js"></script>
 <script src="js/main.js"></script>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="js/bootstrap.min.js"></script>
 </html>

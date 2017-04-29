@@ -9,10 +9,15 @@
     <link rel="icon" href="./img/favicon.png">
 	<link rel="canonical" href="">
 	<link rel="stylesheet" href="./css/screen.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/static_top.css">
+
 </head>
 
 <body class="login">
-
+<?php include("includes/static_top.php"); ?>
 	<div class="logo">
 		<a href=""><img src="./img/logo-w.png" alt="Lalbus"></a>
 	</div>
@@ -77,6 +82,13 @@
 				</select>
 			</div>
 
+            <div class="alert alert-success" id="success-alert" style="display: none;">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong>Success! </strong>
+                Signed Up successful. Please check your email for verification.
+            </div>
+
+
             <div id="errorMessageContent" class="content" style="display: none; color: red">
                 <div id="errorMessages"></div>
             </div>
@@ -96,8 +108,12 @@
 	<div class="copyright">© 2017 Batfia</div>
 
     </body>
+
 <script src='js/nprogress.js'></script>
 <link rel='stylesheet' href='css/nprogress.css'/>
 <script src="js/signup.js"></script>
 <script src="js/main.js"></script>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="js/bootstrap.min.js"></script>
 </html>

@@ -2,7 +2,6 @@
  * Created by USER on 4/23/2017.
  */
 function validateLogin() {
-    NProgress.start();
     var email = document.getElementsByName("email")[0].value;
     var password = document.getElementsByName("password")[0].value;
 
@@ -28,6 +27,7 @@ function validateLogin() {
     else {
         content.style.display = "none";
         var xhttp = new XMLHttpRequest();
+        NProgress.start();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 //this.responseText;
@@ -55,12 +55,11 @@ function validateLogin() {
                 else if( reply.indexOf("ADMIN")!=-1)
                 {
                     console.log("Admin");
-                    window.location.href = "member_auth";
+                    showAlert(1);
                 }
                 else {
-                    window.location.href = "home";
+                    showAlert(0);
                 }
-
 
                 if (found)
                     content.style.display = "block";
@@ -80,6 +79,14 @@ function validateLogin() {
     }
 }
 
-
-
-
+function showAlert(level) {
+    $("#success-alert").alert();
+    $("#success-alert").fadeTo(1500, 500).slideUp(500, function(){
+        $("#success-alert").slideUp(500);
+        console.log(level);
+        if(level==1)
+            window.location.href = "member_auth";
+        else if(level==0)
+            window.location.href = "home";
+    });
+}

@@ -1,10 +1,19 @@
 /**
  * Created by USER on 4/28/2017.
  */
+/*
+$(document).ready (function(){
+    $("#update").click(function showAlert() {
+        $("#success-alert").alert();
+        $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+            $("#success-alert").slideUp(500);
+        });
+    });
+});
+*/
 
 function validatePassword()
 {
-    NProgress.start();
     var oldpass=document.getElementsByName('oldpass')[0].value;
     var newpass=document.getElementsByName('password')[0].value;
     var confirmpass=document.getElementsByName('newpass')[0].value;
@@ -27,6 +36,7 @@ function validatePassword()
         content.style.display = "block";
     else {
         content.style.display = "none";
+        NProgress.start();
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             NProgress.done();
@@ -46,7 +56,8 @@ function validatePassword()
                     errors.innerHTML+="Wrong Password";
                 }
                 else if (reply.indexOf("ONE") != -1) {
-                    window.location.href = "home";
+
+                    showAlert();
                 }
                 else {
                     found = true;
@@ -71,4 +82,12 @@ function validatePassword()
 
 
 
+}
+
+function showAlert() {
+    $("#success-alert").alert();
+    $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+        $("#success-alert").slideUp(500);
+        window.location.href = "home";
+    });
 }

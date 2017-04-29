@@ -13,7 +13,6 @@
 
 })(this, function() {
   var NProgress = {};
-  console.log("NPROGRESS");
   NProgress.version = '0.2.0';
 
   var Settings = NProgress.settings = {

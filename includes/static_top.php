@@ -47,8 +47,8 @@ if(isset($_SESSION['id'])) {
                     <!--<li id="page_stat"><a href="#">Monthly Stats</a></li>-->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <li id="page_user">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
                             <?php echo $_SESSION['name'];
                                 if($status==1)
                                     echo " [Unverified]";
@@ -85,8 +85,8 @@ else { ?>
                     <li><a href="search">Search Bus</a></li>
                     <li><a href="#" data-type='help' data-toggle='modal' data-target='#myModal'>Help</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="login">Login</a></li>
+                <ul class="nav navbar-nav navbar-right" >
+                    <li id="page_login"><a href="login">Login</a></li>
                 </ul>
             </div>
         </div>

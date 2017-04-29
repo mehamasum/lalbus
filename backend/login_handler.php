@@ -22,7 +22,7 @@ if ($result->num_rows > 0) {
     {
         echo "UNVERIFIED";
     }
-    if (hash_equals($hash, crypt($password, $hash)) ) {
+    else if (hash_equals($hash, crypt($password, $hash)) ) {
 
         $_SESSION['id']=$row['id'];
 		$_SESSION['name']=$row['name'];

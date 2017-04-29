@@ -33,16 +33,25 @@ $userid=$_SESSION['id'];
     <link rel="canonical" href="">
     <link rel="stylesheet" href="./css/screen.css">
     <link rel="stylesheet" href="./css/profile.css">
-    <script>
-        var id=<?php echo $userid ?>;
-    </script>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/schedule.css">
+    <link rel="stylesheet" href="css/static_top.css">
 </head>
 
 <body class="login">
-
+<?php include("includes/static_top.php"); ?>
 <div class="logo">
     <a href=""><img src="./img/logo-w.png" alt="Lalbus"></a>
 </div>
+
+<script>
+    var id=<?php echo $userid ?>;
+    document.getElementById("page_home").classList.remove("active");
+    document.getElementById("page_user").className += "active";
+</script>
 
 <div class="content">
 
@@ -64,13 +73,18 @@ $userid=$_SESSION['id'];
                    placeholder="Confirm Password" value="" minlength="8" required="">
         </div>
 
+        <div class="alert alert-success" id="success-alert" style="display: none">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Success! </strong>
+            Password has been updated successfully.
+        </div>
 
         <div id="errorMessageContent" class="content" style="display: none; color: red">
             <div id="errorMessages"></div>
         </div>
 
         <div class="form-actions">
-            <button type="button" onclick="validatePassword()" class="btn red btn-block" data-loading-text="Updating..">Update</button>
+            <button id="update" type="button" onclick="validatePassword()" class="btn red btn-block" data-loading-text="Updating..">Update</button>
         </div>
     </form>
 
@@ -78,6 +92,9 @@ $userid=$_SESSION['id'];
 
 <div class="copyright">© 2017 Batfia</div>
 
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="js/bootstrap.min.js"></script>
 
 </body>
 <script src='js/nprogress.js'></script>
