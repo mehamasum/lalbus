@@ -121,10 +121,9 @@ function validateUpdate() {
 
                 if (reply.indexOf("ZERO") != -1) {
                     found = true;
-                    errors.innerHTML += "Registration or Mobile already in use" + "<br>";
+                    errors.innerHTML += "Registration Number already in use" + "<br>";
                 }
                 else if (reply.indexOf("ONE") != -1) {
-
                        showAlert();
                 }
                 else {
