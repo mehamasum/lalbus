@@ -19,6 +19,7 @@
     <label for="autocomplete">Address:</label>
     <input id="autocomplete" align="center" placeholder="Enter your address" type="text" style="width: 60%; height: 3em"></input>
 </div>
+
 <script>
     document.getElementById("page_home").classList.remove("active");
     document.getElementById("page_stoppage").className += "active";
@@ -26,12 +27,12 @@
 <div class="container" style="width: 100%; text-align: center">
     <h3>Search Bus by Stoppage</h3>
     <p>Search Buses which go near your address</p>
-    <table class="table table-striped">
+    <table class="table table-striped" id="tblStop">
         <thead>
         <tr>
-            <th style="text-align: center">Nearest Stoppage</th>
+            <th style="text-align: center" title="Bus Stops closest to your address">Nearest Stoppage</th>
             <th style="text-align: center">Bus Name</th>
-            <th style="text-align: center">Distance(km) </th>
+            <th style="text-align: center" title="Distance from your address">Distance(km) </th>
         </tr>
         </thead>
         <tbody id="buslist">
@@ -40,6 +41,8 @@
 </div>
 </body>
 
+<script src='js/nprogress.js'></script>
+<link rel='stylesheet' href='css/nprogress.css'/>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8TAiLd5IswFDLPKwv7vR_y5rrGbpe71U&libraries=places,geometry"></script>
 <script src="js/search.js"></script>
 <!-- Bootstrap core JavaScript -->
