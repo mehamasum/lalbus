@@ -39,7 +39,14 @@ if(isset($_SESSION['id'])) {
                         {
                             echo "<li id=\"page_schedule\"><a href=\"schedule\">Schedules</a></li>";
                             echo "<li id=\"page_admin_schedule\"><a href=\"admin_schedule\">Edit Schedule</a></li>";
-                            echo "<li id=\"page_member_authorization\"><a href=\"member_auth\">Verify Members</a></li>";
+                            echo " <li id=\"page_member_authorization\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Verify
+                            <span class=\"caret\"></span></a>
+                                <ul class=\"dropdown-menu\">
+                                    <li><a href=\"member_auth\">Verify Members</a></li>
+                                    <li><a href=\"schedule_auth\">Verify Schedule</a></li>
+                                    <li><a href=\"stoppage_auth\">Verify Stoppages</a></li>
+                                </ul>
+                            </li>";
                         }
                     ?>
 

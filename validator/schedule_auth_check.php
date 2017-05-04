@@ -30,7 +30,5 @@ else
         ob_end_flush();
         die();
     }
-    echo $user;
 }
-
 ?>

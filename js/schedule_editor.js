@@ -1,9 +1,65 @@
 /**
  * Created by USER on 4/27/2017.
  */
+
+
+
+
+
 function setValue() {
+
+    var time = document.getElementsByName("time")[0];
     var trip_type = document.getElementsByName("trip_type")[0];
-    trip_type.value=trip_val;
+    var driver = document.getElementsByName("driver")[0];
+    var bus_no = document.getElementsByName("bus_no")[0];
+    var endpoint = document.getElementsByName("endpoint")[0];
+    var comment = document.getElementsByName("notes")[0];
+
+    var content = document.getElementById("errorMessageContent");
+    var errors = document.getElementById("errorMessages");
+
+    errors.innerHTML="";
+    var found =false;
+
+    content.style.display = "none";
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //this.responseText;
+            var reply =this.responseText;
+            console.log(reply);
+
+            if( reply.indexOf("UNAUTHORIZED")!=-1)
+            {
+                console.log("UNAUTHORIZED ACCESS");
+                errors.innerHTML="You don't have permission to edit this schedule"+ "<br>";
+            }
+            else
+            {
+                var data=JSON.parse(reply)['item'];
+                time.value=data['time'];
+                trip_type.value=data['trip_type'];
+                driver.value=data['driver'];
+                bus_no.value=data['bus_number'];
+                endpoint.value=data['endpoint'];
+                comment.value=data['comment'];
+
+            }
+
+            if (found)
+                content.style.display = "block";
+            else {
+                content.style.display = "none";
+
+            }
+        }
+    };
+    xhttp.open("POST", "backend/schedule_provider.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    //console.log(bus);
+
+    xhttp.send("id="+schedule_id+"&m="+mode+"&b="+bus_id);
 }
 
 function validateScheduleEdit() {
@@ -17,7 +73,6 @@ function validateScheduleEdit() {
 
     var content = document.getElementById("errorMessageContent");
     var errors = document.getElementById("errorMessages");
-
     errors.innerHTML="";
     var found =false;
 
@@ -38,7 +93,7 @@ function validateScheduleEdit() {
                 errors.innerHTML += "Update Failed" + "<br>";
             }
             else if (reply.indexOf("ONE") != -1) {
-                window.location.href = "schedule_edit";
+                window.location.href = "admin_schedule";
             }
             else if( reply.indexOf("UNAUTHORIZED")!=-1)
             {

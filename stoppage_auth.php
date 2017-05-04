@@ -2,17 +2,18 @@
 /**
  * Created by PhpStorm.
  * User: USER
- * Date: 4/25/2017
- * Time: 12:16 AM
+ * Date: 5/5/2017
+ * Time: 1:20 AM
  */
 include_once("validator/admin_auth_check.php");
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Member Validation | Lalbas</title>
+    <title>Stoppage Validation | Lalbas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="./img/favicon.png">
     <link rel="canonical" href="">
@@ -34,29 +35,27 @@ include_once("validator/admin_auth_check.php");
 
     <div>
         <span>
-            <h3>Committee Member Requests</h3>
-            <span>Authorize bus committee members</span>
+            <h3>Stoppage Update Requests</h3>
+            <span>Confirm Suggested Updates to Bus Stoppages</span>
         </span>
         <button class="btn btn-danger pull-right" onClick="window.location.reload()"> Refresh </button>
     </div>
 
     <br><br>
 
-
-
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Registration Number</th>
-            <th>Mobile Number</th>
-            <th>Email</th>
-            <th>Department</th>
+            <th>Stoppage Name</th>
             <th>Bus</th>
+            <th>Stoppage Type</th>
+            <th>Remarks</th>
+            <th>User</th>
+            <th title="Time of update request">Suggested at</th>
             <th></th>
         </tr>
         </thead>
-        <tbody id="usertable_body">
+        <tbody id="stoppage_body">
         </tbody>
     </table>
 
@@ -66,7 +65,7 @@ include_once("validator/admin_auth_check.php");
 </body>
 
 <!-- Bootstrap core JavaScript -->
-<script src="js/member_auth.js"></script>
+<script src="js/stoppage_auth.js"></script>
 <script src="js/jquery-3.1.1.min.js"></script>
 <!-- Placed at the end of the document so the pages load faster -->
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
