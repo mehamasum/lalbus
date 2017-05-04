@@ -61,6 +61,11 @@ function validateSignUp() {
                     found = true;
                     errors.innerHTML += "Registration or Mobile already in use" + "<br>";
                 }
+                else if(reply.indexOf("INVALID")!=-1)
+                {
+                    found=true;
+                    errors.innerHTML+="Invalid Email Address"+"<br>";
+                }
                 else if (reply.indexOf("ERR") != -1){
                     found = true;
                     errors.innerHTML += "Something went wrong" + "<br>";

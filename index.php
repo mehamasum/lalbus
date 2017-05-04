@@ -1,5 +1,5 @@
 
-<?php include("includes/guest_session_check.php"); ?>
+<?php include("validator/guest_session_check.php"); ?>
 <!DOCTYPE html>
 <html>
 

@@ -46,6 +46,7 @@ include_once("validator/admin_auth_check.php");
     <table class="table table-striped">
         <thead>
         <tr>
+            <th>Update/New</th>
             <th>Bus</th>
             <th>Trip Type</th>
             <th>Time</th>
@@ -54,7 +55,9 @@ include_once("validator/admin_auth_check.php");
             <th>Bus Number</th>
             <th>Comment</th>
             <th title="Update Suggested By this user">User</th>
+            <th title="Positive Reputation">User Reputation</th>
             <th title="Time of update request">Suggested at</th>
+            <th></th>
             <th></th>
         </tr>
         </thead>

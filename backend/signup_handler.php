@@ -63,9 +63,12 @@ else {
         //echo $follow;
 
         $conn->query($follow);
+        if(sendVerificationBySwift($email,$name,$six_digit_random_number))
+            echo $_SESSION['id'];
+        else
+            echo "INVALID";
 
-        sendVerificationBySwift($email,$name,$six_digit_random_number);
-        echo $_SESSION['id'];
+
     }
     else {
         echo "ERR";
@@ -98,8 +101,10 @@ Your account has been created, you can login with the following credentials afte
 ------------------------
 Username: '.$name.'
 ------------------------
- 
-Please click this link to activate your account:.
+
+If this wasn\'t you please ignore this email.
+
+Otherwise please click this link to activate your account:.
  '.$address;
 
         $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
@@ -114,7 +119,15 @@ Please click this link to activate your account:.
             ->setTo(array($email))
             ->setBody($body);
 
-        $result = $mailer->send($message);
+        if (!$mailer->send($message, $failures))
+        {
+            echo "Failures:";
+            print_r($failures);
+            return false;
+        }
+        else
+            return true;
+
 }
 ?>
 

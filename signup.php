@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿<?php include_once("validator/guest_session_check.php") ?>
+
+<!DOCTYPE html>
 
 <html>
 

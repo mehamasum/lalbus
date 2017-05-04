@@ -1,0 +1,20 @@
+Schedule_request:
+2- Delete
+1 - New
+0 - Update
+
+
+Bus :
+0 - Up Trip
+1- Down Trip
+
+User : 0
+Committee : 1
+Admin : 2
+
+Status :
+1 : Unverified
+2 : Verified
+
+Checks for UAC
+MYSQLI Escape strings for avoiding sql injection

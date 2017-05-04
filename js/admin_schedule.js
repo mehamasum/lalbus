@@ -27,6 +27,7 @@ xhttp.onreadystatechange = function() {
             var bus_id=d["bus_id"];
             var obj={"id":d["id"], "bus_id":bus_id,"bus_name":buses[bus_id-1].name, "trip_type":d["trip_type"],"time":d["time"],"endpoint":d["endpoint"],"driver":d["driver"],"bus_number":d["bus_number"],"comment":d["comment"]};
             schedule.push(obj);
+            console.log(obj);
         }
 
         var i=0;
@@ -38,6 +39,7 @@ xhttp.onreadystatechange = function() {
             var link='schedule_editor?id='+d.id+'&m=0&b='+bus_id;
             if(d.trip_type==1)
                 trip='down';
+            console.log(d);
             parent.innerHTML+="<tr id=row_"+d.id+"><td>"+d.bus_name+"</td><td>"+trip+"</td><td>"+d.time+"</td><td>"+d.endpoint+"</td><td>"+d.driver+"</td><td>"+d.bus_number+"</td><td>"+d.comment+"</td><td><a href="+link+" class='btn btn-xs btn-info'>Edit</a></td><td><button class=\"btn-xs btn-danger pull-right\" onclick=deleteTrip("+d.id+")>Delete</button></td></tr>";
         }
 
@@ -55,7 +57,8 @@ function addTrip()
 
 function deleteTrip(s_id)
 {
-    var txt;
+    var index = schedule.map(function(o) {  return o.id; }).indexOf(s_id);
+    var obj=schedule[index];
     console.log(s_id);
     if (confirm("Are you sure you want to delete this trip ?\nYour name will be logged") == true) {
         document.getElementById('row_'+s_id).innerHTML = "";
@@ -64,7 +67,7 @@ function deleteTrip(s_id)
             if (this.readyState == 4 && this.status == 200) {
                 //this.responseText;
                 var reply = this.responseText;
-
+                alert("Your Delete Request is pending admin approval. Thanks for your update.");
                 //TODO : ADD to DELETE REQUEST
                 console.log(reply);
             }
@@ -73,9 +76,7 @@ function deleteTrip(s_id)
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
         //console.log(bus);
-
-        xhttp.send("mode="+2+"&id="+s_id);
-        alert("Your Delete Request is pending admin approval. Thanks for your update.");
+        xhttp.send("time="+obj.time+"&trip_type="+obj.trip_type+"&driver="+obj.driver+"&bus_no="+obj.bus_number+"&endpoint="+obj.endpoint+"&comment="+obj.comment+"&id="+s_id+"&mode="+2+"&bus_id="+bus_id);
     }
 
 }

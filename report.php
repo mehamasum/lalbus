@@ -1,4 +1,4 @@
-<?php include_once("includes/login_session_check.php") ?>
+<?php include_once("validator/login_session_check.php") ?>
 
 <!DOCTYPE html>
 <html>

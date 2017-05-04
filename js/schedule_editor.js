@@ -3,9 +3,6 @@
  */
 
 
-
-
-
 function setValue() {
 
     var time = document.getElementsByName("time")[0];

@@ -1,17 +1,21 @@
 /**
  * Created by USER on 5/5/2017.
- * TODO :INCOMPLETE
  */
 
+
+//Bus	Trip Type	Time	Endpoint	Driver	Bus Number	Comment	User	User Reputation	Suggested at
 
 var users=[];
 var buses=[];
 var schedule=[];
 
-function toggleStatus(id, state) {
-    console.log("toggle Status:"+ state);
+function toggleStatus(id, state,ref_schedule,update_mode) {
+   // console.log("toggle Status:"+ state+" "+update_mode);
+    var btnr,btna;
 
-    var btn = document.getElementById("btn_"+id);
+    btnr=document.getElementById("btn_r"+id);
+    btna=document.getElementById("btn_a"+id);
+
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -22,21 +26,23 @@ function toggleStatus(id, state) {
             if (reply.indexOf("ONE") != -1) {
 
                 if(state===1) { //Accepted
-                    btn.innerHTML="Reject";
-                    btn.className = "btn btn-danger pull-right";
-                    btn.setAttribute("onClick", "toggleStatus("+id+","+0+")");
+                    btna.innerHTML="Accepted";
+                    btna.className = "btn btn-success pull-right";
+                    btna.setAttribute('disabled','true');
+                    btnr.setAttribute('disabled','true');
                 }
                 else if(state ===0) {
-                    btn.innerHTML="Accept";
-                    btn.className = "btn btn-success pull-right";
-                    btn.setAttribute("onClick", "toggleStatus("+id+","+1+")");
+                    btnr.innerHTML="Rejected";
+                    btnr.className = "btn btn-danger pull-right";
+                    btnr.setAttribute('disabled','true');
+                    btna.setAttribute('disabled','true');
                 }
             }
         }
     };
     xhttp.open("POST", "backend/schedule_auth_changer.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("id="+schedule[id].id+"&state="+state);
+    xhttp.send("id="+schedule[id].id+"&state="+state+"&mode="+update_mode+"&ref="+ref_schedule);
 
 }
 
@@ -52,44 +58,53 @@ function initialize(sid)
 
             var reply = JSON.parse(this.responseText);
 
-
-            for( idx=0; idx<reply[2].length; idx++) {
-                var d=reply[2][idx];
-                var obj={"id":d["id"],"name":d["name"],"short_name":d["short_name"]};
-                depts.push(obj);
-            }
-
-
-            for(idx=0; idx<reply[1].length; idx++) {
-                var d = reply[1][idx];
+            for(idx=0; idx<reply[2].length; idx++) {
+                var d = reply[2][idx];
                 var obj={"id":d["id"], "name":d["name"], "route":d["route"]};
                 buses.push(obj);
             }
 
-            for( idx=0; idx<reply[0].length; idx++) {
-                var d=reply[0][idx];
-                var busname=buses[d["bus_id"]-1].name;
-                var deptid=depts[d["dept_id"]-1];
-                if(deptid!=null)
-                    var dept=deptid.name;
-                if(dept ==null)
-                    dept="";
-                var email=d["email"];
-                if(email==null)
-                    email="";
-                var obj={"id":d["id"],"name":d["name"],"reg_no":d["reg_no"],"mob":d["mob_no"],"email":email,"dept":dept,"bus":busname,"status":0};
+            for( idx=0; idx<reply[1].length; idx++) {
+                var d=reply[1][idx];
+                var obj={"id":d["id"],"name":d["name"],"level":d["level"],"pos_repu":d["pos_repu"],"neg_repu":d["neg_repu"]};
                 users.push(obj);
             }
 
-            var i=0;
 
-            for(i=0; i<users.length; i++) {
-                var obj=users[i];
-                if(users[i].status==1) {
-                    parent.innerHTML+="<tr><td>"+obj.name+"</td><td>"+obj.reg_no+"</td><td>"+obj.mob+"</td><td>"+obj.email+"</td><td>"+obj.dept+"</td><td>"+obj.bus+"</td><td><button onclick='toggleStatus("+i+","+0+")' id='btn_"+i+"' class='btn btn-danger pull-right'>Reject</button></td></tr>";
-                } else {
-                    parent.innerHTML+="<tr><td>"+obj.name+"</td><td>"+obj.reg_no+"</td><td>"+obj.mob+"</td><td>"+obj.email+"</td><td>"+obj.dept+"</td><td>"+obj.bus+"</td><td><button onclick='toggleStatus("+i+","+1+")' id='btn_"+i+"' class='btn btn-success pull-right'>Accept</button></td></tr>";
+            //Update type Bus 	Trip Type	Time	Endpoint	Driver	Bus Number	Comment	User	User Reputation	Suggested at
+            for( idx=0; idx<reply[0].length; idx++) {
+                var d=reply[0][idx];
+                var busname=buses[d["bus_id"]-1].name;
+                var index = users.map(function(o) {  return o.id; }).indexOf(d['user_id']);
+                var username=users[index].name;
+                var pos_repu=users[index].pos_repu;
+                var update_type="Update";
+                var ref_schedule=d['old_schedule'];
+                if(d['update_type']==0)
+                {
+                    update_type="Update";
                 }
+                else if(d['update_type']==1)
+                {
+                    update_type="New";
+                    ref_schedule=0;
+                }
+                else if(d['update_type']==2)
+                {
+                    update_type="Delete";
+                }
+
+                var trip_type="Up Trip";
+                if(d.trip_type==1)
+                    trip_type="Down Trip";
+                var obj={"id":d['id'],"update_mode":d['update_type'],"update_type":update_type,"ref_schedule":ref_schedule,"bus":busname,"trip_type":trip_type,"time":d['time'],"endpoint":d['endpoint'],"driver":d['driver'],"bus_number":d['bus_number'],"comment":d['comment'],"username":username,"pos_repu":pos_repu,"timestamp":d['timestamp']};
+                schedule.push(obj);
+            }
+
+            var i=0;
+            for(i=0; i<schedule.length; i++) {
+                var obj=schedule[i];
+                parent.innerHTML += "<tr><td>" + obj.update_type + "</td><td>" + obj.bus + "</td><td>" + obj.trip_type + "</td><td>" + obj.time + "</td><td>" + obj.endpoint + "</td><td>" + obj.driver + "</td><td>" + obj.bus_number + "</td><td>" + obj.comment + "</td><td>" + obj.username + "</td><td>" + obj.pos_repu + "</td><td>" + obj.timestamp + "</td><td><button onclick='toggleStatus(" + i + "," + 1 + "," + obj.ref_schedule +"," + obj.update_mode + ")' id='btn_a" + i + "' class='btn btn-success pull-right'>Accept</button></td><td><button onclick='toggleStatus(" + i + "," + 0 + "," + obj.ref_schedule +"," + obj.update_mode + ")' id='btn_r" + i + "' class='btn btn-danger pull-right'>Reject</button></td></tr>";
             }
 
         }

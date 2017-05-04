@@ -93,7 +93,7 @@ else { ?>
                     <li><a href="#" data-type='help' data-toggle='modal' data-target='#myModal'>Help</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" >
-                    <li id="page_user"><a href="login">Login</a></li>
+                    <li id="page_user"><a href="../login.php">Login</a></li>
                 </ul>
             </div>
         </div>

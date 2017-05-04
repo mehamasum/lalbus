@@ -1,4 +1,4 @@
-﻿<?php include_once("includes/guest_session_check.php") ?>
+﻿<?php include_once("validator/guest_session_check.php") ?>
 
 <!DOCTYPE html>
 <html>
@@ -7,9 +7,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Login | LalBus</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="./img/favicon.png">
+	<link rel="icon" href="img/favicon.png">
 	<link rel="canonical" href="">
-	<link rel="stylesheet" href="./css/screen.css">
+	<link rel="stylesheet" href="css/screen.css">
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +30,7 @@
 <body class="login">
 <?php include("includes/static_top.php"); ?>
 	<div class="logo">
-		<a href=""><img src="./img/logo-w.png?res" alt="Lalbus"></a>
+		<a href=""><img src="img/logo-w.png?res" alt="Lalbus"></a>
 	</div>
 
 	<div class="content">
@@ -64,7 +64,7 @@
 			
 			<div class="create-account">
 				<p>
-					<a href="signup">Create an account</a>
+					<a href="signup.php">Create an account</a>
 				</p>
 			</div>
 		</form>

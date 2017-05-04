@@ -11,19 +11,16 @@ if(!isset($_SESSION['id']))
     die();
 }
 $mode=$_POST['mode'];
-$id=$_POST['id'];
+$schedule_id=$_POST['id'];
 
-if($mode!=2)
-{
-    $time=$_POST['time'];
-    $trip_type=$_POST['trip_type'];
-    $driver=$_POST['driver'];
-    $bus_no=$_POST['bus_no'];
-    $endpoint=$_POST['endpoint'];
-    $comment=$_POST['comment'];
 
-    $bus_id=$_POST['bus_id'];
-}
+$time=$_POST['time'];
+$trip_type=$_POST['trip_type'];
+$driver=$_POST['driver'];
+$bus_no=$_POST['bus_no'];
+$endpoint=$_POST['endpoint'];
+$comment=$_POST['comment'];
+$bus_id=$_POST['bus_id'];
 
 
 $user = $_SESSION['id'];
@@ -38,29 +35,11 @@ if($level==0)
     die();
 }
 
-if($mode==0) { // Update
-    $sql="UPDATE schedule SET time='$time',trip_type='$trip_type',driver='$driver',bus_number='$bus_no',endpoint='$endpoint',comment='$comment' where id=$id;";
-    echo $sql;
+    $sql="INSERT INTO `schedule_request` (`id`,`update_type` ,`old_schedule`,`bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`,`user_id`) VALUES (NULL,'$mode','$schedule_id', '$bus_id', '$trip_type', '$time', '$endpoint', '$driver', '$bus_no', '$comment','$user');";
     if ($conn->query($sql) == TRUE) {
         echo "ONE";
     }
     else {
         echo "ERR";
     }
-}
-else if ($mode==1) { // Insert
-    $sql="INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `start_point`, `driver`, `bus_number`, `comment`) VALUES (NULL, '$bus_id', '$trip_type', '$time', '$endpoint', '$driver', '$bus_no', '$comment');";
-    if ($conn->query($sql) == TRUE) {
-        echo "ONE";
-    }
-    else {
-        echo "ERR";
-    }
-}
-else if($mode==2)
-{
-    //TODO : Insert into Schedule Update Request Table
-    echo "DELETE";
-}
-
 ?>
