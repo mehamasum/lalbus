@@ -6,7 +6,6 @@
 
 #container_table {
     width: 100%;
-    background-color: #ffcc33;
     margin: auto;
 }
 #first {
@@ -15,7 +14,7 @@
     height: 300px;
 }
 #second {
-    width: 80%;
+    width: 70%;
     float: left;
     height: 300px;
 }

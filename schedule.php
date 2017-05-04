@@ -20,7 +20,7 @@
         </style>
 
     </head>
-    <body onload="search(1)">
+    <body onload="bus_list()">
     <?php include("includes/static_top.php");?>
     <script>
         var activeButton='btn_1';
@@ -35,31 +35,16 @@
     <div id="container_table">
         <div id="first" style="text-align: center">
             <p><b>Select Bus:</b></p>
-            <ul class="list-unstyled">
+            <div class="btn-group-vertical" id="bus">
+                <button type="button" class="btn btn-primary">Apple</button>
+            </div>
+        </div>
 
-            <?php
-            include_once ('backend/dbconnect.php');
-            $sql = "select * from bus";
-
-            $result = $conn->query($sql);
-
-            $n = $result->num_rows;
-            for($i=0; $i<$n; $i++) {
-                $row = $result->fetch_assoc();
-                $name = $row['name'];
-                $route = $row['route'];
-                $id = $row['id'];
-
-                echo "<li><button id='btn_".$id."' class='btn btn-block' onclick='search($id)'>$name</button></li>";
-            }
-            ?>
-            </ul>
-         </div>
-
-        <div id="second">
-            <div id="received_table"></div>
+        <div id="second" >
+            <div id="received_table" class="table-responsive"></div>
         </div>
     </div>
+
 </body>
     <script src="js/schedule.js"></script>
     <!-- Bootstrap core JavaScript -->

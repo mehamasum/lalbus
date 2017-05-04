@@ -35,7 +35,6 @@ else
     table {
         float : left;
         border-collapse: collapse;
-        width: 45%;
         margin-right: 2.5%;
         margin-left: 2.5%;
     }
@@ -52,6 +51,7 @@ else
         color: black;
     }
 </style>
+
 <table class="table" >
     <thead>
     <tr>
@@ -89,7 +89,6 @@ else
     ?>
     </tbody>
 </table>
-
 <?php
 
 //$query = "SELECT * FROM schedule";

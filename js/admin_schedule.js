@@ -35,7 +35,7 @@ xhttp.onreadystatechange = function() {
             var d=schedule[i];
             var trip='up';
             var bus_id=d.bus_id;
-            var link='schedule_editor?id=4&m=0&b='+bus_id;
+            var link='schedule_editor?id='+d.id+'&m=0&b='+bus_id;
             if(d.trip_type==1)
                 trip='down';
             parent.innerHTML+="<tr id=row_"+d.id+"><td>"+d.bus_name+"</td><td>"+trip+"</td><td>"+d.time+"</td><td>"+d.endpoint+"</td><td>"+d.driver+"</td><td>"+d.bus_number+"</td><td>"+d.comment+"</td><td><a href="+link+" class='btn btn-xs btn-info'>Edit</a></td><td><button class=\"btn-xs btn-danger pull-right\" onclick=deleteTrip("+d.id+")>Delete</button></td></tr>";

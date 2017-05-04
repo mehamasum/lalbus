@@ -76,6 +76,9 @@ else
     var schedule_id=<?php echo $schedule_id?>;
     var mode=<?php echo $mode?>;
     var bus_id=<?php echo $bus_id?>;
+    var trip_val=<?php echo $trip_type ?>;
+    console.log(schedule_id);
+    console.log(trip_val);
 </script>
 
 <body class="login">
@@ -97,13 +100,7 @@ else
         <div class="form-group">
             <select name="trip_type" class="form-control form-control-solid placeholder-no-fix">
                 <option value="0" >Up Trip</option>
-                <?php
-                if($trip_type==1)
-                    echo "<option value=\"1\" selected=\"selected\">Down Trip</option>";
-                else
-                    echo "<option value=\"1\">Down Trip</option>"
-                ?>
-
+                <option value="1" >Down Trip</option>
             </select>
         </div>
 
@@ -131,7 +128,7 @@ else
         </div>
 
         <div class="form-group">
-            <input type="number" name="bus_no" class="form-control form-control-solid placeholder-no-fix"
+            <input type="text" name="bus_no" class="form-control form-control-solid placeholder-no-fix"
                    placeholder="Bus Number" value="<?php echo $bus_number ?>" required="">
         </div>
 
@@ -151,5 +148,8 @@ else
 
 </body>
 <script src="js/schedule_editor.js"></script>
+<script>
+    setValue();
+</script>
 <script src="js/main.js"></script>
 

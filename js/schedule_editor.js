@@ -1,6 +1,11 @@
 /**
  * Created by USER on 4/27/2017.
  */
+function setValue() {
+    var trip_type = document.getElementsByName("trip_type")[0];
+    trip_type.value=trip_val;
+}
+
 function validateScheduleEdit() {
 
     var time = document.getElementsByName("time")[0].value;
