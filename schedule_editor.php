@@ -1,3 +1,4 @@
+<?php include_once("includes/login_session_check.php") ?>
 <?php
 /**
  * Created by PhpStorm.
@@ -5,16 +6,7 @@
  * Date: 4/27/2017
  * Time: 1:11 PM
  */
-    session_start();
     include_once ('backend/dbconnect.php');
-    if(!isset($_SESSION['id']))
-    {
-        ob_start();
-        header('Location: login');
-        ob_end_flush();
-        die();
-    }
-
 
 $schedule_id=$_GET['id'];
 $mode=$_GET['m'];

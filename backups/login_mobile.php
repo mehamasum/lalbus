@@ -12,7 +12,7 @@ session_start();
     <link rel="icon" href="../img/favicon.png">
     <link rel="canonical" href="">
     <link rel="stylesheet" href="../css/screen.css">
-    <script src="login.js"></script>
+    <script src="login_mobile.js"></script>
     <script src="../js/main.js"></script>
 
     <style type="text/css">

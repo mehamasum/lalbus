@@ -9,7 +9,6 @@ function  initialize() {
     var dept_input = document.getElementsByName('dept_name')[0];
     var dept_dataList = document.getElementById('deptlist');
     var bus_input = document.getElementsByName('bus')[0];
-    var bus_dataList = document.getElementById('buslist');
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -30,10 +29,11 @@ function  initialize() {
 
             reply[1].forEach(function(item) {
                 var option = document.createElement('option');
-                option.value = item['name'];
+                option.value = item['id'];
+                option.text=item['name'];
                 //var obj={"id":item["id"], "name":item["name"], "route":item["route"]};
                 buses.push(option.value);
-                bus_dataList.appendChild(option);
+                bus_input.appendChild(option);
             });
 
 
@@ -80,13 +80,6 @@ function validateUpdate() {
         errors.innerHTML+= "Invalid DU Registration Number"+"<br>";
     }
 
-    if(buses.indexOf(bus)==-1)
-    {
-        found = true;
-        errors.innerHTML+= "Invalid Bus Name"+"<br>";
-    }
-    else
-        bus_id=buses.indexOf(bus)+1;
 
     if(depts.indexOf(deptname)==-1)
     {

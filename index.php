@@ -1,15 +1,5 @@
-<?php
-session_start();
-if(isset($_SESSION['id']))
-{
-    ob_start();
-    header('Location: home');
-    ob_end_flush();
-    die();
-}
-?>
 
-
+<?php include("includes/guest_session_check.php"); ?>
 <!DOCTYPE html>
 <html>
 
@@ -29,8 +19,8 @@ if(isset($_SESSION['id']))
 
 </head>
 
-<body class="login">
-
+<script src="js/bus_list.js"></script>
+<body class="login" onload="bus_initialize('bus')">
 
     <?php include("includes/static_top.php"); ?>
 
@@ -40,8 +30,8 @@ if(isset($_SESSION['id']))
             <h3 class="form-title font-dark">Where is my...</h3>
 
             <div class="form-group">
-                <input type="text" name="bus"  list="buslist" class="form-control form-control-solid placeholder-no-fix" list="buslist" placeholder="Type Bus Name Here" value="" minlength="3" required="" >
-                <datalist id="buslist"></datalist>
+                <select name="bus" class="form-control form-control-solid placeholder-no-fix">
+                </select>
             </div>
 
             <div class="form-actions">
@@ -63,10 +53,6 @@ if(isset($_SESSION['id']))
 
 <!-- Bootstrap core JavaScript -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="js/bus_list.js"></script>
-<script type="text/javascript">
-    initialize();
-</script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="js/bootstrap.min.js"></script>
 

@@ -16,7 +16,9 @@
 
 </head>
 
-<body class="login">
+<script src="js/bus_list.js"></script>
+
+<body class="login" onload="bus_initialize('bus')">
 <?php include("includes/static_top.php"); ?>
 	<div class="logo">
 		<a href=""><img src="./img/logo-w.png" alt="Lalbus"></a>
@@ -54,23 +56,6 @@
 
 			<div class="form-group">
 				<select name="bus" class="form-control form-control-solid placeholder-no-fix">
-					<?php
-						require_once('backend/dbconnect.php');
-						// already in ?
-						$sql = "SELECT * FROM bus";
-						$result = $conn->query($sql);
-
-						$total = $result->num_rows;
-
-						for($i=0; $i<$total; $i++) {
-							$row = $result->fetch_assoc();
-
-							$id = $row["id"];
-							$name = $row["name"];
-
-							echo "<option value='$id'>$name</option>";
-						}
-					?>
 				</select>
 			</div>
 

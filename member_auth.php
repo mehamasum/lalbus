@@ -5,31 +5,7 @@
  * Date: 4/25/2017
  * Time: 12:16 AM
  */
-session_start();
-include_once ('backend/dbconnect.php');
-if(!isset($_SESSION['id']))
-{
-    ob_start();
-    header('Location: login');
-    ob_end_flush();
-    die();
-}
-else
-{
-    $user = $_SESSION['id'];
-    $sql = "select * from users WHERE id=$user";
-    $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
-    $level=$row['level'];
-    if($level<2)
-    {
-        ob_start();
-        header('Location: home');
-        ob_end_flush();
-        die();
-    }
-}
-
+include_once("backend/validator/admin_session_check.php");
 ?>
 
 <!DOCTYPE html>

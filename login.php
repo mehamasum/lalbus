@@ -1,13 +1,4 @@
-﻿<?php
-session_start();
-if(isset($_SESSION['id']))
-{
-    ob_start();
-    header('Location: home');
-    ob_end_flush();
-    die();
-}
-?>
+﻿<?php include_once("includes/guest_session_check.php") ?>
 
 <!DOCTYPE html>
 <html>
@@ -41,8 +32,6 @@ if(isset($_SESSION['id']))
 	<div class="logo">
 		<a href=""><img src="./img/logo-w.png?res" alt="Lalbus"></a>
 	</div>
-
-
 
 	<div class="content">
 
@@ -84,9 +73,15 @@ if(isset($_SESSION['id']))
 
 	<div class="copyright">© 2017 Batfia</div>
 </body>
+
+<script>
+    document.getElementById("page_home").classList.remove("active");
+    //document.getElementById("page_user").className += "active";
+</script>
+
 <script src='js/nprogress.js'></script>
 <link rel='stylesheet' href='css/nprogress.css'/>
-<script src="js/login_email.js"></script>
+<script src="js/login.js"></script>
 <script src="js/main.js"></script>
 <script src="js/jquery-3.1.1.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>

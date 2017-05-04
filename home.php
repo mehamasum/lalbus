@@ -1,14 +1,4 @@
-<?php
-session_start();
-if(!isset($_SESSION['id']))
-{
-    ob_start();
-    header('Location: login');
-    ob_end_flush();
-    die();
-}
-?>
-
+<?php include_once("includes/login_session_check.php") ?>
 
 <!DOCTYPE html>
 <html lang="en">

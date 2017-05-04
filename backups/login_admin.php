@@ -15,9 +15,9 @@ session_start();
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Admin Login | LalBus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="./img/favicon.png">
+    <link rel="icon" href="../img/favicon.png">
     <link rel="canonical" href="">
-    <link rel="stylesheet" href="./css/screen.css">
+    <link rel="stylesheet" href="../css/screen.css">
 
     <style type="text/css">
         html {
@@ -35,7 +35,7 @@ session_start();
 <body class="login">
 
 <div class="logo">
-    <a href=""><img src="./img/logo-w.png?res" alt="Lalbus"></a>
+    <a href=""><img src="../img/logo-w.png?res" alt="Lalbus"></a>
 </div>
 
 
@@ -65,7 +65,7 @@ session_start();
 
         <div class="create-account">
             <p>
-                <a href="signup">Create an account</a>
+                <a href="../signup.php">Create an account</a>
             </p>
         </div>
     </form>
@@ -74,6 +74,6 @@ session_start();
 
 <div class="copyright">© 2017 Batfia</div>
 </body>
-<script src="js/login_admin.js"></script>
-<script src="js/main.js"></script>
+<script src="login_admin.js"></script>
+<script src="../js/main.js"></script>
 </html>

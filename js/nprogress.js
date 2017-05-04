@@ -118,7 +118,7 @@
    */
   NProgress.start = function()
   {
-    console.log("Nprogress started");
+    //console.log("Nprogress started");
     if (!NProgress.status) NProgress.set(0);
 
     var work = function() {

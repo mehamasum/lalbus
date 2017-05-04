@@ -1,3 +1,4 @@
+<?php include_once("includes/login_session_check.php") ?>
 <?php
 /**
  * Created by PhpStorm.
@@ -5,15 +6,6 @@
  * Date: 4/27/2017
  * Time: 7:49 PM
  */
-
-session_start();
-if(!isset($_SESSION['id']))
-{
-    ob_start();
-    header('Location: login');
-    ob_end_flush();
-    die();
-}
 
 include_once ('backend/dbconnect.php');
 $userid=$_SESSION['id'];
@@ -113,10 +105,9 @@ $user_level=$row['level_req'];
 -->
 
         <div class="form-group">
-            <input type="text" name="bus"  list="buslist" class="form-control form-control-solid placeholder-no-fix" list="buslist" placeholder="Bus Name" value="" minlength="3" required="" >
-            <datalist id="buslist"></datalist>
+            <select name="bus" class="form-control form-control-solid placeholder-no-fix">
+            </select>
         </div>
-
 
         <div class="form-group">
             <select name="committee" class="form-control form-control-solid placeholder-no-fix">
