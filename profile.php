@@ -1,31 +1,5 @@
 <?php include_once("includes/login_session_check.php") ?>
-<?php
-/**
- * Created by PhpStorm.
- * User: USER
- * Date: 4/27/2017
- * Time: 7:49 PM
- */
-
-include_once ('backend/dbconnect.php');
-$userid=$_SESSION['id'];
-
-
-$sql = "select * from users WHERE id=$userid";
-$result = $conn->query($sql);
-$row = $result->fetch_assoc();
-
-$name=$row['name'];
-$reg_no=$row['reg_no'];
-$mob_no=$row['mob_no'];
-$email=$row['email'];
-/*$password=$row['password'];*/
-$dept_id=$row['dept_id'];
-$bus=$row['bus_id'];
-$user_level=$row['level_req'];
-
-?>
-
+<?php include_once("validator/profile_check.php") ?>
 <!DOCTYPE html>
 
 <html>
@@ -53,11 +27,10 @@ $user_level=$row['level_req'];
 <script>
     document.getElementById("page_home").classList.remove("active");
     document.getElementById("page_user").className += "active";
+    var user_level=<?php echo $user_level ?>;
     var bus_default=<?php echo $bus ?>;
     var dept_default=<?php echo $dept_id ?>;
     var id=<?php echo $userid ?>;
-    console.log(bus_default);
-    console.log(dept_default);
 </script>
 <div class="content">
 
@@ -95,8 +68,6 @@ $user_level=$row['level_req'];
 
         </div>
 
-
-
 <!--
         <div class="form-group">
             <input type="password" name="password" class="form-control form-control-solid placeholder-no-fix"
@@ -111,20 +82,8 @@ $user_level=$row['level_req'];
 
         <div class="form-group">
             <select name="committee" class="form-control form-control-solid placeholder-no-fix">
-                <?php
-                if($user_level==0)
-                {
-                    echo "<option value=\"0\" selected=\"selected\">I am a regular student</option>";
-                    echo "<option value=\"1\">I am a committee member</option>";
-                }
-                else if($user_level==1)
-                {
-                    echo "<option value=\"0\" >I am a regular student</option>";
-                    echo "<option value=\"1\" selected=\"selected\">I am a committee member</option>";
-                }
-
-
-                ?>
+                <option value="0">I am a regular student</option>
+                <option value="1">I am a committee member</option>
             </select>
         </div>
 

@@ -1,39 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: USER
- * Date: 4/25/2017
- * Time: 12:16 AM
- */
-session_start();
-include_once ('backend/dbconnect.php');
-if(!isset($_SESSION['id']))
-{
-    ob_start();
-    header('Location: login');
-    ob_end_flush();
-    die();
-}
-else
-{
-    $user = $_SESSION['id'];
-    $sql = "select * from users WHERE id=$user";
-    $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
-    $level=$row['level'];
-    $bus=$row['bus_id'];
-    if($level==0)
-    {
-        ob_start();
-        header('Location: home');
-        ob_end_flush();
-        die();
-    }
-    echo $user;
-}
-
-?>
-
+<?php include_once("validator/admin_schedule_check.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">

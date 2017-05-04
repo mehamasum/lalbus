@@ -76,7 +76,7 @@
 
 <script>
     document.getElementById("page_home").classList.remove("active");
-    //document.getElementById("page_user").className += "active";
+    document.getElementById("page_user").className += "active";
 </script>
 
 <script src='js/nprogress.js'></script>

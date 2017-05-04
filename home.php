@@ -14,60 +14,7 @@
     <script src="js/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="css/static_top.css">
     <script src="js/home.js"></script>
-
-    <style>
-
-        .star:before {
-            content: ' \2605';
-            font-size: 15px;
-            color: coral;
-        }
-
-        hr {
-            margin: 5px;
-        }
-
-        .circle-green:before {
-            content: ' \25CF';
-            font-size: 20px;
-            color: forestgreen;
-        }
-
-        .circle-red:before {
-            content: ' \25CF';
-            font-size: 20px;
-            color: indianred;
-        }
-
-        #map { margin-top:50px; position:absolute; top:0; bottom:0; width:100%; opacity: 0.8;}
-
-        #data {
-            padding: 10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8); transition: 0.3s;
-            background-color: white;
-            margin: 20px;
-            position: absolute;
-            bottom:0;
-            left: 0;
-            text-align:center;
-        }
-
-        @media all and (max-width:800px)
-        {
-            #data {
-                padding: 10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8); transition: 0.3s;
-                font-size: 0.9em;
-                background-color: white;
-                position: absolute;
-                bottom:0;
-                left: 0;
-                text-align:center;
-            }
-        }
-
-        .dropdown {
-            margin: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
     <?php include("includes/static_top.php"); ?>
@@ -87,6 +34,7 @@
 
 
     <script>
+        var id=<?php echo $_SESSION['id'];?>;
         function initMap() {
             var dhaka = {lat: 23.7315, lng: 90.3925};
             var map = new google.maps.Map(document.getElementById('map'), {
@@ -122,7 +70,7 @@
         };
         xhttp.open("POST", "backend/following_list_for_user.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send("id="+ <?php echo $_SESSION['id']; ?>);
+        xhttp.send("id="+ id);
     </script>
 
 

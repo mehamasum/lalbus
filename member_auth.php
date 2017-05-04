@@ -5,7 +5,7 @@
  * Date: 4/25/2017
  * Time: 12:16 AM
  */
-include_once("backend/validator/admin_session_check.php");
+include_once("validator/member_auth_check.php");
 ?>
 
 <!DOCTYPE html>

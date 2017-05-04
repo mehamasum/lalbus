@@ -12,7 +12,6 @@ $jsonData = array();
 foreach($result as $row){
     $jsonData[] = $row;
 }
-
 echo json_encode($jsonData)."\n";
 
 ?>

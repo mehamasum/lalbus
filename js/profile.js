@@ -5,10 +5,13 @@
 var depts=[];
 var buses=[];
 function  initialize() {
-
+    var user_level_input=document.getElementsByName('committee')[0];
     var dept_input = document.getElementsByName('dept_name')[0];
     var dept_dataList = document.getElementById('deptlist');
     var bus_input = document.getElementsByName('bus')[0];
+
+    user_level_input.value=user_level;
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {

@@ -1,0 +1,50 @@
+.star:before {
+    content: ' \2605';
+    font-size: 15px;
+    color: coral;
+}
+
+hr {
+    margin: 5px;
+}
+
+.circle-green:before {
+    content: ' \25CF';
+    font-size: 20px;
+    color: forestgreen;
+}
+
+.circle-red:before {
+    content: ' \25CF';
+    font-size: 20px;
+    color: indianred;
+}
+
+#map { margin-top:50px; position:absolute; top:0; bottom:0; width:100%; opacity: 0.8;}
+
+#data {
+    padding: 10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8); transition: 0.3s;
+    background-color: white;
+    margin: 20px;
+    position: absolute;
+    bottom:0;
+    left: 0;
+    text-align:center;
+}
+
+@media all and (max-width:800px)
+{
+    #data {
+        padding: 10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8); transition: 0.3s;
+        font-size: 0.9em;
+        background-color: white;
+        position: absolute;
+        bottom:0;
+        left: 0;
+        text-align:center;
+    }
+}
+
+.dropdown {
+    margin: 10px;
+}

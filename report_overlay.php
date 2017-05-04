@@ -15,6 +15,9 @@
     <script src="js/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="css/static_top.css">
     <link rel="stylesheet" href="css/report_overlay.css">
+
+    <script src="js/bus_list.js"></script>
+
     <style type="text/css">
         html {
             height: 100%;
@@ -38,23 +41,6 @@
 
         <div class="form-group">
             <select name="bus" class="form-control form-control-solid placeholder-no-fix">
-                <?php
-                require_once('backend/dbconnect.php');
-                // already in ?
-                $sql = "SELECT * FROM bus";
-                $result = $conn->query($sql);
-
-                $total = $result->num_rows;
-
-                for($i=0; $i<$total; $i++) {
-                    $row = $result->fetch_assoc();
-
-                    $id = $row["id"];
-                    $name = $row["name"];
-
-                    echo "<option value=$id>$name</option>";
-                }
-                ?>
             </select>
         </div>
 

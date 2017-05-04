@@ -13,7 +13,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="css/static_top.css">
-
+    <script src="js/bus_list.js"></script>
     <style type="text/css">
         html {
             height: 100%;
@@ -26,9 +26,9 @@
         }
     </style>
 </head>
-
+<body onload="bus_initialize('bus')">
 <?php include("includes/static_top.php"); ?>
-
+<script src="js/report.js"></script>
 <div class="content">
 
     <div>
@@ -37,23 +37,6 @@
 
         <div class="form-group">
             <select name="bus" class="form-control form-control-solid placeholder-no-fix">
-                <?php
-                require_once('backend/dbconnect.php');
-                // already in ?
-                $sql = "SELECT * FROM bus";
-                $result = $conn->query($sql);
-
-                $total = $result->num_rows;
-
-                for($i=0; $i<$total; $i++) {
-                    $row = $result->fetch_assoc();
-
-                    $id = $row["id"];
-                    $name = $row["name"];
-
-                    echo "<option value=$id>$name</option>";
-                }
-                ?>
             </select>
         </div>
 
@@ -62,74 +45,10 @@
         </div>
 
         <div id="mapholder"></div>
-<script>
-
-
-    var x = document.getElementById("mapholder");
-
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition, showError);
-        } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
-
-    function showPosition(position) {
-
-        var lat = position.coords.latitude;
-        var lng = position.coords.longitude;
-        var latlon = "Latitude: "+position.coords.latitude + "<br>"+ "Longitude: "+ position.coords.longitude +"<br>";
-
-        var map = document.getElementById("mapholder");
-        map.innerHTML = latlon;
-
-        var bus = document.getElementsByName("bus")[0].value;
-
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                //this.responseText;
-                var reply = this.responseText;
-
-                console.log(reply);
-
-                if (reply.indexOf("ONE") != -1) {
-                    window.location.href = "home";
-                }
-                else {
-                    map.innerHTML += "Something went wrong" + "<br>";
-                }
-
-            }
-        };
-        xhttp.open("POST", "backend/report_receiver.php", true);
-        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send("u=<?php echo $_SESSION['id'];?>&b="+bus+"&lat="+lat+"&lng="+lng);
-
-    }
-
-    function showError(error) {
-        switch(error.code) {
-            case error.PERMISSION_DENIED:
-                x.innerHTML = "User denied the request for Geolocation.";
-                break;
-            case error.POSITION_UNAVAILABLE:
-                x.innerHTML = "Location information is unavailable.";
-                break;
-            case error.TIMEOUT:
-                x.innerHTML = "The request to get user location timed out.";
-                break;
-            case error.UNKNOWN_ERROR:
-                x.innerHTML = "An unknown error occurred.";
-                break;
-        }
-    }
-</script>
 
     </div>
 
 </div>
 </body>
-<!--<script src="js/report.js"></script>-->
+
 </html>

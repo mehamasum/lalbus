@@ -3,11 +3,11 @@
  * Created by PhpStorm.
  * User: USER
  * Date: 5/4/2017
- * Time: 8:46 PM
+ * Time: 9:12 PM
  */
 
 session_start();
-include_once(dirname(__FILE__)."/../dbconnect.php");
+include_once(dirname(__FILE__) . "/../backend/dbconnect.php");
 if(!isset($_SESSION['id']))
 {
     ob_start();
@@ -22,12 +22,15 @@ else
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
     $level=$row['level'];
-    if($level<2)
+    $bus=$row['bus_id'];
+    if($level==0)
     {
         ob_start();
         header('Location: home');
         ob_end_flush();
         die();
     }
+    echo $user;
 }
+
 ?>

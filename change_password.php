@@ -1,4 +1,3 @@
-<?php include_once("includes/login_session_check.php") ?>
 <?php
 /**
  * Created by PhpStorm.
@@ -6,11 +5,8 @@
  * Date: 4/28/2017
  * Time: 10:43 AM
  */
-
-include_once ('backend/dbconnect.php');
-$userid=$_SESSION['id'];
+include_once("includes/login_session_check.php");
 ?>
-
 
 <!DOCTYPE html>
 
@@ -39,7 +35,7 @@ $userid=$_SESSION['id'];
 </div>
 
 <script>
-    var id=<?php echo $userid ?>;
+    var id=<?php echo $_SESSION['id']?>;
     document.getElementById("page_home").classList.remove("active");
     document.getElementById("page_user").className += "active";
 </script>
@@ -83,14 +79,15 @@ $userid=$_SESSION['id'];
 
 <div class="copyright">© 2017 Batfia</div>
 
+</body>
+
+<script src="js/change_password.js"></script>
+
 <script src="js/jquery-3.1.1.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="js/bootstrap.min.js"></script>
-
-</body>
 <script src='js/nprogress.js'></script>
 <link rel='stylesheet' href='css/nprogress.css'/>
-<script src="js/change_password.js"></script>
-<script src="js/main.js"></script>
+
 </html>
 
