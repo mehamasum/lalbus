@@ -95,17 +95,19 @@ function sendVerificationBySwift($email,$name,$id)
         $address="http://localhost/lalbus/verify?email=".$email."&hash=".$id;
     $body = '
  
+Dear '.$name.',
 Thanks for signing up!
-Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
+Your account has been created, you can login after you have activated your account by clicking on the link below.
  
 ------------------------
-Username: '.$name.'
+Activation Link : '.$address.'
 ------------------------
 
-If this wasn\'t you please ignore this email.
+If this wasn\'t you, please ignore this email.
 
-Otherwise please click this link to activate your account:.
- '.$address;
+Regards,
+Team Lalbus
+';
 
         $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
             ->setUsername('lalbus.du@gmail.com')

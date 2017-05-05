@@ -2,10 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: USER
- * Date: 4/28/2017
- * Time: 10:43 AM
+ * Date: 5/6/2017
+ * Time: 2:05 AM
  */
-include_once("validator/login_session_check.php");
+include_once("validator/change_pass_check.php");
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,7 @@ include_once("validator/login_session_check.php");
 
 <head >
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Change Password | Lalbus</title>
+    <title>Reset Password | Lalbus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="./img/favicon.png">
     <link rel="canonical" href="">
@@ -35,7 +35,7 @@ include_once("validator/login_session_check.php");
 </div>
 
 <script>
-    var id=<?php echo $_SESSION['id']?>;
+    var email='<?php echo $email ?>';
     document.getElementById("page_home").classList.remove("active");
     document.getElementById("page_user").className += "active";
 </script>
@@ -43,12 +43,8 @@ include_once("validator/login_session_check.php");
 <div class="content">
 
     <form class="login-form" action="#" method="POST">
-        <h3 class="form-title font-dark">Change your Password</h3>
+        <h3 class="form-title font-dark">Reset your Password</h3>
         <br>
-        <div class="form-group">
-            <input type="password" name="oldpass" class="form-control form-control-solid placeholder-no-fix"
-                   placeholder="Old Password" value="" minlength="8" required="">
-        </div>
 
         <div class="form-group">
             <input type="password" name="password" class="form-control form-control-solid placeholder-no-fix"
@@ -63,7 +59,7 @@ include_once("validator/login_session_check.php");
         <div class="alert alert-success" id="success-alert" style="display: none">
             <button type="button" class="close" data-dismiss="alert">x</button>
             <strong>Success! </strong>
-            Password has been updated successfully.
+            Password has been reset successfully.
         </div>
 
         <div id="errorMessageContent" class="content" style="display: none; color: red">
@@ -71,7 +67,7 @@ include_once("validator/login_session_check.php");
         </div>
 
         <div class="form-actions">
-            <button id="update" type="button" onclick="validatePassword()" class="btn red btn-block" data-loading-text="Updating..">Update</button>
+            <button id="update" type="button" onclick="validatePassword()" class="btn red btn-block" data-loading-text="Updating..">Submit</button>
         </div>
     </form>
 
@@ -81,7 +77,7 @@ include_once("validator/login_session_check.php");
 
 </body>
 
-<script src="js/change_password.js"></script>
+<script src="js/change_pass.js"></script>
 
 <script src="js/jquery-3.1.1.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>

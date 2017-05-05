@@ -44,7 +44,7 @@
 
         <div class="form-group">
             <input type="number" name="reg_no" class="form-control form-control-solid placeholder-no-fix"
-                   placeholder="DU Reg No (2017812...)" value="<?php echo $reg_no ?>" required="">
+                   placeholder="DU Reg No (2017812...)" value="<?php echo $reg_no ?>" required=""  readonly>
         </div>
 
         <div class="form-group">
@@ -63,17 +63,10 @@
         <div class="form-group">
             <div>
                 <input type="email" name="email" class="form-control form-control-solid placeholder-no-fix"
-                       value="<?php echo $email ?>" readonly>
+                       value="<?php echo $email ?>">
             </div>
 
         </div>
-
-<!--
-        <div class="form-group">
-            <input type="password" name="password" class="form-control form-control-solid placeholder-no-fix"
-                   placeholder="Password" value="<" minlength="8" required="" readonly>
-        </div>
--->
 
         <div class="form-group">
             <select name="bus" class="form-control form-control-solid placeholder-no-fix">

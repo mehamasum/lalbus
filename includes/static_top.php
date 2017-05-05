@@ -63,7 +63,7 @@ if(isset($_SESSION['id'])) {
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="profile">Profile</a></li>
-                            <li><a href="change_password">Change Password</a></li>
+                            <li><a href="update_password.php">Change Password</a></li>
                             <li><a href="#">Help</a></li>
                             <li><a href="logout.php">Logout</a></li>
                         </ul>

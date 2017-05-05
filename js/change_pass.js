@@ -1,20 +1,10 @@
 /**
- * Created by USER on 4/28/2017.
+ * Created by USER on 5/6/2017.
  */
-/*
-$(document).ready (function(){
-    $("#update").click(function showAlert() {
-        $("#success-alert").alert();
-        $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
-            $("#success-alert").slideUp(500);
-        });
-    });
-});
-*/
 
 function validatePassword()
 {
-    var oldpass=document.getElementsByName('oldpass')[0].value;
+
     var newpass=document.getElementsByName('password')[0].value;
     var confirmpass=document.getElementsByName('newpass')[0].value;
 
@@ -45,39 +35,29 @@ function validatePassword()
                 var reply = this.responseText;
 
                 errors.innerHTML="";
-
+                console.log(reply)
+;
                 if (reply.indexOf("ZERO") != -1) {
                     found = true;
-                    errors.innerHTML += "Please Log in again.Error Occured." + "<br>";
-                }
-                else if(reply.indexOf("WRONG")!=-1)
-                {
-                    found=true;
-                    errors.innerHTML+="Wrong Password";
+                    errors.innerHTML += "Please Try again.Error Occured." + "<br>";
                 }
                 else if (reply.indexOf("ONE") != -1) {
-
                     showAlert();
-                }
-                else {
-                    found = true;
-                    errors.innerHTML += "Something went wrong" + "<br>";
                 }
 
                 if (found)
                     content.style.display = "block";
                 else {
                     content.style.display = "none";
-
                 }
             }
         };
-        xhttp.open("POST", "backend/change_password_handler.php", true);
+        xhttp.open("POST", "backend/change_pass_handler.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
         //console.log(bus);
 
-        xhttp.send("p=" + newpass +"&op="+oldpass + "&id=" + id);
+        xhttp.send("p=" + newpass +"&e="+email);
     }
 
 
