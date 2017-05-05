@@ -14,7 +14,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="css/static_top.css">
-    <link rel="stylesheet" href="css/report_overlay.css">
+    <link rel="stylesheet" href="css/modal.css">
 
     <script src="js/bus_list.js"></script>
 

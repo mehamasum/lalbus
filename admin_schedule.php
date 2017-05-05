@@ -13,12 +13,14 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/static_top.css">
     <script src="js/sorttable.js"></script>
+    <link rel="stylesheet" href="css/bus_modal.css">
 </head>
-<body>
+<body onload="initModal()">
 <?php include("includes/static_top.php"); ?>
 <script>
     var sid=<?php echo $user ?>;
     var bid=<?php echo $bus ?>;
+    var level=<?php echo $level?>;
     console.log(bid);
     document.getElementById("page_home").classList.remove("active");
     document.getElementById("page_admin_schedule").className += "active";
@@ -56,14 +58,8 @@
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
-
-        <div class="form-group">
-            <select name="bus" class="form-control form-control-solid placeholder-no-fix">
-            </select>
-        </div>
-
-        <div class="form-actions">
-            <button class="btn red btn-block" onclick="setForUpdate()">Select</button>
+        <h3>Select a bus to Update Schedule</h3>
+        <div class="btn-group-vertical" style=" margin-right: auto; margin-left: auto; width: 100%;" name="list_bus">
         </div>
 
     </div>

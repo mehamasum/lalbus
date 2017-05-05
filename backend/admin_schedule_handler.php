@@ -33,10 +33,7 @@ foreach($result as $row){
 $jsonArr[] = $jsonData;
 
 
-if($level==2)
-    $sql="select * from schedule";
-else
-    $sql = "select * from schedule WHERE bus_id=$bus";
+$sql = "select * from schedule WHERE bus_id=$bus";
 
 $result = $conn->query($sql);
 
