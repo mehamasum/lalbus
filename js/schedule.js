@@ -31,24 +31,18 @@ function search(busid) {
 var buses=[];
 function bus_list() {
 
-    var buslist = document.getElementById('bus');
+    var bus_list = document.getElementById('bus');
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
 
             var reply = JSON.parse(this.responseText);
             reply[0].forEach(function(item) {
-
-                var btn = document.createElement("BUTTON");
-                btn.setAttribute('text',item['name']);
-                btn.setAttribute('class','btn btn-primary');
-                btn.setAttribute('id','btn_'+item['id']);
-                btn.onclick=function() { search(item['id'])};
+                bus_list.innerHTML+="<button type=\"button\" id=\"btn_"+item['id']+"\" class=\"btn btn-primary btn-md\" onclick='search("+item['id']+")'>"+item['name']+"</button>";
 /*                var button='<button class="btn btn-primary" id="btn_'
                             +item['id']
                             +'">'+item['name']+'</button>';*/
 
-                buslist.append(btn);
             });
         } else {
             console.log("Failed");

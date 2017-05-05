@@ -35,8 +35,7 @@
     <div id="container_table">
         <div id="first" style="text-align: center">
             <p><b>Select Bus:</b></p>
-            <div class="btn-group-vertical" id="bus">
-                <button type="button" class="btn btn-primary">Apple</button>
+            <div class="btn-group-vertical" style=" margin-right: auto; margin-left: auto; width: 100%;" id="bus">
             </div>
         </div>
 
