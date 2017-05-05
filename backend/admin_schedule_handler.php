@@ -8,9 +8,17 @@
 
 
 include_once ('dbconnect.php');
+session_start();
 
 $sid = $_POST['id'];
 $bus=$_POST['b'];
+$user=$_SESSION['id'];
+
+$sql = "select * from users WHERE id=$user";
+$result = $conn->query($sql);
+$row=$result->fetch_assoc();
+$level=$row['level'];
+
 $sql = "select * from bus";
 $result = $conn->query($sql);
 $n = $result->num_rows;
@@ -25,7 +33,10 @@ foreach($result as $row){
 $jsonArr[] = $jsonData;
 
 
-$sql = "select * from schedule WHERE bus_id=$bus";
+if($level==2)
+    $sql="select * from schedule";
+else
+    $sql = "select * from schedule WHERE bus_id=$bus";
 
 $result = $conn->query($sql);
 

@@ -2,9 +2,17 @@
  * Created by USER on 4/27/2017.
  */
 
-
+var buses=[];
 function setValue() {
 
+    bus_initialize("bus_name");
+    if(mode==1)
+    {
+        var submit_btn=document.getElementById('submit_btn');
+        var submit_header=document.getElementById('submit_header');
+        submit_btn.innerHTML="ADD";
+        submit_header.innerHTML="<h3 class=\"form-title font-dark\">Add New Schedule</h3>";
+    }
     var time = document.getElementsByName("time")[0];
     var trip_type = document.getElementsByName("trip_type")[0];
     var driver = document.getElementsByName("driver")[0];
@@ -40,6 +48,12 @@ function setValue() {
                 bus_no.value=data['bus_number'];
                 endpoint.value=data['endpoint'];
                 comment.value=data['comment'];
+                console.log(data);
+                if(data['level']==2)
+                {
+                    var bus_name = document.getElementsByName("bus_name")[0];
+                    bus_name.disabled=false;
+                }
 
             }
 
@@ -61,6 +75,7 @@ function setValue() {
 
 function validateScheduleEdit() {
 
+    var busid= document.getElementsByName("bus_name")[0].value;
     var time = document.getElementsByName("time")[0].value;
     var trip_type = document.getElementsByName("trip_type")[0].value;
     var driver = document.getElementsByName("driver")[0].value;
@@ -115,9 +130,40 @@ function validateScheduleEdit() {
 
     //console.log(bus);
 
-    xhttp.send("time="+time+"&trip_type="+trip_type+"&driver="+driver+"&bus_no="+bus_no+"&endpoint="+endpoint+"&comment="+comment+"&id="+schedule_id+"&mode="+mode+"&bus_id="+bus_id);
+    xhttp.send("time="+time+"&trip_type="+trip_type+"&driver="+driver+"&bus_no="+bus_no+"&endpoint="+endpoint+"&comment="+comment+"&id="+schedule_id+"&mode="+mode+"&bus_id="+busid);
 }
 
+function  bus_initialize(fieldName) {
+
+    var bus_input = document.getElementsByName(fieldName)[0];
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            var reply = JSON.parse(this.responseText);
+            reply[0].forEach(function(item) {
+                var option = document.createElement('option');
+                option.value = item['id'];
+                option.text=item['name'];
+                buses.push(option);
+                bus_input.appendChild(option);
+                //bus_dataList.appendChild(option);
+            });
+            if(bus_id!=0)
+            {
+                bus_input.value=bus_id;
+                bus_input.disabled=true;
+            }
+
+        } else {
+            bus_input.innerHTML="Couldn't load List of buses :(";
+        }
+    };
+    xhttp.open("POST", "backend/bus_list.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send();
+
+}
 
 
 

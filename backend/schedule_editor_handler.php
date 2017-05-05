@@ -27,7 +27,6 @@ $user = $_SESSION['id'];
 $sql = "select * from users WHERE id=$user";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
-$bus=$row['bus_id'];
 $level=$row['level'];
 if($level==0)
 {

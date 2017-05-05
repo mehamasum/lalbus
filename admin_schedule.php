@@ -12,7 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/static_top.css">
-
+    <script src="js/sorttable.js"></script>
 </head>
 <body>
 <?php include("includes/static_top.php"); ?>
@@ -27,13 +27,13 @@
    <div>
        <div>
            <h3 style="width: 100%; text-align: center">Update Bus Schedules</h3>
-           <p style="width: 100%; text-align: center">Update the schedule of Choitaly</p>
+           <p style="width: 100%; text-align: center">Update the schedule of your bus</p>
        </div>
-       <button class="btn btn-danger pull-right" onClick="addTrip()"> Add New Trip </button>
+       <button class="btn btn-danger pull-right" onClick="addTrip(bid)"> Add New Trip </button>
    </div>
 
 
-    <table class="table table-striped col-md-12" >
+    <table class="table table-striped col-md-12 sortable" >
         <thead>
         <tr>
             <th>Bus Name</th>
@@ -52,10 +52,31 @@
 </div>
 
 
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <div class="form-group">
+            <select name="bus" class="form-control form-control-solid placeholder-no-fix">
+            </select>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn red btn-block" onclick="setForUpdate()">Select</button>
+        </div>
+
+    </div>
+
+</div>
+
+
 </body>
 
 <!-- Bootstrap core JavaScript -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="js/bus_list.js"></script>
+<script> bus_initialize("bus")</script>
 <script src="js/admin_schedule.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="js/bootstrap.min.js"></script>

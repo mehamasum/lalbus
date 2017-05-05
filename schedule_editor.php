@@ -40,8 +40,17 @@ $bus_id=$_GET['b'];
 <div class="content">
 
     <form class="login-form" action="#" method="POST">
-        <h3 class="form-title font-dark">Update Schedule</h3>
+        <div id="submit_header">
+            <h3 class="form-title font-dark">Update Schedule</h3>
+        </div>
+
         <br>
+
+        <div class="form-group">
+            <select name="bus_name" class="form-control form-control-solid placeholder-no-fix">
+            </select>
+        </div>
+
         <div class="form-group">
             <input type="text" name="time" class="form-control form-control-solid placeholder-no-fix"
                    placeholder="Trip Time" value="" minlength="3" maxlength="10" required="">
@@ -88,7 +97,7 @@ $bus_id=$_GET['b'];
         </div>
 
         <div class="form-actions">
-            <button type="button" onclick="validateScheduleEdit()" class="btn red btn-block" data-loading-text="Updating..">Update</button>
+            <button type="button"  id="submit_btn" onclick="validateScheduleEdit()" class="btn red btn-block" data-loading-text="Updating..">Update</button>
         </div>
     </form>
 
