@@ -10,17 +10,17 @@ if(!isset($_SESSION['id']))
     echo "ERR";
     die();
 }
-$mode=$_POST['mode'];
-$schedule_id=$_POST['id'];
+$mode=mysqli_real_escape_string($conn,$_POST['mode']);
+$schedule_id=mysqli_real_escape_string($conn,$_POST['id']);
 
 
-$time=$_POST['time'];
-$trip_type=$_POST['trip_type'];
-$driver=$_POST['driver'];
-$bus_no=$_POST['bus_no'];
-$endpoint=$_POST['endpoint'];
-$comment=$_POST['comment'];
-$bus_id=$_POST['bus_id'];
+$time=mysqli_real_escape_string($conn,$_POST['time']);
+$trip_type=mysqli_real_escape_string($conn,$_POST['trip_type']);
+$driver=mysqli_real_escape_string($conn,$_POST['driver']);
+$bus_no=mysqli_real_escape_string($conn,$_POST['bus_no']);
+$endpoint=mysqli_real_escape_string($conn,$_POST['endpoint']);
+$comment=mysqli_real_escape_string($conn,$_POST['comment']);
+$bus_id=mysqli_real_escape_string($conn,$_POST['bus_id']);
 
 
 $user = $_SESSION['id'];

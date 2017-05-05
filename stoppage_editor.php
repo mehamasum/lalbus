@@ -38,6 +38,15 @@
         <br>
 
         <div class="form-group">
+            <select name="update_type" class="form-control form-control-solid placeholder-no-fix">
+                <option value="0" >Add</option>
+                <option value="1" >Update</option>
+                <option value="2" >Delete</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
             <select name="bus" class="form-control form-control-solid placeholder-no-fix">
             </select>
         </div>

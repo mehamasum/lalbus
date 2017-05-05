@@ -26,13 +26,13 @@ function initialize()
         if (places.length == 0) {
             return;
         }
-        places.forEach(function(place) {
-            placesLat= place.geometry.location.lat();
-            placesLong = place.geometry.location.lng();
+        var place=places[0];
 
-            document.getElementsByName('latitude')[0].value=placesLat;
-            document.getElementsByName('longitude')[0].value=placesLong;
-        });
+        placesLat= place.geometry.location.lat();
+        placesLong = place.geometry.location.lng();
+
+        document.getElementsByName('latitude')[0].value=placesLat;
+        document.getElementsByName('longitude')[0].value=placesLong;
     });
 
 }
@@ -68,7 +68,57 @@ function  bus_initialize(fieldName) {
 
 function validateScheduleEdit()
 {
-    console.log(placesLat+" "+placesLong);
+    var bus_id=document.getElementsByName("bus")[0].value;
+    var stoppage=document.getElementById("autocomplete").value;
+    var latitude=document.getElementsByName("latitude")[0].value;
+    var longitude=document.getElementsByName("longitude")[0].value;
+    var stoppage_type=document.getElementsByName("stoppage_type")[0].value;
+    var remarks=document.getElementsByName("remarks")[0].value;
+    var update_type=document.getElementsByName("update_type")[0].value;
+    var content = document.getElementById("errorMessageContent");
+    var errors = document.getElementById("errorMessages");
+    errors.innerHTML="";
+    var found =false;
+
+
+    content.style.display = "none";
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            //this.responseText;
+            var reply = this.responseText;
+
+            console.log(reply);
+            console.log(reply.indexOf("ZERO"));
+            console.log(reply.indexOf("ONE"));
+
+
+            if (reply.indexOf("ZERO") != -1) {
+                found = true;
+                errors.innerHTML += "Update Failed" + "<br>";
+            }
+            else if (reply.indexOf("ONE") != -1) {
+                window.location.href = "home";
+            }
+            else {
+                found = true;
+                errors.innerHTML += "Something went wrong" + "<br>";
+            }
+
+            if (found)
+                content.style.display = "block";
+            else {
+                content.style.display = "none";
+
+            }
+        }
+    };
+    xhttp.open("POST", "backend/stoppage_editor_handler.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    //console.log(bus);
+    xhttp.send("bus_id="+bus_id+"&stoppage_name="+stoppage+"&lat="+latitude+"&lng="+longitude+"&stoppage_type="+stoppage_type+"&remarks="+remarks+"&update_type="+update_type);
+
 }
 
 
