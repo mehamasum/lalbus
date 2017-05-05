@@ -1,5 +1,4 @@
 <?php include_once("validator/login_session_check.php") ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

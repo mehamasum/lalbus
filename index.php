@@ -1,3 +1,4 @@
+<?php include("search.php"); die();?>
 
 <?php include("validator/guest_session_check.php"); ?>
 <!DOCTYPE html>
@@ -35,7 +36,7 @@
             </div>
 
             <div class="form-actions">
-                <button type="submit" class="btn red btn-block">Find</button>
+                <button type="submit" class="btn red btn-block" onclick="goHome()">Find</button>
             </div>
 
             <div class="create-account">
@@ -51,6 +52,7 @@
 
 </body>
 
+<script src="js/index.js"></script>
 <!-- Bootstrap core JavaScript -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>

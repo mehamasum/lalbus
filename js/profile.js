@@ -16,11 +16,10 @@ function init_fields()
     var reg_no = document.getElementsByName("reg_no")[0];
     var mob_no = document.getElementsByName("mob_no")[0];
     var email = document.getElementsByName("email")[0];
-
+    NProgress.start();
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-
             var data=JSON.parse(this.responseText)['item'];
             console.log(data);
             bus_default=data['bus_id'];
@@ -46,11 +45,10 @@ function  initialize_lists() {
     var dept_input = document.getElementsByName('dept_name')[0];
     var dept_dataList = document.getElementById('deptlist');
     var bus_input = document.getElementsByName('bus')[0];
-
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-
+            NProgress.done();
             var reply = JSON.parse(this.responseText);
 
             reply[0].forEach(function(item) {
