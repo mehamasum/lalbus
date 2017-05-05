@@ -4,13 +4,48 @@
 
 var depts=[];
 var buses=[];
-function  initialize() {
+
+ var bus_default;
+ var dept_default;
+ var id;
+
+function init_fields()
+{
     var user_level_input=document.getElementsByName('committee')[0];
+    var name = document.getElementsByName("name")[0];
+    var reg_no = document.getElementsByName("reg_no")[0];
+    var mob_no = document.getElementsByName("mob_no")[0];
+    var email = document.getElementsByName("email")[0];
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            var data=JSON.parse(this.responseText)['item'];
+            console.log(data);
+            bus_default=data['bus_id'];
+            dept_default=data['dept_id'];
+            id=data['id'];
+
+            name.value=data['name'];
+            reg_no.value=data['reg_no'];
+            mob_no.value=data['mob_no'];
+            email.value=data['email'];
+            user_level_input.value=data['level'];
+            initialize_lists();
+        }
+    };
+    xhttp.open("POST", "backend/profile_provider.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send();
+}
+
+
+function  initialize_lists() {
+
     var dept_input = document.getElementsByName('dept_name')[0];
     var dept_dataList = document.getElementById('deptlist');
     var bus_input = document.getElementsByName('bus')[0];
-
-    user_level_input.value=user_level;
 
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -58,7 +93,6 @@ function  initialize() {
 
 function validateUpdate() {
 
-    console.log("updated");
     var name = document.getElementsByName("name")[0].value;
     var reg_no = document.getElementsByName("reg_no")[0].value;
     var mob_no = document.getElementsByName("mob_no")[0].value;
@@ -78,11 +112,11 @@ function validateUpdate() {
         errors.innerHTML+= "Name too short"+"<br>";
     }
 
-    if(!isInteger(reg_no) || !isDuReg(reg_no)) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(!re.test(email)) {
         found = true;
-        errors.innerHTML+= "Invalid DU Registration Number"+"<br>";
+        errors.innerHTML+= "Invalid Email"+"<br>";
     }
-
 
     if(depts.indexOf(deptname)==-1)
     {
@@ -139,7 +173,7 @@ function validateUpdate() {
 
         //console.log(bus);
 
-        xhttp.send("n="+name+"&r="+reg_no+"&m="+mob_no+"&c="+comm+"&b="+bus_id+"&d="+dept_id+"&id="+id);
+        xhttp.send("n="+name+"&r="+reg_no+"&m="+mob_no+"&c="+comm+"&b="+bus_id+"&d="+dept_id+"&id="+id+"&e="+email);
     }
 }
 

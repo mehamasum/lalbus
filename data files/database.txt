@@ -18,3 +18,7 @@ Status :
 
 Checks for UAC
 MYSQLI Escape strings for avoiding sql injection
+Email verification with Registration number for spam check
+
+
+Line 53/54 for LogIn Restriction without Verification

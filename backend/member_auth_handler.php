@@ -8,7 +8,7 @@
 
 include_once ('dbconnect.php');
 
-$sid = $_POST['id'];
+$sid = mysqli_real_escape_string($conn, $_POST['id']);
 
 $sql = "select * from  `users` WHERE  (`level_req` =1 and `level`=0);";
 $result = $conn->query($sql);

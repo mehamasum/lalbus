@@ -10,7 +10,7 @@
 
 include_once ('dbconnect.php');
 
-$sid = $_POST['id'];
+$sid = mysqli_real_escape_string($conn, $_POST['id']);
 
 $sql = "select * FROM `schedule_request`;";
 $result = $conn->query($sql);

@@ -1,5 +1,4 @@
 <?php include_once("validator/login_session_check.php") ?>
-<?php include_once("validator/profile_check.php") ?>
 <!DOCTYPE html>
 
 <html>
@@ -27,10 +26,7 @@
 <script>
     document.getElementById("page_home").classList.remove("active");
     document.getElementById("page_user").className += "active";
-    var user_level=<?php echo $user_level ?>;
-    var bus_default=<?php echo $bus ?>;
-    var dept_default=<?php echo $dept_id ?>;
-    var id=<?php echo $userid ?>;
+
 </script>
 <div class="content">
 
@@ -39,12 +35,12 @@
         <br>
         <div class="form-group">
             <input type="text" name="name" class="form-control form-control-solid placeholder-no-fix"
-                   placeholder="Name" value="<?php echo $name ?>" minlength="3" maxlength="64" required="">
+                   placeholder="Name" value="" minlength="3" maxlength="64" required="">
         </div>
 
         <div class="form-group">
             <input type="number" name="reg_no" class="form-control form-control-solid placeholder-no-fix"
-                   placeholder="DU Reg No (2017812...)" value="<?php echo $reg_no ?>" required=""  readonly>
+                   placeholder="DU Reg No (2017812...)" value="" required=""  readonly>
         </div>
 
         <div class="form-group">
@@ -55,7 +51,7 @@
         <div class="form-group">
             <div>
                 <input type="number" name="mob_no" class="form-control form-control-solid placeholder-no-fix"
-                       placeholder="Mobile (015...)" value="<?php echo $mob_no ?>" minlength="11" required="">
+                       placeholder="Mobile (015...)" value="" minlength="11" required="">
             </div>
 
         </div>
@@ -63,7 +59,7 @@
         <div class="form-group">
             <div>
                 <input type="email" name="email" class="form-control form-control-solid placeholder-no-fix"
-                       value="<?php echo $email ?>">
+                       value="">
             </div>
 
         </div>
@@ -105,7 +101,7 @@
 <link rel='stylesheet' href='css/nprogress.css'/>
 <script src="js/profile.js"></script>
 <script type="text/javascript">
-    initialize();
+    init_fields();
 </script>
 <script src="js/main.js"></script>
 <script src="js/jquery-3.1.1.min.js"></script>

@@ -49,7 +49,8 @@ function validateLogin() {
                 }
                 else if(reply.indexOf("UNVERIFIED")!=-1)
                 {
-                    found=true;
+                    //found=true;
+                    showAlert(0);
                     errors.innerHTML+="Email not verified"+"<br>";
                 }
                 else if( reply.indexOf("ADMIN")!=-1)

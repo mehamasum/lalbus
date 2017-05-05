@@ -2,7 +2,7 @@
 session_start();
 include_once ('dbconnect.php');
 
-$bus_id = $_POST['busId'];
+$bus_id = mysqli_real_escape_string($conn, $_POST['busId']);
 
 $sql = "SELECT `reports".$bus_id."`.id as reportId, lat, lng, time, pos_cnt, neg_cnt, name as user, pos_repu FROM `reports".$bus_id."`,`users` WHERE user_id= `users`.id ORDER BY `reports".$bus_id."`.id DESC LIMIT 1";
 

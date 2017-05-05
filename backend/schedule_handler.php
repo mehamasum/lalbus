@@ -2,7 +2,7 @@
 include_once('dbconnect.php');
 
 if (isset($_POST['bus_id']) && !empty($_POST['bus_id'])) {
-    $bus_id= $_POST['bus_id'];
+    $bus_id= mysqli_real_escape_string($conn, $_POST['bus_id']);
 }
 else {
     $bus_id=2;

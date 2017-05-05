@@ -30,8 +30,8 @@ else
 }
 
 
-$state = $_POST['state'];
-$user = $_POST['id'];
+$state = mysqli_real_escape_string($conn, $_POST['state']);
+$user = mysqli_real_escape_string($conn, $_POST['id']);
 
 if($state==0) { // Rejected
     $sql = "UPDATE users SET `level`=0 WHERE id=$user;";

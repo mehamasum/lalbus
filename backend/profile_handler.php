@@ -8,8 +8,6 @@
 
 session_start();
 
-//  xhttp.send("n="+name+"&r="+reg_no+"&m="+mob_no+"&p="+password+"&c="+comm);
-
 // no injection
 require_once('dbconnect.php');
 
@@ -19,9 +17,9 @@ $mob_no = mysqli_real_escape_string($conn,$_POST['m']);
 $comm =  mysqli_real_escape_string($conn,$_POST['c']);
 $bus_id = mysqli_real_escape_string($conn,$_POST['b']);
 $dept_id= mysqli_real_escape_string($conn,$_POST['d']);
+$email= mysqli_real_escape_string($conn,$_POST['e']);
 $uid=mysqli_real_escape_string($conn,$_POST['id']);
 // check for sql injection
-
 
 $comm = intval($comm);
 $dept_id=intval($dept_id);
@@ -40,13 +38,13 @@ if ($result->num_rows == 0) {
 else {
     // update in db
 
-    $sql="UPDATE users SET name='$name',reg_no='$reg_no',mob_no='$mob_no',bus_id='$bus_id',level_req='$comm',dept_id='$dept_id' where id=$uid;";
+    $sql="UPDATE users SET name='$name',reg_no='$reg_no',mob_no='$mob_no',bus_id='$bus_id',level_req='$comm',dept_id='$dept_id',email='$email' where id=$uid;";
 
          //echo $sql;
 
     if ($conn->query($sql) == TRUE) {
 
-        //TODO : Remove $oldbus from following
+        //TODO OPTION : Remove $oldbus from following
         $check="SELECT * FROM following WHERE user_id=$uid and bus_id=$bus_id";
         $res=$conn->query($check);
         if($res->num_rows==0)

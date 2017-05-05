@@ -10,8 +10,8 @@
 include_once ('dbconnect.php');
 session_start();
 
-$sid = $_POST['id'];
-$bus=$_POST['b'];
+$sid = mysqli_real_escape_string($conn, $_POST['id']);
+$bus=mysqli_real_escape_string($conn, $_POST['b']);
 $user=$_SESSION['id'];
 
 $sql = "select * from users WHERE id=$user";

@@ -2,8 +2,6 @@
 
 include_once ('dbconnect.php');
 
-//$sid = $_POST['id'];
-
 $sql = "select * from places";
 $result = $conn->query($sql);
 $n = $result->num_rows;

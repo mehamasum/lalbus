@@ -8,8 +8,8 @@ session_start();
  * Time: 8:07 PM
  */
 
-$state = $_POST['state'];
-$bus_id = $_POST['id'];
+$state = mysqli_real_escape_string($conn, $_POST['state']);
+$bus_id = mysqli_real_escape_string($conn, $_POST['id']);
 $user = $_SESSION['id'];
 
 include_once ('dbconnect.php');
