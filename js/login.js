@@ -58,8 +58,13 @@ function validateLogin() {
                     console.log("Admin");
                     showAlert(1);
                 }
-                else {
+                else if(reply.indexOf("ONE")!=-1) {
                     showAlert(0);
+                }
+                else
+                {
+                    found = true;
+                    errors.innerHTML += "Error Occurred" + "<br>";
                 }
 
                 if (found)
