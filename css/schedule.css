@@ -23,28 +23,6 @@
     color: black;
 }
 
-.collapsibleList li{
-    float: right;
-    list-style: none;
-    text-align: center;
-    color:  white;
-    background-color: #000000;
-    margin-right: 30px;
-    width: 150px;
-    line-height: 60px;
-    text-decoration: none;
-}
-
-li.collapsibleListOpen{
-    background-color: #0c203a;
-    cursor           : pointer;
-}
-
-li.collapsibleListClosed{
-    background-color: #0c203a;
-    cursor           : pointer;
-}
-
 @media screen and (max-width: 800px) {
 
     #container_table {

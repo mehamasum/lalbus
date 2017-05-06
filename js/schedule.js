@@ -36,10 +36,9 @@ function init_bus()
             reply[0].forEach(function(item) {
                 var b_id=item.id;
                 bus_list.innerHTML+="<button type=\"button\" class=\"btn btn-primary btn-md\" onclick='setSchedule("+b_id+")'>"+item.name+"</button>";
-               // bus_list_btn.innerHTML+="<li class=\"list-group-item btn btn-primary btn-md\" onclick='setSchedule("+b_id+")'>"+item.name+"</li>";
-                bus_list_btn.innerHTML+="<div class=\"btn-group\"><button type=\"button\" class=\"btn btn-primary btn-md\" onclick='setSchedule("+b_id+")'>"+item.name+"</button></div>";
-
-            });
+                bus_list_btn.innerHTML+="<li class=\" btn list-group-item  btn-primary btn-md\" style='background-color: #337ab7' onclick='setSchedule("+b_id+")'>"+item.name+"</li>";
+//                bus_list_btn.innerHTML+="<div class=\"btn-group\"><button type=\"button\" class=\"btn btn-primary btn-md\" onclick='setSchedule("+b_id+")'>"+item.name+"</button></div>";
+              });
 
         }
     };
