@@ -82,12 +82,13 @@ function validateScheduleEdit()
 
 
     content.style.display = "none";
+    NProgress.start();
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             //this.responseText;
             var reply = this.responseText;
-
+            NProgress.done();
             console.log(reply);
             console.log(reply.indexOf("ZERO"));
             console.log(reply.indexOf("ONE"));
@@ -120,6 +121,16 @@ function validateScheduleEdit()
     xhttp.send("bus_id="+bus_id+"&stoppage_name="+stoppage+"&lat="+latitude+"&lng="+longitude+"&stoppage_type="+stoppage_type+"&remarks="+remarks+"&update_type="+update_type);
 
 }
+
+
+function showAlert() {
+    $("#success-alert").alert();
+    $("#success-alert").fadeTo(800, 500).slideUp(500, function(){
+        $("#success-alert").slideUp(500);
+        window.location.href = "following";
+    });
+}
+
 
 
 

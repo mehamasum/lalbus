@@ -6,7 +6,7 @@
  * Time: 7:49 PM
  */
 session_start();
-include_once(dirname(__FILE__) . "/../backend/dbconnect.php");
+require_once('dbconnect.php');
 $user_id=$_SESSION['id'];
 
 $sql = "select * from users WHERE id=$user_id";

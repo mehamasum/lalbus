@@ -8,12 +8,10 @@ session_start();
  * Time: 8:07 PM
  */
 
+include_once ('dbconnect.php');
 $state = mysqli_real_escape_string($conn, $_POST['state']);
 $bus_id = mysqli_real_escape_string($conn, $_POST['id']);
 $user = $_SESSION['id'];
-
-include_once ('dbconnect.php');
-
 if($state==0) { // unfollowing
     $sql = "DELETE FROM `following` WHERE `user_id`= $user AND `bus_id`=$bus_id";
     if ($conn->query($sql) == TRUE) {

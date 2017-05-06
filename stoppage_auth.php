@@ -46,12 +46,16 @@ include_once("validator/admin_auth_check.php");
     <table class="table table-striped">
         <thead>
         <tr>
+            <th>Update Type</th>
             <th>Stoppage Name</th>
             <th>Bus</th>
             <th>Stoppage Type</th>
             <th>Remarks</th>
             <th>User</th>
+            <th>User Level</th></tg>
+            <th>User Reputation</th>
             <th title="Time of update request">Suggested at</th>
+            <th></th>
             <th></th>
         </tr>
         </thead>

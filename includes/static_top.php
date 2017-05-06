@@ -38,7 +38,14 @@ if(isset($_SESSION['id'])) {
                         else if($level==2)
                         {
                             echo "<li id=\"page_schedule\"><a href=\"schedule\">Schedules</a></li>";
-                            echo "<li id=\"page_admin_schedule\"><a href=\"admin_schedule\">Edit Schedule</a></li>";
+                            echo " <li id=\"page_admin_schedule\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Edit
+                            <span class=\"caret\"></span></a>
+                                <ul class=\"dropdown-menu\">
+                                    <li><a href=\"admin_schedule\">Edit Bus Route</a></li>
+                                    <li><a href=\"admin_schedule\">Edit Bus Schedule</a></li>
+                                    <li><a href=\"stoppage_editor\">Edit Bus Stoppage</a></li>
+                                </ul>
+                            </li>";
                             echo " <li id=\"page_member_authorization\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Verify
                             <span class=\"caret\"></span></a>
                                 <ul class=\"dropdown-menu\">
@@ -87,7 +94,7 @@ else { ?>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li id="page_home" class="active"><a href="home">Home</a></li>
+                    <li id="page_home" class="active"><a href="index">Home</a></li>
                     <li id="page_schedule"><a href="schedule">Schedules</a></li>
                     <li id="page_stoppage"><a href="search">Search By Stoppage</a></li>
                     <li><a href="#" data-type='help' data-toggle='modal' data-target='#myModal'>Help</a></li>

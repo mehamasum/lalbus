@@ -48,7 +48,7 @@ function toggleStatus(id, state,ref_schedule,update_mode) {
 
 function initialize(sid)
 {
-    console.log(sid);
+    console.log("Schedule");
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -78,6 +78,7 @@ function initialize(sid)
                 var index = users.map(function(o) {  return o.id; }).indexOf(d['user_id']);
                 var username=users[index].name;
                 var pos_repu=users[index].pos_repu;
+                var user_level=users[index].level;
                 var update_type="Update";
                 var ref_schedule=d['old_schedule'];
                 if(d['update_type']==0)
@@ -97,14 +98,14 @@ function initialize(sid)
                 var trip_type="Up Trip";
                 if(d.trip_type==1)
                     trip_type="Down Trip";
-                var obj={"id":d['id'],"update_mode":d['update_type'],"update_type":update_type,"ref_schedule":ref_schedule,"bus":busname,"trip_type":trip_type,"time":d['time'],"endpoint":d['endpoint'],"driver":d['driver'],"bus_number":d['bus_number'],"comment":d['comment'],"username":username,"pos_repu":pos_repu,"timestamp":d['timestamp']};
+                var obj={"id":d['id'],"update_mode":d['update_type'],"update_type":update_type,"ref_schedule":ref_schedule,"bus":busname,"trip_type":trip_type,"time":d['time'],"endpoint":d['endpoint'],"driver":d['driver'],"bus_number":d['bus_number'],"comment":d['comment'],"username":username,"user_level":user_level,"pos_repu":pos_repu,"timestamp":d['timestamp']};
                 schedule.push(obj);
             }
 
             var i=0;
             for(i=0; i<schedule.length; i++) {
                 var obj=schedule[i];
-                parent.innerHTML += "<tr><td>" + obj.update_type + "</td><td>" + obj.bus + "</td><td>" + obj.trip_type + "</td><td>" + obj.time + "</td><td>" + obj.endpoint + "</td><td>" + obj.driver + "</td><td>" + obj.bus_number + "</td><td>" + obj.comment + "</td><td>" + obj.username + "</td><td>" + obj.pos_repu + "</td><td>" + obj.timestamp + "</td><td><button onclick='toggleStatus(" + i + "," + 1 + "," + obj.ref_schedule +"," + obj.update_mode + ")' id='btn_a" + i + "' class='btn btn-success pull-right'>Accept</button></td><td><button onclick='toggleStatus(" + i + "," + 0 + "," + obj.ref_schedule +"," + obj.update_mode + ")' id='btn_r" + i + "' class='btn btn-danger pull-right'>Reject</button></td></tr>";
+                parent.innerHTML += "<tr><td>" + obj.update_type + "</td><td>" + obj.bus + "</td><td>" + obj.trip_type + "</td><td>" + obj.time + "</td><td>" + obj.endpoint + "</td><td>" + obj.driver + "</td><td>" + obj.bus_number + "</td><td>" + obj.comment + "</td><td>" + obj.username + "</td><td>" + obj.user_level + "</td><td>" + obj.pos_repu + "</td><td>" + obj.timestamp + "</td><td><button onclick='toggleStatus(" + i + "," + 1 + "," + obj.ref_schedule +"," + obj.update_mode + ")' id='btn_a" + i + "' class='btn btn-success pull-right'>Accept</button></td><td><button onclick='toggleStatus(" + i + "," + 0 + "," + obj.ref_schedule +"," + obj.update_mode + ")' id='btn_r" + i + "' class='btn btn-danger pull-right'>Reject</button></td></tr>";
             }
 
         }

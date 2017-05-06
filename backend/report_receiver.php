@@ -7,13 +7,12 @@
  */
 session_start();
 
-
-$bus_id = $_POST['b'];
-$user = $_SESSION['id'];
-$lat = $_POST['lat'];
-$lng = $_POST['lng'];
-
 include_once ('dbconnect.php');
+
+$bus_id = mysqli_real_escape_string($conn,$_POST['b']);
+$user = $_SESSION['id'];
+$lat = mysqli_real_escape_string($conn,$_POST['lat']);
+$lng = mysqli_real_escape_string($conn,$_POST['lng']);
 
 // TODO: dynamically create reports table for new bus in dasboard
 

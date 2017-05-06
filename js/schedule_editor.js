@@ -25,12 +25,13 @@ function setValue() {
 
     errors.innerHTML="";
     var found =false;
-
+    NProgress.start();
     content.style.display = "none";
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             //this.responseText;
+            NProgress.done();
             var reply =this.responseText;
             console.log(reply);
 
@@ -90,11 +91,12 @@ function validateScheduleEdit() {
 
     content.style.display = "none";
     var xhttp = new XMLHttpRequest();
+    NProgress.start();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             //this.responseText;
             var reply = this.responseText;
-
+            NProgress.done();
             console.log(reply);
             console.log(reply.indexOf("ZERO"));
             console.log(reply.indexOf("ONE"));
@@ -164,6 +166,17 @@ function  bus_initialize(fieldName) {
     xhttp.send();
 
 }
+
+
+
+function showAlert() {
+    $("#success-alert").alert();
+    $("#success-alert").fadeTo(800, 500).slideUp(500, function(){
+        $("#success-alert").slideUp(500);
+        window.location.href = "following";
+    });
+}
+
 
 
 

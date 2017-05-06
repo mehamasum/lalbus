@@ -55,6 +55,7 @@ include_once("validator/admin_auth_check.php");
             <th>Bus Number</th>
             <th>Comment</th>
             <th title="Update Suggested By this user">User</th>
+            <th title="User Level">User Level</th>
             <th title="Positive Reputation">User Reputation</th>
             <th title="Time of update request">Suggested at</th>
             <th></th>

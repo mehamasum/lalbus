@@ -14,7 +14,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Update Stoppage | Lalbus</title>
+    <title>Suggest Stoppage | Lalbus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="./img/favicon.png">
     <link rel="canonical" href="">
@@ -39,8 +39,8 @@
 
         <div class="form-group">
             <select name="update_type" class="form-control form-control-solid placeholder-no-fix">
-                <option value="0" >Add</option>
-                <option value="1" >Update</option>
+                <option value="0" >Update</option>
+                <option value="1" >Add New</option>
                 <option value="2" >Delete</option>
             </select>
         </div>
@@ -86,6 +86,12 @@
 
         </div>
 
+        <div class="alert alert-success" id="success-alert" style="display: none;">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Success! </strong>
+            Your suggestion for bus stoppage has been accepted.
+        </div>
+
 
         <div id="errorMessageContent" class="content" style="display: none; color: red">
             <div id="errorMessages"></div>
@@ -103,6 +109,8 @@
 </body>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8TAiLd5IswFDLPKwv7vR_y5rrGbpe71U&libraries=places,geometry"></script>
 <script src="js/stoppage_editor.js"></script>
+<script src='js/nprogress.js'></script>
+<link rel='stylesheet' href='css/nprogress.css'/>
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="js/jquery-3.1.1.min.js"></script>

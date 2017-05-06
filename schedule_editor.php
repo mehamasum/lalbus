@@ -91,6 +91,12 @@ $bus_id=$_GET['b'];
                    placeholder="Bus Number" value="" required="">
         </div>
 
+        <div class="alert alert-success" id="success-alert" style="display: none;">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Success! </strong>
+            Your suggestion for bus schedule has been accepted.
+        </div>
+
 
         <div id="errorMessageContent" class="content" style="display: none; color: red">
             <div id="errorMessages"></div>
@@ -107,6 +113,8 @@ $bus_id=$_GET['b'];
 
 </body>
 <script src="js/schedule_editor.js"></script>
+<script src='js/nprogress.js'></script>
+<link rel='stylesheet' href='css/nprogress.css'/>
 <script>
     setValue();
 </script>
