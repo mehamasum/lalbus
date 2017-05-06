@@ -18,6 +18,7 @@ if(!isset($_SESSION['id']))
 $bus_id=mysqli_real_escape_string($conn,$_POST['bus_id']);
 $user = $_SESSION['id'];
 
+
 //"bus_id="+bus_id+"&stoppage_name="+stoppage+"&lat="+latitude+"&lng="+longitude+"&stoppage_type="+trip_type+"&remarks="+remarks+"update_type="+update_type);
 $update_type=mysqli_real_escape_string($conn,$_POST['update_type']);
 $stoppage_name=mysqli_real_escape_string($conn,$_POST['stoppage_name']);

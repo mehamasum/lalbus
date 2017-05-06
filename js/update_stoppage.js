@@ -1,6 +1,9 @@
 /**
  * Created by USER on 5/6/2017.
  */
+/**
+ * Created by USER on 5/6/2017.
+ */
 //id	stoppage_name	lat	lng	bus_id	stoppage_type	remarks	user_id	requested_on
 
 /**
@@ -11,74 +14,46 @@ var buses=[];
 
 function initialize()
 {
-    var defaultBounds = new google.maps.LatLngBounds(
-        new google.maps.LatLng(22.845765, 89.302069),
-        new google.maps.LatLng(24.789119, 91.258215));
-
-    bus_initialize("bus");
-    var autocomplete = new google.maps.places.SearchBox((document.getElementById('autocomplete')),{bounds: defaultBounds});
-
-
-
-    autocomplete.addListener('places_changed', function() {
-        var places = autocomplete.getPlaces();
-
-        if (places.length == 0) {
-            return;
-        }
-        var place=places[0];
-
-        placesLat= place.geometry.location.lat();
-        placesLong = place.geometry.location.lng();
-
-        document.getElementsByName('latitude')[0].value=placesLat;
-        document.getElementsByName('longitude')[0].value=placesLong;
-    });
-
-}
-
-function  bus_initialize(fieldName) {
-
-    var bus_input = document.getElementsByName(fieldName)[0];
+    var bus_header=document.getElementById("bus_header");
+    var bus=document.getElementsByName("bus")[0];
+    var stoppage=document.getElementsByName("stoppage_name")[0];
+    var stoppage_type=document.getElementsByName("stoppage_type")[0];
+    var remarks=document.getElementsByName("remarks")[0];
+    var lat=document.getElementsByName('lat')[0];
+    var lng=document.getElementsByName('lng')[0];
+    NProgress.start();
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-
-            var reply = JSON.parse(this.responseText);
-            reply[0].forEach(function(item) {
-                var option = document.createElement('option');
-                option.value = item['id'];
-                option.text=item['name'];
-                buses.push(option);
-                bus_input.appendChild(option);
-                //bus_dataList.appendChild(option);
-            });
-
-        } else {
-            bus_input.innerHTML="Couldn't load List of buses :(";
+            var data=JSON.parse(this.responseText)['item'];
+            NProgress.done();
+            lat.value=data['lat'];
+            lng.value=data['lng'];
+            stoppage.value=data['name'];
+            bus.value=data['bus_id'];
+            bus_header.innerHTML="For "+data['bus_name'];
+            stoppage_type.value=data['stoppage_type'];
+            remarks.value=data['remarks'];
         }
     };
-    xhttp.open("POST", "backend/bus_list.php", true);
+    xhttp.open("POST", "backend/stoppage_provider.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send();
+    xhttp.send('s_id='+schedule_id);
 
 }
 
-
-
-function validateScheduleEdit()
+function validateStoppageEdit()
 {
-    var bus_id=document.getElementsByName("bus")[0].value;
-    var stoppage=document.getElementById("autocomplete").value;
-    var latitude=document.getElementsByName("latitude")[0].value;
-    var longitude=document.getElementsByName("longitude")[0].value;
+    var bus=document.getElementsByName("bus")[0].value;
+    var stoppage=document.getElementsByName("stoppage_name")[0].value;
     var stoppage_type=document.getElementsByName("stoppage_type")[0].value;
     var remarks=document.getElementsByName("remarks")[0].value;
+    var lat=document.getElementsByName('lat')[0].value;
+    var lng=document.getElementsByName('lng')[0].value;
     var content = document.getElementById("errorMessageContent");
     var errors = document.getElementById("errorMessages");
     errors.innerHTML="";
     var found =false;
-
 
     content.style.display = "none";
     NProgress.start();
@@ -91,7 +66,6 @@ function validateScheduleEdit()
             console.log(reply);
             console.log(reply.indexOf("ZERO"));
             console.log(reply.indexOf("ONE"));
-
 
             if (reply.indexOf("ZERO") != -1) {
                 found = true;
@@ -117,7 +91,7 @@ function validateScheduleEdit()
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     //console.log(bus);
-    xhttp.send("bus_id="+bus_id+"&stoppage_name="+stoppage+"&lat="+latitude+"&lng="+longitude+"&stoppage_type="+stoppage_type+"&remarks="+remarks+"&update_type=1");
+    xhttp.send("bus_id="+bus+"&stoppage_name="+stoppage+"&lat="+lat+"&lng="+lng+"&stoppage_type="+stoppage_type+"&remarks="+remarks+"&update_type=0");
 
 }
 

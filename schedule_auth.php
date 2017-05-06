@@ -35,8 +35,8 @@ include_once("validator/admin_auth_check.php");
 
     <div>
         <span>
-            <h3>Schedule Update Requests</h3>
-            <span>Confirm suggested updates to Bus Schedule</span>
+            <h3 style="width: 100%; text-align: center">Schedule Update Requests</h3>
+            <p style="width: 100%; text-align: center">Confirm suggested updates to Bus Schedule</p>
         </span>
         <button class="btn btn-danger pull-right" onClick="window.location.reload()"> Refresh </button>
     </div>

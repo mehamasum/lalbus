@@ -33,17 +33,17 @@ if(isset($_SESSION['id'])) {
                         else if($level==1)
                         {
                             echo "<li id=\"page_schedule\"><a href=\"schedule\">Schedules</a></li>";
-                            echo "<li id=\"page_admin_schedule\"><a href=\"admin_schedule\">Edit Schedule</a></li>";
+                            echo "<li id=\"page_edit_schedule\"><a href=\"edit_schedule\">Edit Schedule</a></li>";
                         }
                         else if($level==2)
                         {
                             echo "<li id=\"page_schedule\"><a href=\"schedule\">Schedules</a></li>";
-                            echo " <li id=\"page_admin_schedule\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Edit
+                            echo " <li id=\"page_edit_schedule\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Edit
                             <span class=\"caret\"></span></a>
                                 <ul class=\"dropdown-menu\">
-                                    <li><a href=\"admin_schedule\">Edit Bus Route</a></li>
-                                    <li><a href=\"admin_schedule\">Edit Bus Schedule</a></li>
-                                    <li><a href=\"stoppage_editor\">Edit Bus Stoppage</a></li>
+                                    <li><a href=\"edit_schedule\">Edit Bus Route</a></li>
+                                    <li><a href=\"edit_schedule\">Edit Bus Schedule</a></li>
+                                    <li><a href=\"edit_stoppage\">Edit Bus Stoppage</a></li>
                                 </ul>
                             </li>";
                             echo " <li id=\"page_member_authorization\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Verify

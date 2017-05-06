@@ -2,15 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: USER
- * Date: 4/27/2017
- * Time: 12:17 PM
+ * Date: 5/6/2017
+ * Time: 4:34 PM
  */
-
 
 include_once ('dbconnect.php');
 session_start();
 
-$sid = mysqli_real_escape_string($conn, $_POST['id']);
 $bus=mysqli_real_escape_string($conn, $_POST['b']);
 $user=$_SESSION['id'];
 
@@ -33,7 +31,7 @@ foreach($result as $row){
 $jsonArr[] = $jsonData;
 
 
-$sql = "select * from schedule WHERE bus_id=$bus";
+$sql = "select * from places WHERE bus_id=$bus";
 
 $result = $conn->query($sql);
 

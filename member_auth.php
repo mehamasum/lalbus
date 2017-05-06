@@ -34,8 +34,8 @@ include_once("validator/admin_auth_check.php");
 
     <div>
         <span>
-            <h3>Committee Member Requests</h3>
-            <span>Authorize bus committee members</span>
+            <h3 style="width: 100%; text-align: center">Committee Member Requests</h3>
+            <p style="width: 100%; text-align: center">Authorize bus committee members</p>
         </span>
         <button class="btn btn-danger pull-right" onClick="window.location.reload()"> Refresh </button>
     </div>

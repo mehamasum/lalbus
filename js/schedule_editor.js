@@ -107,10 +107,11 @@ function validateScheduleEdit() {
                 errors.innerHTML += "Update Failed" + "<br>";
             }
             else if (reply.indexOf("ONE") != -1) {
-                window.location.href = "admin_schedule";
+
             }
             else if( reply.indexOf("UNAUTHORIZED")!=-1)
             {
+                found=true;
                 console.log("UNAUTHORIZED ACCESS");
                 parent.innerHTML="You don't have permission to edit this schedule"+ "<br>";
             }
@@ -122,6 +123,7 @@ function validateScheduleEdit() {
             if (found)
                 content.style.display = "block";
             else {
+                showAlert()
                 content.style.display = "none";
 
             }
@@ -171,9 +173,9 @@ function  bus_initialize(fieldName) {
 
 function showAlert() {
     $("#success-alert").alert();
-    $("#success-alert").fadeTo(800, 500).slideUp(500, function(){
+    $("#success-alert").fadeTo(1500, 500).slideUp(500, function(){
         $("#success-alert").slideUp(500);
-        window.location.href = "following";
+        window.location.href = "home";
     });
 }
 

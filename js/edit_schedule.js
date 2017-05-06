@@ -8,7 +8,7 @@
     var schedule=[];
 var modal = document.getElementById('myModal');
 var span = document.getElementsByClassName("close")[0];
-function init_schedule()
+function init_schedule(bid)
 {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -25,7 +25,8 @@ function init_schedule()
                 var obj={"id":d["id"], "name":d["name"], "route":d["route"]};
                 buses.push(obj);
             }
-
+            parent.innerHTML="";
+            schedule=[]
             for(idx=0; idx<reply[1].length; idx++) {
                 var d = reply[1][idx];
                 var bus_id=d["bus_id"];
@@ -47,9 +48,9 @@ function init_schedule()
 
         }
     };
-    xhttp.open("POST", "backend/admin_schedule_handler.php", true);
+    xhttp.open("POST", "backend/edit_schedule_handler.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("id="+ sid+"&b="+bid);
+    xhttp.send("b="+bid);
 
 }
 function addTrip(busid)
@@ -73,7 +74,6 @@ function deleteTrip(s_id)
                 //this.responseText;
                 var reply = this.responseText;
                 alert("Your Delete Request is pending admin approval. Thanks for your update.");
-                //TODO : ADD to DELETE REQUEST
                 console.log(reply);
             }
         };
@@ -90,21 +90,14 @@ function deleteTrip(s_id)
 
 function initModal()
 {
-    if(level==1)
-    {
-        init_schedule();
-        return;
-    }
     span.onclick = function() {
-        init_schedule();
-        modal.style.display = "none";
+        setSchedule(1);
     }
 
 // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
-            init_schedule();
-            modal.style.display = "none";
+            setSchedule(1);
         }
     }
 
@@ -130,8 +123,6 @@ function initModal()
 
 function setSchedule(selectedBus)
 {
-    bid=selectedBus;
-    console.log(bid);
-    init_schedule();
+    init_schedule(selectedBus);
     modal.style.display = "none";
 }
