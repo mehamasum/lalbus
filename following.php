@@ -19,7 +19,7 @@
 <script>
     var id=<?php echo $_SESSION['id']; ?>;
     document.getElementById("page_home").classList.remove("active");
-    document.getElementById("page_following").className += "active";
+    document.getElementById("page_user").className += "active";
 </script>
 
 <div class="container" >

@@ -26,8 +26,6 @@ if(isset($_SESSION['id'])) {
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li id="page_home" class="active"><a href="home">Home</a></li>
-                    <li id="page_following"><a href="following">Following</a></li>
-
                     <?php
                         echo "<li id=\"page_schedule\"><a href=\"schedule\">Schedules</a></li>";
                         echo " <li id=\"page_edit_schedule\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Edit
@@ -71,9 +69,10 @@ if(isset($_SESSION['id'])) {
                             ?>
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="profile">Profile</a></li>
+                            <li><a href="following">Following</a></li>
+                            <li><a href="profile">Edit Profile</a></li>
                             <li><a href="update_password.php">Change Password</a></li>
-                            <li><a href="#">Help</a></li>
+     <!--                       <li><a href="#">Help</a></li>-->
                             <li><a href="logout.php">Logout</a></li>
                         </ul>
                     </li>
@@ -99,7 +98,7 @@ else { ?>
                     <li id="page_home" class="active"><a href="index">Home</a></li>
                     <li id="page_schedule"><a href="schedule">Schedules</a></li>
                     <li id="page_stoppage"><a href="search">Search By Stoppage</a></li>
-                    <li><a href="#" data-type='help' data-toggle='modal' data-target='#myModal'>Help</a></li>
+                   <!-- <li><a href="#" data-type='help' data-toggle='modal' data-target='#myModal'>Help</a></li>-->
                 </ul>
                 <ul class="nav navbar-nav navbar-right" >
                     <li id="page_user"><a href="login.php">Login</a></li>

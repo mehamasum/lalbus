@@ -94,7 +94,7 @@ function validateUpdate() {
     var name = document.getElementsByName("name")[0].value;
     var reg_no = document.getElementsByName("reg_no")[0].value;
     var mob_no = document.getElementsByName("mob_no")[0].value;
-    var email = document.getElementsByName("email")[0].value;
+    var email = document.getElementsByName("email")[0].value.toLowerCase();
    // var password = document.getElementsByName("password")[0].value;
     var comm = document.getElementsByName("committee")[0].value;
     var bus = document.getElementsByName("bus")[0].value;

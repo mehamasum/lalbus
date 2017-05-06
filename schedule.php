@@ -65,7 +65,6 @@
                 <th>Driver</th>
                 <th>Bus Number</th>
                 <th>Remarks</th>
-                <th id="up_comment"></th>
             </tr>
             </thead>
             <tbody id="up_table">

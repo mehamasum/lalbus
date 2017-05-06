@@ -2,7 +2,7 @@
  * Created by USER on 4/23/2017.
  */
 function validateLogin() {
-    var email = document.getElementsByName("email")[0].value;
+    var email = document.getElementsByName("email")[0].value.toLowerCase();
     var password = document.getElementsByName("password")[0].value;
 
     var content = document.getElementById("errorMessageContent");

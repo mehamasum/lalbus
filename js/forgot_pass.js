@@ -3,7 +3,7 @@
  */
 
 function validateRequest() {
-    var email = document.getElementsByName("email")[0].value;
+    var email = document.getElementsByName("email")[0].value.toLowerCase();
     var reg_no = document.getElementsByName("reg_no")[0].value;
 
     var content = document.getElementById("errorMessageContent");
