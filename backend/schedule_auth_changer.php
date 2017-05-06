@@ -56,8 +56,12 @@ if($state==0) { // Rejected
 else { // Accepted
     $sql = "select * from schedule_request WHERE id=$schedule";
     $result = $conn->query($sql);
+    if($result->num_rows==0)
+    {
+        echo "ZERO";
+        die();
+    }
     $row=$result->fetch_assoc();
-    $repu=$row["pos_repu"];
     $updater=$row["user_id"];
 
     /* Update Schedule Database */

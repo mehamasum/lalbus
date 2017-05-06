@@ -2,18 +2,17 @@
 /**
  * Created by PhpStorm.
  * User: USER
- * Date: 5/5/2017
- * Time: 1:20 AM
+ * Date: 5/7/2017
+ * Time: 1:49 AM
  */
 include_once("validator/admin_auth_check.php");
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Stoppage Validation | Lalbas</title>
+    <title>Schedule Validation | Lalbas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="./img/favicon.png">
     <link rel="canonical" href="">
@@ -24,7 +23,7 @@ include_once("validator/admin_auth_check.php");
 
 
 </head>
-<body onload="initialize(<?php echo $_SESSION['id']; ?>)">
+<body onload="initialize()">
 <?php include("includes/static_top.php"); ?>
 <script>
     document.getElementById("page_home").classList.remove("active");
@@ -35,8 +34,8 @@ include_once("validator/admin_auth_check.php");
 
     <div>
         <span>
-            <h3 style="width: 100%; text-align: center">Stoppage Update Requests</h3>
-            <p style="width: 100%; text-align: center">Confirm Suggested Updates to Bus Stoppages</p>
+            <h3 style="width: 100%; text-align: center">Bus Route Update Requests</h3>
+            <p style="width: 100%; text-align: center">Confirm suggested updates to Bus Routes</p>
         </span>
         <button class="btn btn-danger pull-right" onClick="window.location.reload()"> Refresh </button>
     </div>
@@ -46,20 +45,20 @@ include_once("validator/admin_auth_check.php");
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Update Type</th>
-            <th>Stoppage Name</th>
-            <th>Bus</th>
-            <th>Stoppage Type</th>
+            <th>Suggestion Type</th>
+            <th>Old Bus Name</th>
+            <th>Bus Name</th>
+            <th>Route</th>
             <th>Remarks</th>
-            <th>User</th>
-            <th>User Level</th></tg>
-            <th>User Reputation</th>
+            <th title="Update Suggested By this user">User</th>
+            <th title="User Level">User Level</th>
+            <th title="Positive Reputation">User Reputation</th>
             <th title="Time of update request">Suggested at</th>
             <th></th>
             <th></th>
         </tr>
         </thead>
-        <tbody id="stoppage_body">
+        <tbody id="bus_body">
         </tbody>
     </table>
 
@@ -69,7 +68,7 @@ include_once("validator/admin_auth_check.php");
 </body>
 
 <!-- Bootstrap core JavaScript -->
-<script src="js/stoppage_auth.js"></script>
+<script src="js/bus_auth.js"></script>
 <script src="js/jquery-3.1.1.min.js"></script>
 <!-- Placed at the end of the document so the pages load faster -->
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>

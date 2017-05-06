@@ -12,28 +12,26 @@ function initialize()
 {
     loadPlaces();
     flag=0;
-    autocomplete = new google.maps.places.Autocomplete(
-        /** @type {HTMLInputElement} */(document.getElementById('autocomplete')),
-        {types: ['geocode'],componentRestrictions: {country: "bd"}});
-    google.maps.event.addListener(autocomplete, 'place_changed', function()
-    {
 
-            try {
-                var place = autocomplete.getPlace();
-            }
-            catch (e) {
-                return;
-                //logMyErrors(e); // pass exception object to error handler
-            }
-            var latitude = place.geometry.location.lat();
-            var longitude = place.geometry.location.lng();
+    var defaultBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(22.845765, 89.302069),
+        new google.maps.LatLng(24.789119, 91.258215));
+    var autocomplete = new google.maps.places.SearchBox((document.getElementById('autocomplete')),{bounds: defaultBounds});
 
-            console.log(latitude);
-            console.log(longitude);
+    autocomplete.addListener('places_changed', function() {
+        var places = autocomplete.getPlaces();
 
-            //getDrivingDistances(latitude,longitude);
-            getDirectDistance(latitude,longitude);
+        if (places.length == 0) {
+            return;
+        }
+        var place=places[0];
+
+        placesLat= place.geometry.location.lat();
+        placesLong = place.geometry.location.lng();
+
+        getDirectDistance(placesLat,placesLong);
     });
+
 }
 
 function DeleteRows() {

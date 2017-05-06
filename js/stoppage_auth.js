@@ -38,11 +38,17 @@ function toggleStatus(id, state,update_mode) {
                     btna.setAttribute('disabled','true');
                 }
             }
+            else if(reply.indexOf("ZERO")!=-1)
+            {
+                alert("This Stoppage Doesn't Exist Anymore !");
+                btna.setAttribute('disabled','true');
+                btnr.setAttribute('disabled','true');
+            }
         }
     };
     xhttp.open("POST", "backend/stoppage_auth_changer.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("id="+stoppage[id].id+"&state="+state+"&mode="+update_mode);
+    xhttp.send("id="+id+"&state="+state+"&mode="+update_mode);
 
 }
 
@@ -108,7 +114,7 @@ function initialize(sid)
             var i=0;
             for(i=0; i<stoppage.length; i++) {
                 var obj=stoppage[i];
-                parent.innerHTML += "<tr><td>" + obj.update_type + "</td><td>" + obj.stoppage_name + "</td><td>" + obj.bus + "</td><td>" + obj.stoppage_type + "</td><td>" + obj.remarks + "</td><td>" + obj.username + "</td><td>" + levels[obj.user_level] + "</td><td>" + obj.pos_repu + "</td><td>" + obj.timestamp + "</td><td><button onclick='toggleStatus(" + i + "," + 1 + "," + obj.update_mode + ")' id='btn_a" + i + "' class='btn btn-success pull-right'>Accept</button></td><td><button onclick='toggleStatus(" + i + "," + 0 +"," + obj.update_mode + ")' id='btn_r" + i + "' class='btn btn-danger pull-right'>Reject</button></td></tr>";
+                parent.innerHTML += "<tr><td>" + obj.update_type + "</td><td>" + obj.stoppage_name + "</td><td>" + obj.bus + "</td><td>" + obj.stoppage_type + "</td><td>" + obj.remarks + "</td><td>" + obj.username + "</td><td>" + levels[obj.user_level] + "</td><td>" + obj.pos_repu + "</td><td>" + obj.timestamp + "</td><td><button onclick='toggleStatus(" + obj.id + "," + 1 + "," + obj.update_mode + ")' id='btn_a" + obj.id + "' class='btn btn-success pull-right'>Accept</button></td><td><button onclick='toggleStatus(" + obj.id + "," + 0 +"," + obj.update_mode + ")' id='btn_r" + obj.id + "' class='btn btn-danger pull-right'>Reject</button></td></tr>";
             }
 
         }

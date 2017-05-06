@@ -26,7 +26,7 @@
 <?php include("includes/static_top.php"); ?>
 <script>
     document.getElementById("page_home").classList.remove("active");
-    document.getElementById("page_edit_schedule").className += "active";
+    document.getElementById("page_edit").className += "active";
 </script>
 <div class="container" >
     <div>

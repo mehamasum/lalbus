@@ -11,11 +11,11 @@ var buses=[];
 
 function initialize()
 {
+    bus_initialize("bus");
+
     var defaultBounds = new google.maps.LatLngBounds(
         new google.maps.LatLng(22.845765, 89.302069),
         new google.maps.LatLng(24.789119, 91.258215));
-
-    bus_initialize("bus");
     var autocomplete = new google.maps.places.SearchBox((document.getElementById('autocomplete')),{bounds: defaultBounds});
 
 

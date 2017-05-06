@@ -28,10 +28,10 @@ if(isset($_SESSION['id'])) {
                     <li id="page_home" class="active"><a href="home">Home</a></li>
                     <?php
                         echo "<li id=\"page_schedule\"><a href=\"schedule\">Schedules</a></li>";
-                        echo " <li id=\"page_edit_schedule\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Edit
+                        echo " <li id=\"page_edit\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Edit
                             <span class=\"caret\"></span></a>
                                 <ul class=\"dropdown-menu\">
-                                    <li><a href=\"edit_schedule\">Edit Bus Route</a></li>
+                                    <li><a href=\"edit_bus\">Edit Bus Route</a></li>
                                     <li><a href=\"edit_schedule\">Edit Bus Schedule</a></li>
                                     <li><a href=\"edit_stoppage\">Edit Bus Stoppage</a></li>
                                 </ul>
@@ -41,15 +41,16 @@ if(isset($_SESSION['id'])) {
                         else if($level==1)
                         {
                             echo "<li id=\"page_schedule\"><a href=\"schedule\">Schedules</a></li>";
-                            echo "<li id=\"page_edit_schedule\"><a href=\"edit_schedule\">Edit Schedule</a></li>";
+                            echo "<li id=\"page_edit\"><a href=\"edit_schedule\">Edit Schedule</a></li>";
                         }*/
 
                         if($level==2)
                         {
-                            echo " <li id=\"page_member_authorization\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Verify
+                            echo " <li id=\"page_authorization\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Verify
                             <span class=\"caret\"></span></a>
                                 <ul class=\"dropdown-menu\">
                                     <li><a href=\"member_auth\">Verify Members</a></li>
+                                    <li><a href=\"bus_auth\">Verify Bus</a></li>
                                     <li><a href=\"schedule_auth\">Verify Schedule</a></li>
                                     <li><a href=\"stoppage_auth\">Verify Stoppages</a></li>
                                 </ul>

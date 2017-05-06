@@ -2,10 +2,10 @@
 /**
  * Created by PhpStorm.
  * User: USER
- * Date: 5/6/2017
- * Time: 3:52 PM
- *
+ * Date: 5/7/2017
+ * Time: 1:49 AM
  */
+
 
 session_start();
 include_once ('dbconnect.php');
@@ -30,17 +30,14 @@ else
     }
 }
 
-/*
-Transfer from Places_request to Places
-*/
 $state = mysqli_real_escape_string($conn,$_POST['state']);
-$stoppage = mysqli_real_escape_string($conn,$_POST['id']);
+$bus = mysqli_real_escape_string($conn,$_POST['id']);
 $update_mode=mysqli_real_escape_string($conn,$_POST['mode']);
+$old_bus=mysqli_real_escape_string($conn,$_POST['ref']);
 $error=false;
 if($state==0) { // Rejected
 
-    $sql = "DELETE from `places_request` WHERE id=$stoppage;";
-    echo $sql;
+    $sql = "DELETE from `bus_request` WHERE id=$bus;";
     if ($conn->query($sql) == TRUE) {
         echo "ONE";
     }
@@ -53,49 +50,42 @@ if($state==0) { // Rejected
 //Bus	Trip Type	Time	Endpoint	Driver	Bus Number	Comment	User	User Reputation	Suggested at
 
 else { // Accepted
-    $sql = "select * from places_request WHERE id=$stoppage";
+
+
+
+    $sql = "select * from bus_request WHERE id=$bus";
     $result = $conn->query($sql);
     $row=$result->fetch_assoc();
     $updater=$row["user_id"];
 
-    /* Update Stoppage Database */
+    $name=mysqli_real_escape_string($conn,$row['name']);
+    $route=mysqli_real_escape_string($conn,$row['route']);
+
+    /* Update bus Database */
     if($update_mode==0)//update
     {
-        //id	update_type	stoppage_name	lat	lng	bus_id	stoppage_type	remarks	user_id	requested_on
-        $sql="UPDATE places SET stoppage_name='$row[stoppage_name]',lat='$row[lat]',lng='$row[lng]',bus_id=$row[bus_id],stoppage_type=$row[stoppage_type],remarks='$row[remarks]'  WHERE  stoppage_name='$row[stoppage_name]';";
+        $sql="UPDATE bus SET name='$name',route='$route' WHERE  id=$old_bus;";
+
     }
     else if ($update_mode==1)
     {
-        $sql="INSERT INTO `places` (`id`, `stoppage_name`, `lat`, `lng`, `bus_id`, `stoppage_type`, `remarks`) VALUES (NULL, '$row[stoppage_name]', '$row[lat]', '$row[lng]', '$row[bus_id]', '$row[stoppage_type]', '$row[remarks]');";
+        $sql="INSERT INTO `bus` (`id`, `name`, `route`) VALUES (NULL, '$name','$route');";
     }
     else if($update_mode==2)
     {
-        $sql="DELETE FROM places WHERE id=$stoppage";
+        $sql="DELETE FROM `bus` WHERE id=$old_bus";
     }
 
-    $result=$conn->query($sql);
-    // echo $sql;
 
-    if($result->num_rows==0)
-    {
-        echo "ZERO";
-        $sql = "DELETE from `places_request` WHERE id=$stoppage;";
-        if ($conn->query($sql) == TRUE) {
-            //Stoppage Cleared
-            echo "ONE";
-        }
-        else {
-            $error=true;
-            echo "ERR";
-            die();
-        }
-        die();
-    }
-    else
-     {
+    if ($conn->query($sql) == TRUE) {
+        //bus Database Updated
         echo "THREE";
     }
-
+    else {
+        $error=true;
+        echo "ERR";
+        die();
+    }
 
     /*Increase Reputation for user */
     $sql="SELECT * from users WHERE id=$updater";
@@ -115,10 +105,9 @@ else { // Accepted
     }
 
     /* Clear Request from database */
-
-    $sql = "DELETE from `places_request` WHERE id=$stoppage;";
+    $sql = "DELETE from `bus_request` WHERE id=$bus;";
     if ($conn->query($sql) == TRUE) {
-        //Stoppage Cleared
+        //bus Cleared
         echo "ONE";
     }
     else {

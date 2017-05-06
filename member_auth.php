@@ -27,7 +27,7 @@ include_once("validator/admin_auth_check.php");
 <?php include("includes/static_top.php"); ?>
 <script>
     document.getElementById("page_home").classList.remove("active");
-    document.getElementById("page_member_authorization").className += "active";
+    document.getElementById("page_authorization").className += "active";
 </script>
 
 <div class="container">

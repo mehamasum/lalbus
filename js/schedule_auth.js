@@ -38,11 +38,17 @@ function toggleStatus(id, state,ref_schedule,update_mode) {
                     btna.setAttribute('disabled','true');
                 }
             }
+            else if(reply.indexOf("ZERO")!=-1)
+            {
+                alert("This Stoppage Doesn't Exist Anymore !");
+                btna.setAttribute('disabled','true');
+                btnr.setAttribute('disabled','true');
+            }
         }
     };
     xhttp.open("POST", "backend/schedule_auth_changer.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("id="+schedule[id].id+"&state="+state+"&mode="+update_mode+"&ref="+ref_schedule);
+    xhttp.send("id="+id+"&state="+state+"&mode="+update_mode+"&ref="+ref_schedule);
 
 }
 
@@ -105,7 +111,7 @@ function initialize(sid)
             var i=0;
             for(i=0; i<schedule.length; i++) {
                 var obj=schedule[i];
-                parent.innerHTML += "<tr><td>" + obj.update_type + "</td><td>" + obj.bus + "</td><td>" + obj.trip_type + "</td><td>" + obj.time + "</td><td>" + obj.endpoint + "</td><td>" + obj.driver + "</td><td>" + obj.bus_number + "</td><td>" + obj.comment + "</td><td>" + obj.username + "</td><td>" + levels[obj.user_level] + "</td><td>" + obj.pos_repu + "</td><td>" + obj.timestamp + "</td><td><button onclick='toggleStatus(" + i + "," + 1 + "," + obj.ref_schedule +"," + obj.update_mode + ")' id='btn_a" + i + "' class='btn btn-success pull-right'>Accept</button></td><td><button onclick='toggleStatus(" + i + "," + 0 + "," + obj.ref_schedule +"," + obj.update_mode + ")' id='btn_r" + i + "' class='btn btn-danger pull-right'>Reject</button></td></tr>";
+                parent.innerHTML += "<tr><td>" + obj.update_type + "</td><td>" + obj.bus + "</td><td>" + obj.trip_type + "</td><td>" + obj.time + "</td><td>" + obj.endpoint + "</td><td>" + obj.driver + "</td><td>" + obj.bus_number + "</td><td>" + obj.comment + "</td><td>" + obj.username + "</td><td>" + levels[obj.user_level] + "</td><td>" + obj.pos_repu + "</td><td>" + obj.timestamp + "</td><td><button onclick='toggleStatus(" + obj.id + "," + 1 + "," + obj.ref_schedule +"," + obj.update_mode + ")' id='btn_a" + obj.id + "' class='btn btn-success pull-right'>Accept</button></td><td><button onclick='toggleStatus(" + obj.id + "," + 0 + "," + obj.ref_schedule +"," + obj.update_mode + ")' id='btn_r" + obj.id + "' class='btn btn-danger pull-right'>Reject</button></td></tr>";
             }
 
         }
