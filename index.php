@@ -1,12 +1,8 @@
-<?php include("search.php"); die();?>
-
-<?php include("validator/guest_session_check.php"); ?>
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Home | Lalbus</title>
+    <meta charset="UTF-8">
+    <title>Home | Lalbas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="./img/favicon.png">
     <link rel="canonical" href="">
@@ -15,47 +11,70 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="css/static_top.css">
-    <link rel="stylesheet" href="css/screen.css">
-
-
+    <script src="js/index.js"></script>
+    <link rel="stylesheet" href="css/home.css">
 </head>
+<body>
+<?php include("includes/static_top.php"); ?>
 
-<script src="js/bus_list.js"></script>
-<body class="login" onload="bus_initialize('bus')">
+<div id='map'></div>
 
-    <?php include("includes/static_top.php"); ?>
+<div id="data">
 
-    <div class="content">
+    <select id="followingList" class="form-control" onchange="findMyBus(this.value, this.options[this.selectedIndex].innerHTML);">
+    </select>
 
-        <form class="login-form" action="#" method="POST">
-            <h3 class="form-title font-dark">Where is my...</h3>
-
-            <div class="form-group">
-                <select name="bus" class="form-control form-control-solid placeholder-no-fix">
-                </select>
-            </div>
-
-            <div class="form-actions">
-                <button type="submit" class="btn red btn-block" onclick="goHome()">Find</button>
-            </div>
-
-            <div class="create-account">
-                <p>
-                    <a href="#">Report Location</a>
-                </p>
-            </div>
-        </form>
-
+    <div id="resultDetails">
     </div>
 
-    <div class="copyright">© 2016 Batfia</div>
+    <script>
+        function initMap() {
+            var dhaka = {lat: 23.7315, lng: 90.3925};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 17,
+                center: dhaka
+            });
+        }
+
+
+        // add data
+
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+                console.log(this.responseText);
+                var reply = JSON.parse(this.responseText);
+
+                var idx;
+                for (idx = 0; idx < reply.length; idx++) {
+                    console.log(reply[idx]["bus_id"]);
+                    var obj = "<option value='"+reply[idx]['id']+"'>"+reply[idx]['name']+"</option>";
+                    console.log(obj);
+                    $("#followingList").append(obj);
+                }
+
+                if(reply.length>0) {
+                    findMyBus(reply[0]["id"], reply[0]['name']);
+                }
+
+            }
+        };
+        xhttp.open("GET", "backend/following_list_for_guest.php", true);
+        xhttp.send();
+    </script>
+
+
 
 </body>
-
-<script src="js/index.js"></script>
 <!-- Bootstrap core JavaScript -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src='js/nprogress.js'></script>
+<link rel='stylesheet' href='css/nprogress.css'/>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="js/bootstrap.min.js"></script>
-
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeH9FGEigaoT9FRddspqhiIe75TZLJ48&callback=initMap">
+</script>
 </html>

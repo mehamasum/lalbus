@@ -28,9 +28,6 @@
         <div id="resultDetails">
         </div>
 
-    <script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
-    <link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' />
-
 
     <script>
         var id=<?php echo $_SESSION['id'];?>;
