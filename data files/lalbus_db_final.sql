@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 27, 2017 at 10:41 PM
--- Server version: 5.7.11
--- PHP Version: 5.6.19
+-- Host: localhost
+-- Generation Time: May 06, 2017 at 10:23 PM
+-- Server version: 10.1.22-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -50,7 +52,24 @@ INSERT INTO `bus` (`id`, `name`, `route`) VALUES
 (11, 'Moitri', 'আদমজী আইটি স্কুল'),
 (12, 'Kinchit', 'কমলাপুর'),
 (13, 'Boshonto', 'রামপুরা '),
-(14, 'Uwari Batesshar', 'নরসিংদী / ইটাখোলা');
+(14, 'Uwari', 'নরসিংদী / ইটাখোলা');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bus_request`
+--
+
+CREATE TABLE `bus_request` (
+  `id` int(11) NOT NULL,
+  `update_type` int(11) NOT NULL DEFAULT '0',
+  `old_id` int(11) NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `route` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `remarks` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -180,14 +199,25 @@ CREATE TABLE `following` (
 --
 
 INSERT INTO `following` (`id`, `user_id`, `bus_id`) VALUES
-(1, 9, 1),
-(2, 10, 1),
-(4, 11, 1),
-(5, 12, 1),
-(6, 13, 5),
-(7, 13, 2),
-(8, 13, 8),
-(9, 13, 1);
+(1, 1, 1),
+(2, 2, 2),
+(3, 21, 4),
+(4, 3, 1),
+(5, 4, 12),
+(8, 22, 2),
+(9, 22, 2),
+(10, 5, 7),
+(11, 5, 2),
+(12, 5, 0),
+(13, 5, 4),
+(14, 5, 5),
+(15, 5, 6),
+(16, 6, 6),
+(17, 7, 2),
+(18, 8, 12),
+(20, 9, 1),
+(21, 9, 10),
+(22, 10, 7);
 
 -- --------------------------------------------------------
 
@@ -337,6 +367,25 @@ INSERT INTO `places` (`id`, `stoppage_name`, `lat`, `lng`, `bus_id`, `stoppage_t
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `places_request`
+--
+
+CREATE TABLE `places_request` (
+  `id` int(11) NOT NULL,
+  `update_type` int(11) NOT NULL DEFAULT '0',
+  `stoppage_name` varchar(600) COLLATE utf8_unicode_ci NOT NULL,
+  `lat` double NOT NULL,
+  `lng` double NOT NULL,
+  `bus_id` int(11) NOT NULL,
+  `stoppage_type` int(11) NOT NULL,
+  `remarks` varchar(600) COLLATE utf8_unicode_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `requested_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `reports1`
 --
 
@@ -356,8 +405,24 @@ CREATE TABLE `reports1` (
 --
 
 INSERT INTO `reports1` (`id`, `bus_id`, `user_id`, `lat`, `lng`, `time`, `pos_cnt`, `neg_cnt`) VALUES
-(1, 1, 13, 23.7025385, 90.4329108, '2017-04-28 00:52:34', 0, 0),
-(2, 1, 13, 23.7025385, 90.4329108, '2017-04-28 00:52:52', 0, 0);
+(4, 1, 1, 23.7786638, 90.35993899999994, '2017-04-30 04:51:53', 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reports2`
+--
+
+CREATE TABLE `reports2` (
+  `id` int(11) NOT NULL,
+  `bus_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `lat` double NOT NULL,
+  `lng` double NOT NULL,
+  `time` datetime NOT NULL,
+  `pos_cnt` int(11) NOT NULL,
+  `neg_cnt` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -379,6 +444,40 @@ CREATE TABLE `reports5` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reports6`
+--
+
+CREATE TABLE `reports6` (
+  `id` int(11) NOT NULL,
+  `bus_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `lat` double NOT NULL,
+  `lng` double NOT NULL,
+  `time` datetime NOT NULL,
+  `pos_cnt` int(11) NOT NULL,
+  `neg_cnt` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reports7`
+--
+
+CREATE TABLE `reports7` (
+  `id` int(11) NOT NULL,
+  `bus_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `lat` double NOT NULL,
+  `lng` double NOT NULL,
+  `time` datetime NOT NULL,
+  `pos_cnt` int(11) NOT NULL,
+  `neg_cnt` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `reports8`
 --
 
@@ -392,6 +491,23 @@ CREATE TABLE `reports8` (
   `pos_cnt` int(11) NOT NULL,
   `neg_cnt` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reports12`
+--
+
+CREATE TABLE `reports12` (
+  `id` int(11) NOT NULL,
+  `bus_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `lat` double NOT NULL,
+  `lng` double NOT NULL,
+  `time` datetime NOT NULL,
+  `pos_cnt` int(11) NOT NULL,
+  `neg_cnt` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -556,6 +672,27 @@ INSERT INTO `schedule` (`id`, `bus_id`, `trip_type`, `time`, `endpoint`, `driver
 (140, 13, 1, '3.45pm', 'Rampura TV Centre', '', '5973', ''),
 (141, 13, 1, '5.10pm', 'Rampura TV Centre', '', '6199', ''),
 (142, 14, 1, '4.00pm', 'Norshingdi', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schedule_request`
+--
+
+CREATE TABLE `schedule_request` (
+  `id` int(11) NOT NULL,
+  `update_type` int(11) NOT NULL DEFAULT '0',
+  `old_schedule` int(11) NOT NULL DEFAULT '0',
+  `bus_id` int(11) NOT NULL,
+  `trip_type` int(11) NOT NULL,
+  `time` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `endpoint` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `driver` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `bus_number` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `comment` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
@@ -771,9 +908,9 @@ CREATE TABLE `users` (
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `reg_no` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `mob_no` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `dept_id` int(11) DEFAULT NULL,
+  `dept_id` int(11) NOT NULL DEFAULT '0',
   `status` int(11) NOT NULL,
   `code` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `url` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -789,9 +926,36 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `reg_no`, `mob_no`, `email`, `password`, `dept_id`, `status`, `code`, `url`, `bus_id`, `level`, `level_req`, `pos_repu`, `neg_repu`) VALUES
-(11, 'Fahim', '2013312035', '01521430883', 'fahim6119@gmail.com', '$2a$10$23a1noMZGtIjwykSqZtTs.j/2jNVX6PjkA5T2/PVb4eR3RtR8idv.', NULL, 2, '954186', NULL, 1, 2, 2, 0, 0),
-(12, 'Fahim Arefin', '2013312031', '01521430881', 'f.arefin8@gmail.com', '$2a$10$jz7vDCsFlHwPTBmIsKZzi.8LrUfXrtHQM.ZGudFKjatvGhfRoBsny', NULL, 2, '176552', NULL, 1, 0, 0, 0, 0),
-(13, 'Masum', '2013812345', '01521112085', 'haha@maildrop.cc', '$2a$10$Kn9QyedU7ol2VpFV2KWT5OhoJx4Ov.A7HZlMpURT9GAxe2zUWkLXi', NULL, 1, '870116', NULL, 5, 0, 0, 0, 0);
+(1, 'Fahim', '2013312035', '01521430883', 'fahim6119@gmail.com', '$2a$10$v59Kd2H5kTJ3Yt12KuhdXOW.8/DDJsBGSU7SvL9tZNuL.vHMxU3fy', 71, 2, '522533', NULL, 1, 0, 1, 1, 0),
+(2, 'Fahad Arefin', '1995312035', '', 'f.arefin8@gmail.com', '$2a$10$WhUyUhfi.jKGE/AdUhW5bOvcQq3ff67VMGlO6E.kPJibGxbySKr3C', 0, 2, '457260', NULL, 2, 0, 1, 0, 0),
+(3, 'Nafis Sazid', '2013212072', '', 'nafissazid4820@gmail.com', '$2a$10$6Ax5qHTEw8Rr3YhylXonnuQnK5atGMRYXTFlxD/MoJZ6alZiZNyU.', 0, 1, '228075', NULL, 1, 0, 0, 0, 0),
+(4, 'Abida', '2013814911', '', 'abida1616@gmail.com', '$2a$10$joE9mYSulWPFNkEXfgJ9yuyuAa.QoEton3u1jTn8LQiZ4InaiDrQG', 0, 2, '864924', NULL, 12, 0, 0, 0, 0),
+(5, 'asdf', '2016435987', '01566334455', 'asd@asd.asd', '$2a$10$1rrltxG6qQgUoxJfjkfmxuAvYSzVid7IokXJVfixgi6fd7sE2K8u6', 83, 1, '980313', NULL, 0, 0, 0, 0, 0),
+(6, 'shourav', '2013212542', '', 'shourav95.ri@gmail.com', '$2a$10$bQdZmg/HBQJdMJfr.hg7I.4jndrIJSNyE.BH4ZHmb8RssH2NWIYju', 0, 2, '163912', NULL, 6, 0, 0, 0, 0),
+(7, 'Tanvir Shahriar Rifat', '2013412512', '', 'rifat.csedu20@gmail.com', '$2a$10$a5Y.o9A6Jdr76u4kVRasCeBqf1ni.rCxKsjQDxgsq.nQwN/iEnyYS', 0, 1, '136059', NULL, 2, 0, 0, 0, 0),
+(8, 'melody_43', '2013712068', '', 'cleopatra.sopto7@gmail.com', '$2a$10$hJWRaJS0NhrGwk5KyrIJwewLUnHop9zTPpk.C4Rm4YgTvbSNAZPOW', 0, 1, '649153', NULL, 12, 0, 0, 0, 0),
+(9, 'Nafis Sazid', '2013212073', '', 'nafissazid48@gmail.com', '$2a$10$lkqtEUcnh.YTJCboCXinF.sEZCg92BKQOc2HuuM1gPQxE7zOZI5iC', 0, 2, '167956', NULL, 1, 0, 0, 0, 0),
+(10, 'game', '1234456789', '', 'game@mail.com', '$2a$10$zODwqjUxZyJR8fSKbuUQ5OFbLcJV2YS4.j3djaUvdamwPMNjM6wxK', 0, 1, '365710', NULL, 7, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `votes`
+--
+
+CREATE TABLE `votes` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `bus_id` int(11) NOT NULL,
+  `report_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `votes`
+--
+
+INSERT INTO `votes` (`id`, `user_id`, `bus_id`, `report_id`) VALUES
+(3, 9, 1, 4);
 
 --
 -- Indexes for dumped tables
@@ -801,6 +965,12 @@ INSERT INTO `users` (`id`, `name`, `reg_no`, `mob_no`, `email`, `password`, `dep
 -- Indexes for table `bus`
 --
 ALTER TABLE `bus`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bus_request`
+--
+ALTER TABLE `bus_request`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -822,9 +992,21 @@ ALTER TABLE `places`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `places_request`
+--
+ALTER TABLE `places_request`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `reports1`
 --
 ALTER TABLE `reports1`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reports2`
+--
+ALTER TABLE `reports2`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -834,15 +1016,39 @@ ALTER TABLE `reports5`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `reports6`
+--
+ALTER TABLE `reports6`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reports7`
+--
+ALTER TABLE `reports7`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `reports8`
 --
 ALTER TABLE `reports8`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `reports12`
+--
+ALTER TABLE `reports12`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `schedule`
 --
 ALTER TABLE `schedule`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `schedule_request`
+--
+ALTER TABLE `schedule_request`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -858,6 +1064,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `votes`
+--
+ALTER TABLE `votes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -867,6 +1079,11 @@ ALTER TABLE `users`
 ALTER TABLE `bus`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
+-- AUTO_INCREMENT for table `bus_request`
+--
+ALTER TABLE `bus_request`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `depts`
 --
 ALTER TABLE `depts`
@@ -875,21 +1092,41 @@ ALTER TABLE `depts`
 -- AUTO_INCREMENT for table `following`
 --
 ALTER TABLE `following`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `places`
 --
 ALTER TABLE `places`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 --
+-- AUTO_INCREMENT for table `places_request`
+--
+ALTER TABLE `places_request`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `reports1`
 --
 ALTER TABLE `reports1`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `reports2`
+--
+ALTER TABLE `reports2`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `reports5`
 --
 ALTER TABLE `reports5`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `reports6`
+--
+ALTER TABLE `reports6`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `reports7`
+--
+ALTER TABLE `reports7`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `reports8`
@@ -897,10 +1134,20 @@ ALTER TABLE `reports5`
 ALTER TABLE `reports8`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `reports12`
+--
+ALTER TABLE `reports12`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+--
+-- AUTO_INCREMENT for table `schedule_request`
+--
+ALTER TABLE `schedule_request`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `stoppage`
 --
@@ -910,7 +1157,13 @@ ALTER TABLE `stoppage`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `votes`
+--
+ALTER TABLE `votes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,6 +1,3 @@
-function trim1 (str) {
-    return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-}
 
 function validateSignUp() {
 
