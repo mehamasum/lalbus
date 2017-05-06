@@ -1,10 +1,6 @@
 /**
  * Created by USER on 5/6/2017.
  */
-/**
- * Created by USER on 4/27/2017.
- */
-
 // add data
 
 var buses=[];

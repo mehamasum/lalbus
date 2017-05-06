@@ -21,4 +21,5 @@ RewriteRule ^forgot_pass$ forgot_pass.php [NC]
 RewriteRule ^update_password$ update_password.php [NC]
 RewriteRule ^update_stoppage$ update_stoppage.php [NC]
 RewriteRule ^bus_editor$ bus_editor.php [NC]
+RewriteRule ^edit_bus$ edit_bus.php [NC]
 
