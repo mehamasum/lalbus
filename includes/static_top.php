@@ -27,18 +27,10 @@ if(isset($_SESSION['id'])) {
                 <ul class="nav navbar-nav">
                     <li id="page_home" class="active"><a href="home">Home</a></li>
                     <li id="page_following"><a href="following">Following</a></li>
+
                     <?php
-                        if($level==0)
-                           echo "<li id=\"page_schedule\"><a href=\"schedule\">Schedules</a></li>";
-                        else if($level==1)
-                        {
-                            echo "<li id=\"page_schedule\"><a href=\"schedule\">Schedules</a></li>";
-                            echo "<li id=\"page_edit_schedule\"><a href=\"edit_schedule\">Edit Schedule</a></li>";
-                        }
-                        else if($level==2)
-                        {
-                            echo "<li id=\"page_schedule\"><a href=\"schedule\">Schedules</a></li>";
-                            echo " <li id=\"page_edit_schedule\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Edit
+                        echo "<li id=\"page_schedule\"><a href=\"schedule\">Schedules</a></li>";
+                        echo " <li id=\"page_edit_schedule\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Edit
                             <span class=\"caret\"></span></a>
                                 <ul class=\"dropdown-menu\">
                                     <li><a href=\"edit_schedule\">Edit Bus Route</a></li>
@@ -46,6 +38,16 @@ if(isset($_SESSION['id'])) {
                                     <li><a href=\"edit_stoppage\">Edit Bus Stoppage</a></li>
                                 </ul>
                             </li>";
+/*                        if($level==0)
+                           echo "<li id=\"page_schedule\"><a href=\"schedule\">Schedules</a></li>";
+                        else if($level==1)
+                        {
+                            echo "<li id=\"page_schedule\"><a href=\"schedule\">Schedules</a></li>";
+                            echo "<li id=\"page_edit_schedule\"><a href=\"edit_schedule\">Edit Schedule</a></li>";
+                        }*/
+
+                        if($level==2)
+                        {
                             echo " <li id=\"page_member_authorization\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Verify
                             <span class=\"caret\"></span></a>
                                 <ul class=\"dropdown-menu\">

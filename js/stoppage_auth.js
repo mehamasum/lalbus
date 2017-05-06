@@ -75,6 +75,7 @@ function initialize(sid)
                 var busname=buses[d["bus_id"]-1].name;
                 var index = users.map(function(o) {  return o.id; }).indexOf(d['user_id']);
                 var username=users[index].name;
+                var levels=["Student","Committee","Admin"];
                 var user_level=users[index].level;
                 var pos_repu=users[index].pos_repu;
                 var update_type="Update";
@@ -107,7 +108,7 @@ function initialize(sid)
             var i=0;
             for(i=0; i<stoppage.length; i++) {
                 var obj=stoppage[i];
-                parent.innerHTML += "<tr><td>" + obj.update_type + "</td><td>" + obj.stoppage_name + "</td><td>" + obj.bus + "</td><td>" + obj.stoppage_type + "</td><td>" + obj.remarks + "</td><td>" + obj.username + "</td><td>" + obj.user_level + "</td><td>" + obj.pos_repu + "</td><td>" + obj.timestamp + "</td><td><button onclick='toggleStatus(" + i + "," + 1 + "," + obj.update_mode + ")' id='btn_a" + i + "' class='btn btn-success pull-right'>Accept</button></td><td><button onclick='toggleStatus(" + i + "," + 0 +"," + obj.update_mode + ")' id='btn_r" + i + "' class='btn btn-danger pull-right'>Reject</button></td></tr>";
+                parent.innerHTML += "<tr><td>" + obj.update_type + "</td><td>" + obj.stoppage_name + "</td><td>" + obj.bus + "</td><td>" + obj.stoppage_type + "</td><td>" + obj.remarks + "</td><td>" + obj.username + "</td><td>" + levels[obj.user_level] + "</td><td>" + obj.pos_repu + "</td><td>" + obj.timestamp + "</td><td><button onclick='toggleStatus(" + i + "," + 1 + "," + obj.update_mode + ")' id='btn_a" + i + "' class='btn btn-success pull-right'>Accept</button></td><td><button onclick='toggleStatus(" + i + "," + 0 +"," + obj.update_mode + ")' id='btn_r" + i + "' class='btn btn-danger pull-right'>Reject</button></td></tr>";
             }
 
         }

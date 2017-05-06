@@ -101,11 +101,11 @@ function initialize(sid)
                 var obj={"id":d['id'],"update_mode":d['update_type'],"update_type":update_type,"ref_schedule":ref_schedule,"bus":busname,"trip_type":trip_type,"time":d['time'],"endpoint":d['endpoint'],"driver":d['driver'],"bus_number":d['bus_number'],"comment":d['comment'],"username":username,"user_level":user_level,"pos_repu":pos_repu,"timestamp":d['timestamp']};
                 schedule.push(obj);
             }
-
+            var levels=["Student","Committee","Admin"];
             var i=0;
             for(i=0; i<schedule.length; i++) {
                 var obj=schedule[i];
-                parent.innerHTML += "<tr><td>" + obj.update_type + "</td><td>" + obj.bus + "</td><td>" + obj.trip_type + "</td><td>" + obj.time + "</td><td>" + obj.endpoint + "</td><td>" + obj.driver + "</td><td>" + obj.bus_number + "</td><td>" + obj.comment + "</td><td>" + obj.username + "</td><td>" + obj.user_level + "</td><td>" + obj.pos_repu + "</td><td>" + obj.timestamp + "</td><td><button onclick='toggleStatus(" + i + "," + 1 + "," + obj.ref_schedule +"," + obj.update_mode + ")' id='btn_a" + i + "' class='btn btn-success pull-right'>Accept</button></td><td><button onclick='toggleStatus(" + i + "," + 0 + "," + obj.ref_schedule +"," + obj.update_mode + ")' id='btn_r" + i + "' class='btn btn-danger pull-right'>Reject</button></td></tr>";
+                parent.innerHTML += "<tr><td>" + obj.update_type + "</td><td>" + obj.bus + "</td><td>" + obj.trip_type + "</td><td>" + obj.time + "</td><td>" + obj.endpoint + "</td><td>" + obj.driver + "</td><td>" + obj.bus_number + "</td><td>" + obj.comment + "</td><td>" + obj.username + "</td><td>" + levels[obj.user_level] + "</td><td>" + obj.pos_repu + "</td><td>" + obj.timestamp + "</td><td><button onclick='toggleStatus(" + i + "," + 1 + "," + obj.ref_schedule +"," + obj.update_mode + ")' id='btn_a" + i + "' class='btn btn-success pull-right'>Accept</button></td><td><button onclick='toggleStatus(" + i + "," + 0 + "," + obj.ref_schedule +"," + obj.update_mode + ")' id='btn_r" + i + "' class='btn btn-danger pull-right'>Reject</button></td></tr>";
             }
 
         }

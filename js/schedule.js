@@ -1,15 +1,52 @@
+
+var buses=[];
+var modal;
+var span;
+function init_bus()
+{
+    modal= document.getElementById('myModal');
+    span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+        setSchedule(1);
+    }
+
+// When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            setSchedule(1);
+        }
+    }
+
+    var bus_list=document.getElementsByName("list_bus")[0];
+    bus_list.innerHTML="";
+    modal.style.display = "block";
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            var reply = JSON.parse(this.responseText);
+            reply[0].forEach(function(item) {
+                var b_id=item.id;
+                bus_list.innerHTML+="<button type=\"button\" class=\"btn btn-primary btn-md\" onclick='setSchedule("+b_id+")'>"+item.name+"</button>";
+            });
+
+        }
+    };
+    xhttp.open("POST", "backend/bus_list.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send();
+
+}
+
+function setSchedule(selectedBus)
+{
+    search(selectedBus);
+    modal.style.display = "none";
+}
+
 function search(busid) {
 
     var slot=document.getElementById("received_table");
-    var lastButton=document.getElementById(activeButton);
-    if(lastButton!=null)
-    {
-        lastButton.classList.remove('btn-danger');
-    }
-    activeButton='btn_'+busid;
-    var currentButton=document.getElementById(activeButton);
-    currentButton.classList.add('btn-danger');
-
     console.log(busid+" ");
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -27,29 +64,3 @@ function search(busid) {
     xhttp.send("bus_id="+busid);
 }
 
-
-var buses=[];
-function bus_list() {
-
-    var bus_list = document.getElementById('bus');
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-
-            var reply = JSON.parse(this.responseText);
-            reply[0].forEach(function(item) {
-                bus_list.innerHTML+="<button type=\"button\" id=\"btn_"+item['id']+"\" class=\"btn btn-primary btn-md\" onclick='search("+item['id']+")'>"+item['name']+"</button>";
-/*                var button='<button class="btn btn-primary" id="btn_'
-                            +item['id']
-                            +'">'+item['name']+'</button>';*/
-
-            });
-        } else {
-            console.log("Failed");
-        }
-    };
-    xhttp.open("POST", "backend/bus_list.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send();
-
-}
