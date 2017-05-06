@@ -34,11 +34,52 @@
     <div class="container" style="width: 100%; text-align: center">
         <h3>View Bus Schedule</h3>
         <p>Get the schedule of your bus</p>
-        <button class="btn btn-primary pull-right" onClick="init_bus()"> Change Bus </button>
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="btn btn-primary pull-right" data-parent="#accordion" data-toggle="collapse" href="#collapse1"> Change Bus</a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+            <ul class="list-group" class="btn-group-justified" style=" margin-right: auto; margin-left: auto; width: 100%;" id="bus_list">
+            </ul>
+        </div>
+
     </div>
     <div id="container_table">
-        <div id="second" >
-            <div id="received_table" class="table-responsive"></div>
+        <div id="up">
+            <h4 id="bus_name_up"></h4>
+        <table class="table table-striped col-md-12 sortable" >
+            <thead>
+            <tr>
+                <th>Time</th>
+                <th>Start</th>
+                <th>Driver</th>
+                <th>Bus Number</th>
+                <th>Remarks</th>
+                <th id="up_comment"></th>
+            </tr>
+            </thead>
+            <tbody id="up_table">
+            </tbody>
+        </table>
+        </div>
+
+        <div id="down">
+            <h4 id="bus_name_down"></h4>
+        <table class="table table-striped col-md-12 sortable" >
+            <thead>
+            <tr>
+                <th>Time</th>
+                <th>Endpoint</th>
+                <th>Driver</th>
+                <th>Bus Number</th>
+                <th>Remarks</th>
+                <th id="down_comment"></th>
+            </tr>
+            </thead>
+            <tbody id="down_table">
+            </tbody>
+        </table>
         </div>
     </div>
 
