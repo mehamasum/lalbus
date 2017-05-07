@@ -16,12 +16,12 @@ function toggleStatus(id, state,ref_id,update_mode) {
     btnr=document.getElementById("btn_r"+id);
     btna=document.getElementById("btn_a"+id);
 
-
+    NProgress.start();
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
-
+            NProgress.done();
             var reply = this.responseText;
             if (reply.indexOf("ONE") != -1) {
 

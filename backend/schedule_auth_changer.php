@@ -56,18 +56,19 @@ if($state==0) { // Rejected
 else { // Accepted
     $sql = "select * from schedule_request WHERE id=$schedule";
     $result = $conn->query($sql);
-    if($result->num_rows==0)
+    if($result==FALSE)
     {
         echo "ZERO";
         die();
     }
     $row=$result->fetch_assoc();
     $updater=$row["user_id"];
+    $bus=$row['bus_id'];
 
     /* Update Schedule Database */
     if($update_mode==0)//update
     {
-        $sql="UPDATE schedule SET bus_id=$row[bus_id],trip_type=$row[trip_type],time='$row[time]',endpoint='$row[endpoint]',driver='$row[driver]',bus_number='$row[bus_number]',comment='$row[comment]'  WHERE  id=$old_schedule;";
+        $sql="UPDATE schedule SET bus_id=$bus,trip_type=$row[trip_type],time='$row[time]',endpoint='$row[endpoint]',driver='$row[driver]',bus_number='$row[bus_number]',comment='$row[comment]'  WHERE  id=$old_schedule;";
 
     }
      else if ($update_mode==1)
@@ -101,6 +102,7 @@ else { // Accepted
     if ($conn->query($sql) == TRUE) {
         //User Reputation Updated
         echo "TWO";
+        sendMail($conn,$updater,$bus);
     }
     else {
         $error=true;
@@ -121,5 +123,78 @@ else { // Accepted
     }
 
 }
+
+
+function sendMail($conn,$user,$bus_id)
+{
+    $sql = "SELECT * FROM users  WHERE id=$user;";
+    $result=$conn->query($sql);
+    $row=$result->fetch_assoc();
+    $email=$row['email'];
+    $name=$row['name'];
+    $pos_repu=$row['pos_repu'];
+
+    $sql = "SELECT * FROM bus  WHERE id=$bus_id;";
+    $result=$conn->query($sql);
+    $row=$result->fetch_assoc();
+    $bus_name=$row['name'];
+    sendConfirmation($email,$name,$bus_name,$pos_repu);
+}
+
+function is_localhost() {
+    $whitelist = array( '127.0.0.1', '::1' );
+    if( in_array( $_SERVER['REMOTE_ADDR'], $whitelist) )
+        return true;
+}
+
+
+function sendConfirmation($email,$name,$bus_name,$pos_repu)
+{
+    require_once 'lib/swift_required.php';
+
+    $subject = 'Lalbus | Update Approved!'; // Give the email a subject
+    $address="http://csedu.cf/lalbus/home";
+    if(is_localhost())
+        $address="http://localhost/lalbus/home";
+    $body = '
+ 
+Dear '.$name.',
+Congratulations! Your Update for the schedule of '.$bus_name.' has been approved. You have been awarded 10 reputation points for your contribution, you can check it in your LalBus profile.
+------------------------
+Reputation Points : '.$pos_repu.'
+HOME : '.$address.'
+------------------------
+
+Regards,
+Team Lalbus
+';
+
+    $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
+        ->setUsername('lalbus.du@gmail.com')
+        ->setPassword('lalbusweb')
+        ->setEncryption('ssl');
+
+    $mailer = Swift_Mailer::newInstance($transport);
+
+    $message = Swift_Message::newInstance($subject)
+        ->setFrom(array('noreply@lalbus.com' => 'Lalbus'))
+        ->setTo(array($email))
+        ->setBody($body);
+
+    if (!$mailer->send($message, $failures))
+    {
+        echo "Failures:";
+        print_r($failures);
+        return false;
+    }
+    else
+    {
+        return true;
+        echo "Mailed";
+    }
+
+
+}
+
 
 ?>

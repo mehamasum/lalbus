@@ -8,28 +8,41 @@ var depts=[];
 
 function toggleStatus(id, state) {
     console.log("toggle Status:"+ state);
+    var btnr,btna;
 
-    var btn = document.getElementById("btn_"+id);
+    btnr=document.getElementById("btn_r"+id);
+    btna=document.getElementById("btn_a"+id);
 
+    NProgress.start();
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
-
+            NProgress.done();
             var reply = this.responseText;
+
             if (reply.indexOf("ONE") != -1) {
 
                 if(state===1) { //Accepted
-                    btn.innerHTML="Reject";
-                    btn.className = "btn btn-danger pull-right";
-                    btn.setAttribute("onClick", "toggleStatus("+id+","+0+")");
+                    btna.innerHTML="Accepted";
+                    btna.className = "btn btn-success pull-right";
+                    btna.setAttribute('disabled','true');
+                    btnr.setAttribute('disabled','true');
                 }
                 else if(state ===0) {
-                    btn.innerHTML="Accept";
-                    btn.className = "btn btn-success pull-right";
-                    btn.setAttribute("onClick", "toggleStatus("+id+","+1+")");
+                    btnr.innerHTML="Rejected";
+                    btnr.className = "btn btn-danger pull-right";
+                    btnr.setAttribute('disabled','true');
+                    btna.setAttribute('disabled','true');
                 }
             }
+            else if(reply.indexOf("ZERO")!=-1)
+            {
+                alert("This Stoppage Doesn't Exist Anymore !");
+                btna.setAttribute('disabled','true');
+                btnr.setAttribute('disabled','true');
+            }
+
         }
     };
     xhttp.open("POST", "backend/member_auth_changer.php", true);
@@ -83,11 +96,7 @@ function initialize(sid)
 
             for(i=0; i<users.length; i++) {
                 var obj=users[i];
-                if(users[i].status==1) {
-                    parent.innerHTML+="<tr><td>"+obj.name+"</td><td>"+obj.reg_no+"</td><td>"+obj.mob+"</td><td>"+obj.email+"</td><td>"+obj.dept+"</td><td>"+obj.bus+"</td><td><button onclick='toggleStatus("+i+","+0+")' id='btn_"+i+"' class='btn btn-danger pull-right'>Reject</button></td></tr>";
-                } else {
-                    parent.innerHTML+="<tr><td>"+obj.name+"</td><td>"+obj.reg_no+"</td><td>"+obj.mob+"</td><td>"+obj.email+"</td><td>"+obj.dept+"</td><td>"+obj.bus+"</td><td><button onclick='toggleStatus("+i+","+1+")' id='btn_"+i+"' class='btn btn-success pull-right'>Accept</button></td></tr>";
-                }
+                parent.innerHTML+="<tr><td>"+obj.name+"</td><td>"+obj.reg_no+"</td><td>"+obj.mob+"</td><td>"+obj.email+"</td><td>"+obj.dept+"</td><td>"+obj.bus+"</td><td><button onclick='toggleStatus("+i+","+1+")' id='btn_a"+i+"' class='btn btn-success pull-right'>Accept</button></td><td><button onclick='toggleStatus("+i+","+0+")' id='btn_r"+i+"' class='btn btn-danger pull-right'>Reject</button></td></tr>";
             }
 
         }

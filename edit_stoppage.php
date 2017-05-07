@@ -5,7 +5,7 @@
  * Date: 5/6/2017
  * Time: 4:33 PM
  */
- include_once("validator/schedule_auth_check.php"); ?>
+ include_once("validator/edit_auth_check.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +33,9 @@
         <div>
             <h3 style="width: 100%; text-align: center">Update Bus Stoppage</h3>
             <p style="width: 100%; text-align: center">Update the stoppage of your bus</p>
+            <p style="width: 100%; text-align: center">If the Admin Accepts your update, you get 10 reputation points</p>
+            <p style="width: 100%; text-align: center">If the Admin rejects your update, you will lose 2 reputation points</p>
+
         </div>
         <div>
             <button class="btn btn-primary pull-left" onClick="initModal()"> Change Bus </button>

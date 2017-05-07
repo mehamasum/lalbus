@@ -67,7 +67,8 @@ include_once("validator/admin_auth_check.php");
 </div>
 
 </body>
-
+<script src='js/nprogress.js'></script>
+<link rel='stylesheet' href='css/nprogress.css'/>
 <!-- Bootstrap core JavaScript -->
 <script src="js/stoppage_auth.js"></script>
 <script src="js/jquery-3.1.1.min.js"></script>

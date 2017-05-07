@@ -57,12 +57,12 @@ else { // Accepted
     $result = $conn->query($sql);
     $row=$result->fetch_assoc();
     $updater=$row["user_id"];
-
+    $stoppage_name=mysqli_real_escape_string($conn,$row['stoppage_name']);
     /* Update Stoppage Database */
     if($update_mode==0)//update
     {
         //id	update_type	stoppage_name	lat	lng	bus_id	stoppage_type	remarks	user_id	requested_on
-        $sql="UPDATE places SET stoppage_name='$row[stoppage_name]',lat='$row[lat]',lng='$row[lng]',bus_id=$row[bus_id],stoppage_type=$row[stoppage_type],remarks='$row[remarks]'  WHERE  stoppage_name='$row[stoppage_name]';";
+        $sql="UPDATE places SET stoppage_name='$stoppage_name',lat='$row[lat]',lng='$row[lng]',bus_id=$row[bus_id],stoppage_type=$row[stoppage_type],remarks='$row[remarks]'  WHERE  stoppage_name='$row[stoppage_name]';";
     }
     else if ($update_mode==1)
     {
@@ -73,32 +73,40 @@ else { // Accepted
         $sql="DELETE FROM places WHERE id=$stoppage";
     }
 
-    $result=$conn->query($sql);
     // echo $sql;
 
-    if($result->num_rows==0)
+    if($conn->query($sql)==FALSE)
     {
         echo "ZERO";
         $sql = "DELETE from `places_request` WHERE id=$stoppage;";
         if ($conn->query($sql) == TRUE) {
             //Stoppage Cleared
-            echo "ONE";
+            echo "DEL";
         }
         else {
             $error=true;
             echo "ERR";
-            die();
         }
         die();
     }
     else
      {
-        echo "THREE";
-    }
+         echo "THREE";
+         $sql = "DELETE from `places_request` WHERE id=$stoppage;";
+         if ($conn->query($sql) == TRUE) {
+             //Stoppage Cleared
+             echo "TWO";
+         }
+         else {
+             $error=true;
+             echo "ERR";
+             die();
+         }
+     }
 
 
     /*Increase Reputation for user */
-    $sql="SELECT * from users WHERE id=$updater";
+    $sql="SELECT * from users WHERE id=$updater;";
     $result = $conn->query($sql);
     $row=$result->fetch_assoc();
     $repu=$row["pos_repu"];
@@ -106,7 +114,8 @@ else { // Accepted
     $sql="UPDATE users SET pos_repu=$repu WHERE id=$updater;";
     if ($conn->query($sql) == TRUE) {
         //User Reputation Updated
-        echo "TWO";
+        echo "DONE";
+        sendMail($conn,$updater,$stoppage_name);
     }
     else {
         $error=true;
@@ -114,19 +123,73 @@ else { // Accepted
         die();
     }
 
-    /* Clear Request from database */
-
-    $sql = "DELETE from `places_request` WHERE id=$stoppage;";
-    if ($conn->query($sql) == TRUE) {
-        //Stoppage Cleared
-        echo "ONE";
-    }
-    else {
-        $error=true;
-        echo "ERR";
-        die();
-    }
 
 }
+
+function is_localhost() {
+    $whitelist = array( '127.0.0.1', '::1' );
+    if( in_array( $_SERVER['REMOTE_ADDR'], $whitelist) )
+        return true;
+}
+
+
+function sendMail($conn,$user,$stoppage_name)
+{
+    $sql = "SELECT * FROM users  WHERE id=$user;";
+    $result=$conn->query($sql);
+    $row=$result->fetch_assoc();
+    $email=$row['email'];
+    $name=$row['name'];
+    $pos_repu=$row['pos_repu'];
+    sendConfirmation($email,$name,$stoppage_name,$pos_repu);
+}
+
+function sendConfirmation($email,$name,$stoppage_name,$pos_repu)
+{
+    require_once 'lib/swift_required.php';
+    $subject = 'Lalbus | Update Approved!'; // Give the email a subject
+    $address="http://csedu.cf/lalbus/home";
+    if(is_localhost())
+        $address="http://localhost/lalbus/home";
+    $body = '
+ 
+Dear '.$name.',
+Congratulations! Your Update for the stoppage '.$stoppage_name.' has been approved. You have been awarded 10 reputation points for your contribution, you can check it in your LalBus profile.
+------------------------
+Reputation Points : '.$pos_repu.'
+HOME : '.$address.'
+------------------------
+
+Regards,
+Team Lalbus
+';
+
+    $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
+        ->setUsername('lalbus.du@gmail.com')
+        ->setPassword('lalbusweb')
+        ->setEncryption('ssl');
+
+    $mailer = Swift_Mailer::newInstance($transport);
+
+    $message = Swift_Message::newInstance($subject)
+        ->setFrom(array('noreply@lalbus.com' => 'Lalbus'))
+        ->setTo(array($email))
+        ->setBody($body);
+
+    if (!$mailer->send($message, $failures))
+    {
+        echo "Failures:";
+        print_r($failures);
+        return false;
+    }
+    else
+    {
+        return true;
+
+    }
+
+
+}
+
 
 ?>

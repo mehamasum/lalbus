@@ -26,11 +26,7 @@ $sql = "select * from users WHERE id=$user";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $level=$row['level'];
-if($level==0)
-{
-    echo "ERR";
-    die();
-}
+
 $sql="INSERT INTO `bus_request` (`id`,`update_type`,`old_id`, `name`, `route`,`remarks`,`user_id`,`timestamp`) VALUES (NULL,'$mode', '$bus_id', '$name', '$route','$remarks','$user', CURRENT_TIMESTAMP);";
 echo $sql;
 if ($conn->query($sql) == TRUE) {

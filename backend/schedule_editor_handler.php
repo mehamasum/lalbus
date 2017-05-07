@@ -28,11 +28,11 @@ $sql = "select * from users WHERE id=$user";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $level=$row['level'];
-if($level==0)
+/*if($level==0)
 {
     echo "ERR";
     die();
-}
+}*/
 
     $sql="INSERT INTO `schedule_request` (`id`,`update_type` ,`old_schedule`,`bus_id`, `trip_type`, `time`, `endpoint`, `driver`, `bus_number`, `comment`,`user_id`) VALUES (NULL,'$mode','$schedule_id', '$bus_id', '$trip_type', '$time', '$endpoint', '$driver', '$bus_no', '$comment','$user');";
     if ($conn->query($sql) == TRUE) {

@@ -16,11 +16,11 @@ function toggleStatus(id, state,update_mode) {
     btnr=document.getElementById("btn_r"+id);
     btna=document.getElementById("btn_a"+id);
 
-
+    NProgress.start();
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-
+            NProgress.done();
             var reply = this.responseText;
             console.log(reply);
             if (reply.indexOf("ONE") != -1) {

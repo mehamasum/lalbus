@@ -23,12 +23,12 @@ else
     $row = $result->fetch_assoc();
     $level=$row['level'];
     $bus=$row['bus_id'];
-    if($level==0)
+   /* if($level==0)
     {
         ob_start();
         header('Location: home');
         ob_end_flush();
         die();
-    }
+    }*/
 }
 ?>

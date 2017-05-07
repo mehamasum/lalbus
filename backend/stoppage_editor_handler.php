@@ -32,11 +32,11 @@ $sql = "select * from users WHERE id=$user";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $level=$row['level'];
-if($level==0)
+/*if($level==0)
 {
     echo "ERR";
     die();
-}
+}*/
 $sql="INSERT INTO `places_request` (`id`, `update_type`, `stoppage_name`, `lat`, `lng`, `bus_id`, `stoppage_type`, `remarks`, `user_id`, `requested_on`) VALUES (NULL, '$update_type', '$stoppage_name', '$lat', '$lng', '$bus_id', '$stoppage_type', '$remarks', '$user', CURRENT_TIMESTAMP);";
 if ($conn->query($sql) == TRUE) {
     echo "ONE";

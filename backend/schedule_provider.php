@@ -18,7 +18,7 @@ $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $level=$row['level'];
 $bus=$row['bus_id'];
-
+/*
 if($level==0)
 {
     echo "UNAUTHORIZED";
@@ -28,7 +28,7 @@ else if($level==1 && $bus_id!=$bus )
 {
     echo "UNAUTHORIZED";
     die();
-}
+}*/
 
 
 if($mode==0)

@@ -51,8 +51,6 @@ if($state==0) { // Rejected
 
 else { // Accepted
 
-
-
     $sql = "select * from bus_request WHERE id=$bus";
     $result = $conn->query($sql);
     $row=$result->fetch_assoc();
@@ -97,6 +95,7 @@ else { // Accepted
     if ($conn->query($sql) == TRUE) {
         //User Reputation Updated
         echo "TWO";
+        sendMail($conn,$updater,$name);
     }
     else {
         $error=true;
@@ -115,6 +114,68 @@ else { // Accepted
         echo "ERR";
         die();
     }
+
+}
+
+function is_localhost() {
+    $whitelist = array( '127.0.0.1', '::1' );
+    if( in_array( $_SERVER['REMOTE_ADDR'], $whitelist) )
+        return true;
+}
+
+
+function sendMail($conn,$user,$bus_name)
+{
+    $sql = "SELECT * FROM users  WHERE id=$user;";
+    $result=$conn->query($sql);
+    $row=$result->fetch_assoc();
+    $email=$row['email'];
+    $name=$row['name'];
+    $pos_repu=$row['pos_repu'];
+    sendConfirmation($email,$name,$bus_name,$pos_repu);
+}
+
+function sendConfirmation($email,$name,$bus_name,$pos_repu)
+{
+    require_once 'lib/swift_required.php';
+
+    $subject = 'Lalbus | Update Approved!'; // Give the email a subject
+    $address="http://csedu.cf/lalbus/home";
+    if(is_localhost())
+        $address="http://localhost/lalbus/home";
+    $body = '
+ 
+Dear '.$name.',
+Congratulations! Your Update for '.$bus_name.' has been approved. You have been awarded 10 reputation points for your contribution, you can check it in your profile.
+------------------------
+Reputation Points : '.$pos_repu.'
+HOME : '.$address.'
+------------------------
+
+Regards,
+Team Lalbus
+';
+
+    $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
+        ->setUsername('lalbus.du@gmail.com')
+        ->setPassword('lalbusweb')
+        ->setEncryption('ssl');
+
+    $mailer = Swift_Mailer::newInstance($transport);
+
+    $message = Swift_Message::newInstance($subject)
+        ->setFrom(array('noreply@lalbus.com' => 'Lalbus'))
+        ->setTo(array($email))
+        ->setBody($body);
+
+    if (!$mailer->send($message, $failures))
+    {
+        echo "Failures:";
+        print_r($failures);
+        return false;
+    }
+    else
+        return true;
 
 }
 
