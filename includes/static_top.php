@@ -94,9 +94,9 @@ if(isset($_SESSION['id'])) {
                         <ul class="dropdown-menu">
                             <li><a href="following">Following</a></li>
                             <li><a href="profile">Edit Profile</a></li>
-                            <li><a href="update_password.php">Change Password</a></li>
+                            <li><a href="update_password">Change Password</a></li>
                             <li><a href='mailto:lalbus.du@gmail.com'>Contact Us</a></li>
-                            <li><a href="logout.php">Logout</a></li>
+                            <li><a href="logout">Logout</a></li>
                         </ul>
 <!--                        <span class="button__badge">2</span>-->
                     </li>
@@ -125,7 +125,7 @@ else { ?>
                     <li><a href="mailto:lalbus.du@gmail.com">Contact Us</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" >
-                    <li id="page_user"><a href="login.php">Login</a></li>
+                    <li id="page_user"><a href="login">Login</a></li>
                 </ul>
             </div>
         </div>

@@ -95,7 +95,7 @@
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h3>Select a bus to Update Schedule</h3>
+            <h3>Select a bus to View Schedule</h3>
             <div class="btn-group-vertical" style=" margin-right: auto; margin-left: auto; width: 100%;" name="list_bus">
             </div>
 

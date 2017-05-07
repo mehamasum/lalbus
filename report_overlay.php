@@ -30,7 +30,7 @@
         }
     </style>
 </head>
-
+<body onload="bus_initialize('bus')">
 <?php include("includes/static_top.php"); ?>
 
 <div class="content">
