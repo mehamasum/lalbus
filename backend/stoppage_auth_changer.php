@@ -37,27 +37,49 @@ $state = mysqli_real_escape_string($conn,$_POST['state']);
 $stoppage = mysqli_real_escape_string($conn,$_POST['id']);
 $update_mode=mysqli_real_escape_string($conn,$_POST['mode']);
 $error=false;
+
+$sql = "select * from places_request WHERE id=$stoppage";
+$result = $conn->query($sql);
+$row=$result->fetch_assoc();
+$updater=$row["user_id"];
+$stoppage_name=mysqli_real_escape_string($conn,$row['stoppage_name']);
+
 if($state==0) { // Rejected
-    
+
     $sql = "DELETE from `places_request` WHERE id=$stoppage;";
     echo $sql;
+
+
     if ($conn->query($sql) == TRUE) {
         echo "ONE";
+        $sql="SELECT * from users WHERE id=$updater;";
+        $result = $conn->query($sql);
+        $row=$result->fetch_assoc();
+        $repu=$row["neg_repu"];
+        $repu=$repu+2;
+        $sql="UPDATE users SET neg_repu=$repu WHERE id=$updater;";
+        if ($conn->query($sql) == TRUE) {
+            //User Reputation Updated
+            echo "DONE";
+            die();
+        }
+        else {
+            $error=true;
+            echo "ERR";
+            die();
+        }
     }
     else {
         $error=true;
         echo "ERR";
     }
+
 }
 
 //Bus	Trip Type	Time	Endpoint	Driver	Bus Number	Comment	User	User Reputation	Suggested at
 
 else { // Accepted
-    $sql = "select * from places_request WHERE id=$stoppage";
-    $result = $conn->query($sql);
-    $row=$result->fetch_assoc();
-    $updater=$row["user_id"];
-    $stoppage_name=mysqli_real_escape_string($conn,$row['stoppage_name']);
+
     /* Update Stoppage Database */
     if($update_mode==0)//update
     {

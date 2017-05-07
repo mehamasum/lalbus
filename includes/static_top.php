@@ -27,7 +27,9 @@ if(isset($_SESSION['id'])) {
     $row = $result->fetch_assoc();
     $level=$row['level'];
     $status=$row['status'];
+    $pos_repu=$row['pos_repu'];
     $neg_repu=$row['neg_repu'];
+    $repu=$pos_repu-$neg_repu;
     ?>
     <nav class="navbar navbar-lalbus navbar-static-top">
         <div class="container">
@@ -45,7 +47,7 @@ if(isset($_SESSION['id'])) {
                     <li id="page_home" class="active"><a href="home">Home</a></li>
                     <?php
                         echo "<li id=\"page_schedule\"><a href=\"schedule\">Schedules</a></li>";
-                        if($neg_repu<10)
+                        if($repu>-10)
                         {
                             echo " <li id=\"page_edit\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Edit
                             <span class=\"caret\"></span></a>
@@ -93,7 +95,7 @@ if(isset($_SESSION['id'])) {
                             <li><a href="following">Following</a></li>
                             <li><a href="profile">Edit Profile</a></li>
                             <li><a href="update_password.php">Change Password</a></li>
-     <!--                       <li><a href="#">Help</a></li>-->
+                            <li><a href='mailto:lalbus.du@gmail.com'>Contact Us</a></li>
                             <li><a href="logout.php">Logout</a></li>
                         </ul>
 <!--                        <span class="button__badge">2</span>-->
@@ -120,7 +122,7 @@ else { ?>
                     <li id="page_home" class="active"><a href="index">Home</a></li>
                     <li id="page_schedule"><a href="schedule">Schedules</a></li>
                     <li id="page_stoppage"><a href="search">Search By Stoppage</a></li>
-                   <!-- <li><a href="#" data-type='help' data-toggle='modal' data-target='#myModal'>Help</a></li>-->
+                    <li><a href="mailto:lalbus.du@gmail.com">Contact Us</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" >
                     <li id="page_user"><a href="login.php">Login</a></li>

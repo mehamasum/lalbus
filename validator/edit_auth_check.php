@@ -24,10 +24,15 @@ else
     $level=$row['level'];
     $bus=$row['bus_id'];
 
+    $pos_repu=$row['pos_repu'];
     $neg_repu=$row['neg_repu'];
-    if($neg_repu>10)
+    $repu=$pos_repu-$neg_repu;
+    if($repu<-10)
     {
         echo "UNAUTHORIZED";
+        ob_start();
+        header('Location: home');
+        ob_end_flush();
         die();
     }
 
