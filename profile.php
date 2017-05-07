@@ -28,11 +28,18 @@
     document.getElementById("page_user").className += "active";
 
 </script>
+
 <div class="content">
 
     <form class="login-form" action="#" method="POST">
+        <div >
+            <h3 id="repu"></h3>
+        </div>
+        <br>
+
         <h3 class="form-title font-dark">Update your profile</h3>
         <br>
+
         <div class="form-group">
             <input type="text" name="name" class="form-control form-control-solid placeholder-no-fix"
                    placeholder="Name" value="" minlength="3" maxlength="64" required="">

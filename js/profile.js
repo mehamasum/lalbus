@@ -16,6 +16,9 @@ function init_fields()
     var reg_no = document.getElementsByName("reg_no")[0];
     var mob_no = document.getElementsByName("mob_no")[0];
     var email = document.getElementsByName("email")[0];
+    var repu= document.getElementById("repu");
+    console.log(repu);
+
     NProgress.start();
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -31,6 +34,7 @@ function init_fields()
             mob_no.value=data['mob_no'];
             email.value=data['email'];
             user_level_input.value=data['level'];
+            repu.innerHTML="Reputation Points : "+data['pos_repu'];
             initialize_lists();
         }
     };

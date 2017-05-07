@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="css/static_top.css">
     <script src="js/index.js"></script>
     <link rel="stylesheet" href="css/home.css">
+    <script src='js/nprogress.js'></script>
+    <link rel='stylesheet' href='css/nprogress.css'/>
 </head>
 <body>
 <?php include("includes/static_top.php"); ?>
@@ -71,8 +73,6 @@
 </body>
 <!-- Bootstrap core JavaScript -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src='js/nprogress.js'></script>
-<link rel='stylesheet' href='css/nprogress.css'/>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="js/bootstrap.min.js"></script>
 <script async defer

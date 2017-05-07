@@ -21,6 +21,7 @@ $email=$row['email'];
 $dept_id=$row['dept_id'];
 $bus=$row['bus_id'];
 $user_level=$row['level_req'];
+$repu=$row['pos_repu'];
 
 
 $post_data = array(
@@ -32,7 +33,8 @@ $post_data = array(
         'email' => $email,
         'dept_id' => $dept_id,
         'bus_id' => $bus,
-        'level' => $user_level
+        'level' => $user_level,
+        'pos_repu' => $repu
     )
 );
 

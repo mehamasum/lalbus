@@ -1,3 +1,19 @@
+<style>
+.button__badge {
+background-color: #fa3e3e;
+    border-radius:50%;
+color: white;
+
+padding: 1px 3px;
+font-size: 10px;
+
+position: absolute; /* Position the badge within the relatively positioned button */
+top: 0;
+right: 0;
+}
+
+</style>
+
 <?php
 if(session_id() == '') {
     session_start();
@@ -76,6 +92,7 @@ if(isset($_SESSION['id'])) {
      <!--                       <li><a href="#">Help</a></li>-->
                             <li><a href="logout.php">Logout</a></li>
                         </ul>
+<!--                        <span class="button__badge">2</span>-->
                     </li>
                 </ul>
             </div>
