@@ -1,3 +1,42 @@
+// add data
+function initData()
+{
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            console.log(this.responseText);
+            var reply = JSON.parse(this.responseText);
+
+            var idx;
+            for (idx = 0; idx < reply.length; idx++) {
+                console.log(reply[idx]["bus_id"]);
+                var obj = "<option value='"+reply[idx]['id']+"'>"+reply[idx]['name']+"</option>";
+                console.log(obj);
+                $("#followingList").append(obj);
+            }
+
+            if(reply.length>0) {
+                findMyBus(reply[0]["id"], reply[0]['name']);
+            }
+
+        }
+    };
+    xhttp.open("POST", "backend/following_list_for_user.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("id="+ id);
+}
+
+window.initMap = function()  {
+    var dhaka = {lat: 23.7315, lng: 90.3925};
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 17,
+        center: dhaka
+    });
+};
+
 
 
 function findMyBus(busId, name) {
