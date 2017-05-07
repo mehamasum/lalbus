@@ -27,6 +27,7 @@ if(isset($_SESSION['id'])) {
     $row = $result->fetch_assoc();
     $level=$row['level'];
     $status=$row['status'];
+    $neg_repu=$row['neg_repu'];
     ?>
     <nav class="navbar navbar-lalbus navbar-static-top">
         <div class="container">
@@ -44,7 +45,9 @@ if(isset($_SESSION['id'])) {
                     <li id="page_home" class="active"><a href="home">Home</a></li>
                     <?php
                         echo "<li id=\"page_schedule\"><a href=\"schedule\">Schedules</a></li>";
-                        echo " <li id=\"page_edit\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Edit
+                        if($neg_repu<10)
+                        {
+                            echo " <li id=\"page_edit\"><a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" >Edit
                             <span class=\"caret\"></span></a>
                                 <ul class=\"dropdown-menu\">
                                     <li><a href=\"edit_bus\">Edit Bus Route</a></li>
@@ -52,6 +55,7 @@ if(isset($_SESSION['id'])) {
                                     <li><a href=\"edit_stoppage\">Edit Bus Stoppage</a></li>
                                 </ul>
                             </li>";
+                        }
 /*                        if($level==0)
                            echo "<li id=\"page_schedule\"><a href=\"schedule\">Schedules</a></li>";
                         else if($level==1)

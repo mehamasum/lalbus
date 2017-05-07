@@ -38,7 +38,7 @@ $stoppage = mysqli_real_escape_string($conn,$_POST['id']);
 $update_mode=mysqli_real_escape_string($conn,$_POST['mode']);
 $error=false;
 if($state==0) { // Rejected
-
+    
     $sql = "DELETE from `places_request` WHERE id=$stoppage;";
     echo $sql;
     if ($conn->query($sql) == TRUE) {

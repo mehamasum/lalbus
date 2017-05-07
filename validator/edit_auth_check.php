@@ -23,6 +23,14 @@ else
     $row = $result->fetch_assoc();
     $level=$row['level'];
     $bus=$row['bus_id'];
+
+    $neg_repu=$row['neg_repu'];
+    if($neg_repu>10)
+    {
+        echo "UNAUTHORIZED";
+        die();
+    }
+
    /* if($level==0)
     {
         ob_start();

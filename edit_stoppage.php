@@ -34,7 +34,7 @@
             <h3 style="width: 100%; text-align: center">Update Bus Stoppage</h3>
             <p style="width: 100%; text-align: center">Update the stoppage of your bus</p>
             <p style="width: 100%; text-align: center">If the Admin Accepts your update, you get 10 reputation points</p>
-            <p style="width: 100%; text-align: center">If the Admin rejects your update, you will lose 2 reputation points</p>
+            <p style="width: 100%; text-align: center">If the Admin Rejects your update, you will lose 2 reputation points</p>
 
         </div>
         <div>

@@ -27,7 +27,7 @@
            <h3 style="width: 100%; text-align: center">Update Bus Schedules</h3>
            <p style="width: 100%; text-align: center">Update the schedule of your bus</p>
            <p style="width: 100%; text-align: center">If the Admin Accepts your update, you get 10 reputation points</p>
-           <p style="width: 100%; text-align: center">If the Admin rejects your update, you will lose 2 reputation points</p>
+           <p style="width: 100%; text-align: center">If the Admin Rejects your update, you will lose 2 reputation points</p>
        </div>
        <div>
            <button class="btn btn-primary pull-left" onClick="initModal()"> Change Bus </button>
