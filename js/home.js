@@ -212,7 +212,9 @@ function sendVote(reprtId, type) {
 
 function add_report(busId) {
     console.log("add report bus id :" + busId);
-    getLocation();
+    if (confirm("Use GPS to access your location?") == true) {
+        getLocation();
+    }
 }
 
 function timeSince(timeStamp) {
