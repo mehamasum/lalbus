@@ -18,7 +18,7 @@ function validateLogin() {
 
     if(password.length<5) {
         found = true;
-        errors.innerHTML+= "Password must be at least 8 characters"+"<br>";
+        errors.innerHTML+= "Password must be at least 5 characters"+"<br>";
     }
 
     if(found)

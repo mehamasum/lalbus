@@ -21,9 +21,9 @@ function validatePassword()
     var content = document.getElementById("errorMessageContent");
     var errors = document.getElementById("errorMessages");
     var found=false;
-    if(newpass.length<8) {
+    if(newpass.length<5) {
         found = true;
-        errors.innerHTML+= "Password must be at least 8 characters"+"<br>";
+        errors.innerHTML+= "Password must be at least 5 characters"+"<br>";
     }
 
     if(newpass!=confirmpass)
