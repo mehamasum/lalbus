@@ -123,7 +123,7 @@ else { ?>
                     <li id="page_schedule"><a href="schedule">Schedules</a></li>
                     <li id="page_stoppage"><a href="search">Search By Stoppage</a></li>
                     <li><a href="mailto:lalbus.du@gmail.com">Contact Us</a></li>
-                    <li><a href="login">Visit Log In page for demo user accounts</a></li>
+                    <li><a href="login">Test with demo User Account</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" >
                     <li id="page_user"><a href="login">Login</a></li>
