@@ -64,10 +64,10 @@ else {
 
         $conn->query($follow);
         echo $_SESSION['id'];
-/*        if(sendVerificationBySwift($email,$name,$six_digit_random_number))
+        if(sendVerificationBySwift($email,$name,$six_digit_random_number))
             echo $_SESSION['id'];
         else
-            echo "INVALID";*/
+            echo "INVALID";
 
 
     }
