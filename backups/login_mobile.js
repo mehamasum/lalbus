@@ -16,7 +16,7 @@ function validateLogin() {
         errors.innerHTML+= "Invalid Mobile Number"+"<br>";
     }
 
-    if(password.length<8) {
+    if(password.length<5) {
         found = true;
         errors.innerHTML+= "Password must be at least 8 characters"+"<br>";
     }

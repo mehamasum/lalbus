@@ -52,7 +52,7 @@
 
             <div class="form-group">
 				<input type="password" name="password" class="form-control form-control-solid placeholder-no-fix"
-					   placeholder="Password" value="" minlength="8" required="">
+					   placeholder="Password" value="" minlength="5" required="">
 			</div>
 
 

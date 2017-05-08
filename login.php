@@ -44,7 +44,7 @@
 			</div>
 			<div class="form-group">
 				<input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off"
-					   placeholder="Password" name="password" required="">
+					   placeholder="Password" minlength="5" name="password" required="">
 			</div>
 
             <div class="alert alert-success" id="success-alert" style="display: none;">

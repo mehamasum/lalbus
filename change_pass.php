@@ -48,12 +48,12 @@ include_once("validator/change_pass_check.php");
 
         <div class="form-group">
             <input type="password" name="password" class="form-control form-control-solid placeholder-no-fix"
-                   placeholder="New Password" value="" minlength="8" required="">
+                   placeholder="New Password" value="" minlength="5" required="">
         </div>
 
         <div class="form-group">
             <input type="password" name="newpass" class="form-control form-control-solid placeholder-no-fix"
-                   placeholder="Confirm Password" value="" minlength="8" required="">
+                   placeholder="Confirm Password" value="" minlength="5" required="">
         </div>
 
         <div class="alert alert-success" id="success-alert" style="display: none">
