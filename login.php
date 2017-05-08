@@ -10,10 +10,11 @@
 	<link rel="icon" href="img/favicon.png">
 	<link rel="canonical" href="">
 	<link rel="stylesheet" href="css/screen.css">
-
+    <script src="js/sorttable.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/static_top.css">
+    <link rel="stylesheet" href="css/login.css">
 	<style type="text/css">
 		html {
 			height: 100%;
@@ -34,6 +35,27 @@
 	</div>
 
 	<div class="content">
+
+        <div>
+            <table>
+            <thead>
+            <tr>
+                <th>User Level</th>
+                <th>Username</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr><td>Admin</td><td>fahim6119@gmail.com</td></tr>
+                <tr><td>Committee</td><td>mehamasum@gmail.com</td></tr>
+                <tr><td>Unverified User</td><td>f.arefin8@gmail.com</td></tr>
+                <tr><td>Banned User</td><td>demo@gmail.com</td></tr>
+            </tbody>
+            </table>
+
+            <h3> Password is lalbus<br> for all these accounts</h3>
+
+        </div>
+
 
 		<form class="login-form" action="#" method="POST">
 			<h3 class="form-title font-dark">Login</h3>
