@@ -34,31 +34,15 @@
 		<a href=""><img src="img/logo-w.png?res" alt="Lalbus"></a>
 	</div>
 
+
 	<div class="content">
-
-        <div>
-            <table>
-            <thead>
-            <tr>
-                <th>User Level</th>
-                <th>Username</th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr><td>Admin</td><td>fahim6119@gmail.com</td></tr>
-                <tr><td>Committee</td><td>mehamasum@gmail.com</td></tr>
-                <tr><td>Unverified User</td><td>f.arefin8@gmail.com</td></tr>
-                <tr><td>Banned User</td><td>demo@gmail.com</td></tr>
-            </tbody>
-            </table>
-
-            <h3> Password is lalbus<br> for all these accounts</h3>
-
-        </div>
-
 
 		<form class="login-form" action="#" method="POST">
 			<h3 class="form-title font-dark">Login</h3>
+
+			<p class="text-center">
+				<a data-toggle="modal" data-target="#myModal" class="" href="#">Login as a Test User?</a>
+			</p>
 			<br>
 			<div class="form-group">
 				<input class="form-control form-control-solid placeholder-no-fix" type="email" autocomplete="off"
@@ -83,17 +67,66 @@
 				<button type="button" class="btn red" onclick="validateLogin()">Login</button>
 				<a class="forget-password" href="forgot_pass">Forgot Password?</a>
 			</div>
+
+
 			
 			<div class="create-account">
 				<p>
 					<a href="signup">Create an account</a>
 				</p>
 			</div>
+
+
 		</form>
 
 	</div>
 
+
+
 	<div class="copyright">© 2017 Batfia</div>
+
+
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Credentials for Test User</h4>
+				</div>
+				<div class="modal-body">
+					<div>
+						<table>
+							<thead>
+							<tr>
+								<th>User Level</th>
+								<th>Username</th>
+								<th>Password</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr><td>Admin</td><td>fahim6119@gmail.com</td><td>lalbus</td></tr>
+							<tr><td>Regular user + Committee member</td><td>mehamasum@gmail.com</td><td>lalbus</td></tr>
+							<tr><td>Unverified User</td><td>f.arefin8@gmail.com</td><td>lalbus</td></tr>
+							<tr><td>Banned User</td><td>demo@gmail.com</td><td>lalbus</td></tr>
+							</tbody>
+						</table>
+
+
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
 </body>
 
 <script>
